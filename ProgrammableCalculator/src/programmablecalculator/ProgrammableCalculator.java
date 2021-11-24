@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Asus Pc
+ * @author
  */
 public class ProgrammableCalculator extends Application {
     
