@@ -90,6 +90,9 @@ public class StackOperationDictionaryTest {
         boolean nameChanged = stackOperationDictionary.renameOperation("+", "sum");
         assertTrue(nameChanged);
         
+        StackOperation shouldBeNullOperation = stackOperationDictionary.getOperation("+");
+        assertNull(shouldBeNullOperation);
+        
         StackOperation shouldBeSumOperation = stackOperationDictionary.getOperation("sum");
         assertNotNull(shouldBeSumOperation);
         assertTrue(shouldBeSumOperation instanceof SumStackOperation);
@@ -97,27 +100,26 @@ public class StackOperationDictionaryTest {
     
     /**
      * Test if the renameOperation method returns False if an entry with
-     * key equals to name is not present in the dictionary and the names
-     * have not been changed.
+     * key equals to name is not present in the dictionary and there aren't any
+     * associations to the given names.
      */
     @Test
     public void testRenameOperationNotPresent(){
-        boolean nameChanged = stackOperationDictionary.renameOperation("404", "+");
+        boolean nameChanged = stackOperationDictionary.renameOperation("404", "200");
         assertFalse(nameChanged);
         
         StackOperation shouldBeNullOperation = stackOperationDictionary.getOperation("404");
         assertNull(shouldBeNullOperation);
         
-        StackOperation shouldBeSumOperation = stackOperationDictionary.getOperation("+");
-        assertNotNull(shouldBeSumOperation);
-        assertTrue(shouldBeSumOperation instanceof SumStackOperation);
+        StackOperation shouldBeNullOperation2 = stackOperationDictionary.getOperation("200");
+        assertNull(shouldBeNullOperation2);
         
     }
     
     /**
      * Test if the renameOperation method returns False if an entry with 
      * Key equals to newName is already present in the dictionary and the
-     * names have not been changed.
+     * associations have not been changed.
      */
     @Test
     public void testRenameOperationAlreadyPresent(){
