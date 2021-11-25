@@ -32,8 +32,8 @@ public class StackOperationDictionaryTest {
     /**
      * Test if the constructor puts the right entries into the dictionary. The
      * dictionary should contains the following entries: <br>
-     * - &lt;"+", SumStackOperation&;gt <br>
-     * - &lt;"-", SubtractionStackOperation;gt <br>
+     * - &lt;"+", SumStackOperation&gt; <br>
+     * - &lt;"-", SubtractionStackOperation&gt; <br>
      * In order to perform the test, the getOperation method is being used. Thus
      * the following tests the getOperation method too.
      */
