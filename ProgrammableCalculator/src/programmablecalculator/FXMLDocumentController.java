@@ -16,6 +16,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.apache.commons.math3.complex.*;
 import calculatorstack.*;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -73,7 +77,10 @@ public class FXMLDocumentController implements Initializable {
     private void insertBtnPressed(ActionEvent event) {
         String inserted = txtInput.getText();
         if(inserted.equals("")) return;
-        ComplexFormat cf = new ComplexFormat("j");
+        DecimalFormatSymbols decimalSymbols = DecimalFormatSymbols.getInstance();
+        decimalSymbols.setDecimalSeparator('.');
+        DecimalFormat df = new DecimalFormat("0.00", decimalSymbols);
+        ComplexFormat cf = new ComplexFormat("j", df);
         try{
             Complex c = cf.parse(inserted);
             calculatorStack.push(c);
