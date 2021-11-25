@@ -1294,7 +1294,14 @@ public class Complex implements FieldElement<Complex>, Serializable  {
     /** {@inheritDoc} */
     @Override
     public String toString() {
-        return "(" + real + ", " + imaginary + ")";
+        //MODIFICATA 
+        //return "(" + real + "," + imaginary + ")";
+        //*
+        if(imaginary<0){
+            return real+"-"+imaginary*-1+"j";
+        }
+        return real+"+"+imaginary+"j";
+        //*/
     }
 
 }

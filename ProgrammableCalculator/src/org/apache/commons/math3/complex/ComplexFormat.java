@@ -350,7 +350,7 @@ public class ComplexFormat {
     public Complex parse(String source) throws MathParseException {
         ParsePosition parsePosition = new ParsePosition(0);
         Complex result = parse(source, parsePosition);
-        if (parsePosition.getIndex() == 0) {
+        if (result==null || parsePosition.getIndex() == 0) {
             throw new MathParseException(source,
                                          parsePosition.getErrorIndex(),
                                          Complex.class);

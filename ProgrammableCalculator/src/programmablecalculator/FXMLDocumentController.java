@@ -16,6 +16,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.apache.commons.math3.complex.*;
 import calculatorstack.*;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import org.apache.commons.math3.exception.MathParseException;
 import stackoperationdictionary.*;
 /**
@@ -36,6 +39,8 @@ public class FXMLDocumentController implements Initializable {
     private StackOperationDictionary stackOperationDictionary;
     /**
      * Initialize the components of the GUI
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -48,8 +53,13 @@ public class FXMLDocumentController implements Initializable {
      * It shows the last 12 elements of the stack.
      */
     public void updateStackView(){
-        //Waiting for ary's implementation of a function which let me iterate on calculatorStack.
-        return;
+        stackView.getItems().clear();
+        int i=0;
+        for(Complex c : calculatorStack){
+            if(i>=12) return;
+            stackView.getItems().add(c);
+            i++;
+        }
     }
 
     /**
@@ -62,17 +72,30 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void insertBtnPressed(ActionEvent event) {
         String inserted = txtInput.getText();
-        ComplexFormat cf = new ComplexFormat();
+        if(inserted.equals("")) return;
+        ComplexFormat cf = new ComplexFormat("j");
         try{
             Complex c = cf.parse(inserted);
             calculatorStack.push(c);
         }
         catch(MathParseException ex){
-            if(!stackOperationDictionary.containsKey(inserted))
-                return;
+            if(!stackOperationDictionary.containsKey(inserted)){
+               Alert alert = new Alert(AlertType.ERROR, "Complex value not parsable or Operation not Found");
+               alert.showAndWait();
+               return;
+            }
             stackOperationDictionary.execute(inserted);
         }
         updateStackView();
     }
     
+    /**
+     * This function runs automatically after closeBtn pression.
+     * It simply closes the window.
+     * @param event 
+     */
+    @FXML
+    private void closeBtnPressed(ActionEvent event) {
+        Platform.exit();
+    }
 }
