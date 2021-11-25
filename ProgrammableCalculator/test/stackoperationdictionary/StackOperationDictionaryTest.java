@@ -42,6 +42,7 @@ public class StackOperationDictionaryTest {
         StackOperation sumStackOperation = stackOperationDictionary.getOperation("+");
         assertNotNull(sumStackOperation);
         assertTrue(sumStackOperation instanceof SumStackOperation);
+        
         StackOperation subtractionStackOperation = stackOperationDictionary.getOperation("-");
         assertNotNull(subtractionStackOperation);
         assertTrue(subtractionStackOperation instanceof SubtractionStackOperation);
@@ -54,6 +55,7 @@ public class StackOperationDictionaryTest {
     public void testPutOperation() {
         StackOperation sumStackOperation = new SumStackOperation(calculatorStack);
         stackOperationDictionary.putOperation("sum", sumStackOperation);
+        
         StackOperation shouldBeSumStackOperation = stackOperationDictionary.getOperation("sum");
         assertNotNull(shouldBeSumStackOperation);
         assertTrue(shouldBeSumStackOperation instanceof SumStackOperation);
@@ -80,24 +82,55 @@ public class StackOperationDictionaryTest {
     }
 
     /**
-     * Test if the renameOperation method changes the name of an existing entry.
+     * Test if the renameOperation method changes the name of an existing entry
+     * and returns True.
      */
     @Test
     public void testRenameOperation() {
-        stackOperationDictionary.renameOperation("+", "sum");
+        boolean nameChanged = stackOperationDictionary.renameOperation("+", "sum");
+        assertTrue(nameChanged);
+        
         StackOperation shouldBeSumOperation = stackOperationDictionary.getOperation("sum");
         assertNotNull(shouldBeSumOperation);
         assertTrue(shouldBeSumOperation instanceof SumStackOperation);
     }
     
     /**
+     * Test if the renameOperation method returns False if an entry with
+     * key equals to name is not present in the dictionary and the names
+     * have not been changed.
+     */
+    @Test
+    public void testRenameOperationNotPresent(){
+        boolean nameChanged = stackOperationDictionary.renameOperation("404", "+");
+        assertFalse(nameChanged);
+        
+        StackOperation shouldBeNullOperation = stackOperationDictionary.getOperation("404");
+        assertNull(shouldBeNullOperation);
+        
+        StackOperation shouldBeSumOperation = stackOperationDictionary.getOperation("+");
+        assertNotNull(shouldBeSumOperation);
+        assertTrue(shouldBeSumOperation instanceof SumStackOperation);
+        
+    }
+    
+    /**
      * Test if the renameOperation method returns False if an entry with 
-     * Key equals to newName is already present in the dictionary.
+     * Key equals to newName is already present in the dictionary and the
+     * names have not been changed.
      */
     @Test
     public void testRenameOperationAlreadyPresent(){
         boolean nameChanged = stackOperationDictionary.renameOperation("+", "-");
         assertFalse(nameChanged);
+        
+        StackOperation shouldBeSumOperation = stackOperationDictionary.getOperation("+");
+        assertNotNull(shouldBeSumOperation);
+        assertTrue(shouldBeSumOperation instanceof SumStackOperation);
+        
+        StackOperation shouldBeSubtractionOperation = stackOperationDictionary.getOperation("-");
+        assertNotNull(shouldBeSubtractionOperation);
+        assertTrue(shouldBeSubtractionOperation instanceof SubtractionStackOperation);
     }
 
     /**
