@@ -68,13 +68,12 @@ public class StackOperationDictionary {
      * Change the name associated with an operation.
      * @param name the name currently associated with an operation which 
      * should be changed.
-     * @param newName the new name which should be associated with the
-     * operation.
+     * @param newName the new name to be associated with the operation.
      * @return True if name has been changed, false if the specified name
-     * was not present in the dictionary.
+     * was not present in the dictionary or the newName is already used.
      */
     public boolean renameOperation(String name, String newName){
-        if (dict.containsKey(newName)){
+        if (!dict.containsKey(name) || dict.containsKey(newName)){
             return false;
         }
         else{
@@ -100,11 +99,11 @@ public class StackOperationDictionary {
      * no mapping for the specified name.
      */
     public boolean execute(String name){
-        if (!dict.containsKey(name)){
+        StackOperation operation = dict.get(name);
+        if(operation == null){
             return false;
         }
-        else{
-            StackOperation operation = dict.get(name);
+        else {
             operation.execute();
             return true;
         }
