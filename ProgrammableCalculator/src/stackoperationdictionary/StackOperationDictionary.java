@@ -79,6 +79,7 @@ public class StackOperationDictionary {
         else{
             StackOperation operation = dict.get(name);
             dict.put(newName, operation);
+            dict.remove(name);
             return true;
         }
     }
