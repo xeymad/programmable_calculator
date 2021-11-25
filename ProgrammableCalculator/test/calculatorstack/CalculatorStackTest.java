@@ -5,11 +5,9 @@
  */
 package calculatorstack;
 
+import java.util.Iterator;
 import org.apache.commons.math3.complex.Complex;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -23,12 +21,12 @@ public class CalculatorStackTest {
     
     public CalculatorStackTest() {
     }
-    
+
     @Before
     public void setUp() {
         instance = new CalculatorStack();
     }
-    
+
     /**
      * Test of isEmpty method, of class CalculatorStack.
      */
@@ -78,6 +76,29 @@ public class CalculatorStackTest {
         int result = instance.size();
         assertEquals(expResult, result);
        
+    }
+
+    /**
+     * Test of iterator method, of class CalculatorStack.
+     */
+    @Test
+    public void testIterator() {
+        System.out.println("iterator");
+        Complex expResult1=new Complex(3,213);
+        Complex expResult2=new Complex(77,-12);
+        Complex expResult3=new Complex(-9,8);
+        instance.push(expResult3);
+        instance.push(expResult2);
+        instance.push(expResult1);
+        Iterator<Complex> iterator = instance.iterator();
+        assertEquals(expResult1, iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals(expResult2, iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals(expResult3, iterator.next());
+        assertFalse(iterator.hasNext());
+        
+        
     }
    
 }

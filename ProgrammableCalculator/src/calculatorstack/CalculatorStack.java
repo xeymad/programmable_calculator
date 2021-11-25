@@ -5,8 +5,8 @@
  */
 package calculatorstack;
 
+import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import org.apache.commons.math3.complex.Complex;
 
 /**
@@ -15,9 +15,9 @@ import org.apache.commons.math3.complex.Complex;
  * @author Arianna Carratù 
  * @version 1.0
  */
-public class CalculatorStack {
+public class CalculatorStack implements Iterable<Complex> {
    
-    private List<Complex> calculatorStack;  
+    private LinkedList<Complex> calculatorStack;  
     
     /**
     * Class constructor
@@ -31,7 +31,7 @@ public class CalculatorStack {
     * @param c The complex number to put on the stack 
     */ 
     public void push(Complex c){
-        calculatorStack.add(c);
+        calculatorStack.push(c);
     }
     
     /**
@@ -39,7 +39,7 @@ public class CalculatorStack {
     * @return Complex This returns the last inserted complex number
     */ 
     public Complex pop(){
-        return calculatorStack.remove(calculatorStack.size()-1);
+        return calculatorStack.pop();
     }
     
     /**
@@ -57,5 +57,16 @@ public class CalculatorStack {
     public int size(){
         return calculatorStack.size();
     }
+
+    /**
+    * This method returns an iterator over the elements of the stack, starting from the top.
+    * @return Iterator an iterator over the elements of the stack
+    */
+    @Override
+    public Iterator<Complex> iterator() {
+        return calculatorStack.iterator();
+    }
+    
+    
     
 }
