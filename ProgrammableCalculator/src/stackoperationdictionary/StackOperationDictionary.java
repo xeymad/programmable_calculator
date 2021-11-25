@@ -21,8 +21,8 @@ public class StackOperationDictionary {
     
     /**
      * The dictionary is initialized with the following entries: <br>
-     * - &lt;"+", SumStackOperation&;gt <br>
-     * - &lt;"-", SubtractionStackOperation;gt <br>
+     * - &lt;"+", SumStackOperation&gt; <br>
+     * - &lt;"-", SubtractionStackOperation&gt; <br>
      * @param calculatorStack represent the stack to which the operations refer.
      */
     public StackOperationDictionary(CalculatorStack calculatorStack){
