@@ -369,6 +369,8 @@ public class ComplexFormat {
     public Complex parse(String source, ParsePosition pos) {
         int initialIndex = pos.getIndex();
 
+        if(source.contains(",")) return null;
+        
         // parse whitespace
         CompositeFormat.parseAndIgnoreWhitespace(source, pos);
 
