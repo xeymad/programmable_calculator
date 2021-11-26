@@ -420,12 +420,7 @@ public class ComplexFormat {
         if (!CompositeFormat.parseFixedstring(source, getImaginaryCharacter(), pos)) {
             return null;
         }
-        // check if j is the last character
-        if (source.contains("j")) {
-            int i=source.indexOf("j");
-            if(source.length()>i+1)
-              return null;
-        }
+
         return new Complex(re.doubleValue(), im.doubleValue() * sign);
 
     }
