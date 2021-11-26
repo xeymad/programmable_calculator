@@ -40,6 +40,9 @@ public class ComplexFormatTest {
         c = new Complex(0,1);
         parsed = instance.parse("j");
         assertEquals(c,parsed);
+        c = new Complex(0,-1);
+        parsed = instance.parse("-j");
+        assertEquals(c,parsed);
     }
     
     @Test(expected = MathParseException.class)

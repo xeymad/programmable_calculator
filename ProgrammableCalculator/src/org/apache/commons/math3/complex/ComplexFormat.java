@@ -400,26 +400,23 @@ public class ComplexFormat {
 
         // parse imaginary
         Number im = CompositeFormat.parseNumber(source, getRealFormat(), pos);
-        if (im == null) {
-            // invalid imaginary number
-            // set index back to initial, error index should already be set
-            pos.setIndex(initialIndex);
-            return null;
-        }
+
 
         // parse imaginary character
         if (!CompositeFormat.parseFixedstring(source, getImaginaryCharacter().toString(), pos)) {
             return null;
         }
         
-        //check if after the imaginary character thera are other characters
-        if(source.contains(getImaginaryCharacter().toString())){
-            int i=source.indexOf(getImaginaryCharacter());
-            if(source.length()>i+1)
-                return null;
+        if(pos.getIndex()!=source.length()){
+            pos.setIndex(initialIndex);
+            pos.setErrorIndex(startIndex);
+            return null;
         }
+        
+        if(im==null)
+            if(re!=null) return new Complex(re.doubleValue(),sign);
+            else return new Complex(0.0,sign);
 
         return new Complex(re.doubleValue(), im.doubleValue() * sign);
-
     }
 }
