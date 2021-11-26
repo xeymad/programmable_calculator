@@ -420,6 +420,13 @@ public class ComplexFormat {
         if (!CompositeFormat.parseFixedstring(source, getImaginaryCharacter(), pos)) {
             return null;
         }
+        
+        //check if after the imaginary character thera are other characters
+        if(source.contains(getImaginaryCharacter())){
+            int i=source.indexOf(getImaginaryCharacter());
+            if(source.length()>i+1)
+                return null;
+        }
 
         return new Complex(re.doubleValue(), im.doubleValue() * sign);
 
