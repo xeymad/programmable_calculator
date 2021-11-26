@@ -87,8 +87,8 @@ public class CompositeFormat {
                  c = source.charAt(index++);
              } while (Character.isWhitespace(c) && index < n);
              pos.setIndex(index);
-
-             if (index < n) {
+             //MODDATO QUA
+             if (index < n+1) {
                  ret = c;
              }
          }

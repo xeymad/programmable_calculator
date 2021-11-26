@@ -38,9 +38,9 @@ import org.apache.commons.math3.util.CompositeFormat;
 public class ComplexFormat {
 
      /** The default imaginary character. */
-    private static final String DEFAULT_IMAGINARY_CHARACTER = "i";
+    private static final Character DEFAULT_IMAGINARY_CHARACTER = 'i';
     /** The notation used to signify the imaginary part of the complex number. */
-    private final String imaginaryCharacter;
+    private final char imaginaryCharacter;
     /** The format used for the imaginary part. */
     private final NumberFormat imaginaryFormat;
     /** The format used for the real part. */
@@ -102,7 +102,7 @@ public class ComplexFormat {
      * @throws NoDataException if {@code imaginaryCharacter} is an
      * empty string.
      */
-    public ComplexFormat(String imaginaryCharacter)
+    public ComplexFormat(char imaginaryCharacter)
         throws NullArgumentException, NoDataException {
         this(imaginaryCharacter, CompositeFormat.getDefaultNumberFormat());
     }
@@ -118,7 +118,7 @@ public class ComplexFormat {
      * empty string.
      * @throws NullArgumentException if {@code format} is {@code null}.
      */
-    public ComplexFormat(String imaginaryCharacter, NumberFormat format)
+    public ComplexFormat(char imaginaryCharacter, NumberFormat format)
         throws NullArgumentException, NoDataException {
         this(imaginaryCharacter, format, format);
     }
@@ -138,14 +138,15 @@ public class ComplexFormat {
      * @throws NullArgumentException if {@code imaginaryFormat} is {@code null}.
      * @throws NullArgumentException if {@code realFormat} is {@code null}.
      */
-    public ComplexFormat(String imaginaryCharacter,
+    public ComplexFormat(Character imaginaryCharacter,
                          NumberFormat realFormat,
                          NumberFormat imaginaryFormat)
         throws NullArgumentException, NoDataException {
+        
         if (imaginaryCharacter == null) {
             throw new NullArgumentException();
         }
-        if (imaginaryCharacter.length() == 0) {
+        if (Character.isDigit(imaginaryCharacter)) {
             throw new NoDataException();
         }
         if (imaginaryFormat == null) {
@@ -285,7 +286,7 @@ public class ComplexFormat {
      * Access the imaginaryCharacter.
      * @return the imaginaryCharacter.
      */
-    public String getImaginaryCharacter() {
+    public Character getImaginaryCharacter() {
         return imaginaryCharacter;
     }
 
@@ -325,7 +326,7 @@ public class ComplexFormat {
      * @throws NoDataException if {@code imaginaryCharacter} is an
      * empty string.
      */
-    public static ComplexFormat getInstance(String imaginaryCharacter, Locale locale)
+    public static ComplexFormat getInstance(Character imaginaryCharacter, Locale locale)
         throws NullArgumentException, NoDataException {
         NumberFormat f = CompositeFormat.getDefaultNumberFormat(locale);
         return new ComplexFormat(imaginaryCharacter, f);
@@ -373,29 +374,18 @@ public class ComplexFormat {
 
         // parse real
         Number re = CompositeFormat.parseNumber(source, getRealFormat(), pos);
-        if (re == null) {
-            // invalid real number
-            // set index back to initial, error index should already be set
-            pos.setIndex(initialIndex);
-            return null;
-        }
 
         // parse sign
         int startIndex = pos.getIndex();
         char c = CompositeFormat.parseNextCharacter(source, pos);
         int sign = 0;
-        switch (c) {
-        case 0 :
-            // no sign
-            // return real only complex number
-            return new Complex(re.doubleValue(), 0.0);
-        case '-' :
-            sign = -1;
-            break;
-        case '+' :
-            sign = 1;
-            break;
-        default :
+        if (c==0) return new Complex(re.doubleValue(), 0.0);
+        else if(c=='+') sign=1;
+        else if(c=='-') sign=-1;
+        else if(c==this.imaginaryCharacter && pos.getIndex()==source.length())
+            if (re==null) return new Complex(0.0,1.0);
+            else return new Complex(0.0,re.doubleValue());
+        else{
             // invalid sign
             // set index back to initial, error index should be the last
             // character examined.
@@ -403,6 +393,7 @@ public class ComplexFormat {
             pos.setErrorIndex(startIndex);
             return null;
         }
+
 
         // parse whitespace
         CompositeFormat.parseAndIgnoreWhitespace(source, pos);
@@ -417,12 +408,12 @@ public class ComplexFormat {
         }
 
         // parse imaginary character
-        if (!CompositeFormat.parseFixedstring(source, getImaginaryCharacter(), pos)) {
+        if (!CompositeFormat.parseFixedstring(source, getImaginaryCharacter().toString(), pos)) {
             return null;
         }
         
         //check if after the imaginary character thera are other characters
-        if(source.contains(getImaginaryCharacter())){
+        if(source.contains(getImaginaryCharacter().toString())){
             int i=source.indexOf(getImaginaryCharacter());
             if(source.length()>i+1)
                 return null;

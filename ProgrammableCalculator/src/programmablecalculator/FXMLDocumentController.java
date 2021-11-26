@@ -77,10 +77,7 @@ public class FXMLDocumentController implements Initializable {
     private void insertBtnPressed(ActionEvent event) {
         String inserted = txtInput.getText();
         if(inserted.equals("")) return;
-        DecimalFormatSymbols decimalSymbols = DecimalFormatSymbols.getInstance();
-        decimalSymbols.setDecimalSeparator('.');
-        DecimalFormat df = new DecimalFormat("0.00", decimalSymbols);
-        ComplexFormat cf = new ComplexFormat("j", df);
+        ComplexFormat cf = ComplexFormat.getInstance('j', Locale.US);
         try{
             Complex c = cf.parse(inserted);
             calculatorStack.push(c);
