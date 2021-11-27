@@ -43,8 +43,8 @@ public class FXMLDocumentController implements Initializable {
     private StackOperationDictionary stackOperationDictionary;
     /**
      * Initialize the components of the GUI
-     * @param url
-     * @param rb
+     * @param url: The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param rb: The resources used to localize the root object, or null if the root object was not localized.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
