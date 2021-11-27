@@ -4,6 +4,8 @@ Programmable Calculator Project, Software Engineering Group 02
 https://docs.google.com/document/d/1aSbnHQK5rW964_bf82YGZR-NUDzZocVn/edit?usp=sharing&ouid=116976815327347642722&rtpof=true&sd=true
 ### First Sprint Backlog
 https://docs.google.com/document/d/1rvq71URkpZCh9kotAaupMlzYO13RrEzY/edit?usp=sharing&ouid=116976815327347642722&rtpof=true&sd=true
+### Second Sprint Backlog
+https://docs.google.com/document/d/1F9M7l3y9ntcEOp2F0KJ25MqmCYBdW_9tCMChaLcX8rE/edit?usp=sharing
 ### Description of the Software Architecture
 https://docs.google.com/document/d/1gfPNw6uCz7_i4DDFzsWN4fxt5z8EO5Sr/edit?usp=sharing&ouid=116976815327347642722&rtpof=true&sd=true
 ### Project Burndown Chart
