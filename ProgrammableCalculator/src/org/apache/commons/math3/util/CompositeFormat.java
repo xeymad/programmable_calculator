@@ -87,7 +87,7 @@ public class CompositeFormat {
                  c = source.charAt(index++);
              } while (Character.isWhitespace(c) && index < n);
              pos.setIndex(index);
-             //MODDATO QUA
+             //Changed for bug: n+1 instead of n
              if (index < n+1) {
                  ret = c;
              }
