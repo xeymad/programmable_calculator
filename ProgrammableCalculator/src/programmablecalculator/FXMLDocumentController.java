@@ -23,6 +23,7 @@ import java.util.Locale;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
 import org.apache.commons.math3.exception.MathParseException;
 import stackoperationdictionary.*;
 /**
@@ -50,6 +51,13 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         calculatorStack = new CalculatorStack();
         stackOperationDictionary = new StackOperationDictionary(calculatorStack);
+        
+        // hook performUserAction on textField
+        txtInput.setOnKeyPressed(event -> {
+            KeyCode key = event.getCode();
+            if(key == KeyCode.ENTER)
+                performUserAction();
+        });
     }    
     
     /**
@@ -68,14 +76,32 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * This function runs automatically after the insertBtn got pressed.
-     * It first try to parse the received string from txtInput as a ComplexNumber.
-     * If it can't parse, it tryes to execute an operation from stackOperationDictionary.
-     * If the inserted text isn't an operation, it will show an Error Message.
      * @param event 
      */
     @FXML
     private void insertBtnPressed(ActionEvent event) {
+        performUserAction();
+    }
+    
+    /**
+     * This function runs automatically after closeBtn pression.
+     * It simply closes the window.
+     * @param event 
+     */
+    @FXML
+    private void closeBtnPressed(ActionEvent event) {
+        Platform.exit();
+    }
+    
+    
+    /**
+     * This function first try to parse the received string from txtInput as a ComplexNumber.
+     * If it can't parse, it tryes to execute an operation from stackOperationDictionary.
+     * If the inserted text isn't an operation, it will show an Error Message.
+     */
+    private void performUserAction(){
         String inserted = txtInput.getText();
+        txtInput.clear();
         if(inserted.equals("")) return;
         ComplexFormat cf = ComplexFormat.getInstance('j', Locale.US);
         try{
@@ -91,15 +117,5 @@ public class FXMLDocumentController implements Initializable {
             stackOperationDictionary.execute(inserted);
         }
         updateStackView();
-    }
-    
-    /**
-     * This function runs automatically after closeBtn pression.
-     * It simply closes the window.
-     * @param event 
-     */
-    @FXML
-    private void closeBtnPressed(ActionEvent event) {
-        Platform.exit();
     }
 }
