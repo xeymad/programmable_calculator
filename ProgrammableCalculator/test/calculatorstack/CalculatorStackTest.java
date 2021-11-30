@@ -56,8 +56,28 @@ public class CalculatorStackTest {
         Complex expResult = new Complex(7,39);
         instance.push(new Complex(1,2));
         instance.push(expResult);
+        int initSize=instance.size();
         Complex result = instance.pop();
+        int finalSize=instance.size();
         assertEquals(expResult, result);
+        assertEquals(initSize-1, finalSize);
+   
+    }
+    
+    /**
+     * Test of top method, of class CalculatorStack.
+     */
+    @Test
+    public void testTop() {
+        System.out.println("top");
+        Complex expResult = new Complex(7,39);
+        instance.push(new Complex(1,2));
+        instance.push(expResult);
+        int initSize=instance.size();
+        Complex result = instance.top();
+        int finalSize=instance.size();
+        assertEquals(expResult, result);
+        assertEquals(initSize, finalSize);
    
     }
 

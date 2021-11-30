@@ -43,6 +43,14 @@ public class CalculatorStack implements Iterable<Complex> {
     }
     
     /**
+    * This method returns the top element of the stack without removing it.
+    * @return Complex This returns the last inserted complex number
+    */ 
+    public Complex top(){
+        return calculatorStack.getFirst();
+    }
+    
+    /**
     * This method returns True if this stack contains no elements.
     * @return True if this stack contains no elements
     */ 
