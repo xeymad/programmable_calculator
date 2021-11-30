@@ -23,6 +23,10 @@ public class StackOperationDictionary {
      * The dictionary is initialized with the following entries: <br>
      * - &lt;"+", SumStackOperation&gt; <br>
      * - &lt;"-", SubtractionStackOperation&gt; <br>
+     * - &lt;"-", MultiplicationStackOperation&gt; <br>
+     * - &lt;"-", DivisionStackOperation&gt; <br>
+     * - &lt;"-", SqrtStackOperation&gt; <br>
+     * - &lt;"-", InvertSignStackOperation&gt; <br>
      * @param calculatorStack represent the stack to which the operations refer.
      */
     public StackOperationDictionary(CalculatorStack calculatorStack){
@@ -30,9 +34,17 @@ public class StackOperationDictionary {
         
         StackOperation sumStackOperation = new SumStackOperation(calculatorStack);
         StackOperation subtractionStackOperation = new SubtractionStackOperation(calculatorStack);
+        StackOperation multiplicationStackOperation = new MultiplicationStackOperation(calculatorStack);
+        StackOperation divisionStackOperation = new DivisionStackOperation(calculatorStack);
+        StackOperation sqrtStackOperation = new SqrtStackOperation(calculatorStack);
+        StackOperation invertSignStackOperation = new InvertSignStackOperation(calculatorStack);
         
         dict.put("+", sumStackOperation);
         dict.put("-", subtractionStackOperation);
+        dict.put("*", multiplicationStackOperation);
+        dict.put("/", divisionStackOperation);
+        dict.put("sqrt", sqrtStackOperation);
+        dict.put("+-", invertSignStackOperation);
     }
     
     /**
