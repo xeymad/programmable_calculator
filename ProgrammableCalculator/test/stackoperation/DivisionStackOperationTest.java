@@ -24,6 +24,9 @@ public class DivisionStackOperationTest {
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
     
+    /**
+     * Test of execute method, testing the throw of the DivideByZeroException
+     */
     @Test
     public void testExceptionExecute(){
         exceptionRule.expect(DivideByZeroException.class);

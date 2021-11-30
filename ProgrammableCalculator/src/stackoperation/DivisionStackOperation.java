@@ -7,9 +7,8 @@ package stackoperation;
 
 import calculatorstack.CalculatorStack;
 import org.apache.commons.math3.complex.Complex;
-import org.apache.commons.math3.exception.NullArgumentException;
 /**
- *
+ * This class implements the division operation between the last two elements of the stack.
  * @author Utente
  */
 public class DivisionStackOperation extends StackOperation{
@@ -23,9 +22,10 @@ public class DivisionStackOperation extends StackOperation{
     }
     
     /**
-     *Method which contains the logic of the subtraction between the last two Complexs Object from the stack<br>
+     *Method which contains the logic of the division between the last two Complexs Object from the stack<br>
      * If the stack is empty it puts inside a ZERO value<br>
      * If the stack contains just one elements, the stack is unchanged<br>
+     * It throws a DivideByZeroException when trying to divide by zero<br>
      */
     @Override
     public void execute() throws DivideByZeroException{

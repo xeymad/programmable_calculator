@@ -7,7 +7,7 @@ package stackoperation;
 
 /**
  *
- * @author Utente
+ * @author Matteo Di Rienzo
  */
 public class DivideByZeroException extends RuntimeException {
 
