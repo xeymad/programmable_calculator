@@ -34,6 +34,10 @@ public class StackOperationDictionaryTest {
      * dictionary should contains the following entries: <br>
      * - &lt;"+", SumStackOperation&gt; <br>
      * - &lt;"-", SubtractionStackOperation&gt; <br>
+     * - &lt;"-", MultiplicationStackOperation&gt; <br>
+     * - &lt;"-", DivisionStackOperation&gt; <br>
+     * - &lt;"-", SqrtStackOperation&gt; <br>
+     * - &lt;"-", InvertSignStackOperation&gt; <br>
      * In order to perform the test, the getOperation method is being used. Thus
      * the following tests the getOperation method too.
      */
@@ -46,6 +50,22 @@ public class StackOperationDictionaryTest {
         StackOperation subtractionStackOperation = stackOperationDictionary.getOperation("-");
         assertNotNull(subtractionStackOperation);
         assertTrue(subtractionStackOperation instanceof SubtractionStackOperation);
+        
+        StackOperation multiplicationStackOperation = stackOperationDictionary.getOperation("*");
+        assertNotNull(multiplicationStackOperation);
+        assertTrue(multiplicationStackOperation instanceof MultiplicationStackOperation);
+        
+        StackOperation divisionStackOperation = stackOperationDictionary.getOperation("/");
+        assertNotNull(divisionStackOperation);
+        assertTrue(divisionStackOperation instanceof DivisionStackOperation);
+        
+        StackOperation sqrtStackOperation = stackOperationDictionary.getOperation("sqrt");
+        assertNotNull(sqrtStackOperation);
+        assertTrue(sqrtStackOperation instanceof SqrtStackOperation);
+        
+        StackOperation invertSignStackOperation = stackOperationDictionary.getOperation("+-");
+        assertNotNull(invertSignStackOperation);
+        assertTrue(invertSignStackOperation instanceof InvertSignStackOperation);
     }
 
     /**
