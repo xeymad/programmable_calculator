@@ -18,3 +18,5 @@ https://docs.google.com/document/d/1wKvggjZM6KWfpHZ0idEe47QSoNPZ7vS5/edit?usp=sh
 https://docs.google.com/document/d/1I11jzThsHKi6U_xJwP47FLfQOAjgc373/edit?usp=sharing&ouid=111579386861903010578&rtpof=true&sd=true
 
 ## Second Sprint
+### Second Sprint Planning
+https://docs.google.com/document/d/1F9M7l3y9ntcEOp2F0KJ25MqmCYBdW_9tCMChaLcX8rE/edit?usp=sharing
