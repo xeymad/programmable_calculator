@@ -40,7 +40,6 @@ public class CalculatorStackTest {
      */
     @Test
     public void testPush() {
-        
         System.out.println("push");
         Complex c = new Complex(2,3);
         instance.push(c);
@@ -53,7 +52,6 @@ public class CalculatorStackTest {
      */
     @Test
     public void testPop() {
-        
         System.out.println("pop");
         Complex expResult = new Complex(7,39);
         instance.push(new Complex(1,2));
