@@ -38,6 +38,7 @@ public class SubtractionStackOperationTest {
         expected = Complex.ZERO;
         assertEquals(actual, expected); 
     }
+    
     /**
      * Test of execute method, of class SubtractionStackOperation.
      */
@@ -65,7 +66,7 @@ public class SubtractionStackOperationTest {
         expected = new Complex(-1.0, -1.0);
         assertEquals(actual, expected);
     }
-/**
+    /**
      * Test of execute method beetween elements of from the first and second quadrant
      */
     @Test
@@ -79,9 +80,9 @@ public class SubtractionStackOperationTest {
         assertEquals(actual, expected);
     }
 
-     /**
-     * Test of execute method beetween elements of from the first and third quadrants
-     */
+    /**
+    * Test of execute method beetween elements of from the first and third quadrants
+    */
     @Test
     public void testExecuteFirstThirdQuadrant(){
         System.out.println("testing the  execution beetween elements of from the first and third quadrants");
@@ -120,6 +121,7 @@ public class SubtractionStackOperationTest {
         expected = new Complex(1.0, 2.0);
         assertEquals(actual, expected); 
     }
+    
     /**
      * Test of execute method beetween elements of from the second and third quadrants
      */
@@ -147,6 +149,7 @@ public class SubtractionStackOperationTest {
         expected = new Complex(-3.0, 4.0);
         assertEquals(actual, expected);
     }
+    
     /**
      * Test of execute method beetween elements of from the third quadrant
      */
@@ -160,6 +163,7 @@ public class SubtractionStackOperationTest {
         expected = new Complex(1.0, -1.0);
         assertEquals(actual, expected); 
     }
+    
     /**
      * Test of execute method beetween elements of from the third and fourth quadrants
      */
@@ -200,7 +204,8 @@ public class SubtractionStackOperationTest {
         actual = testStack.pop();
         expected = Complex.ONE;
         assertEquals(actual, expected); 
-    }    
+    }   
+    
     /**
      * Test of execute method when the result is 0
      */
@@ -212,8 +217,6 @@ public class SubtractionStackOperationTest {
         sub.execute();
         actual = testStack.pop();
         expected = Complex.ZERO;
-        assertEquals(actual, expected);
-        
+        assertEquals(actual, expected); 
     }
-    
 }
