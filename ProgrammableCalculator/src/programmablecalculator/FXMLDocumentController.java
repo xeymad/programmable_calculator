@@ -114,7 +114,14 @@ public class FXMLDocumentController implements Initializable {
                alert.showAndWait();
                return;
             }
-            stackOperationDictionary.execute(inserted);
+            try{
+                stackOperationDictionary.execute(inserted);
+            }
+            catch(Exception e){
+               Alert alert = new Alert(AlertType.ERROR, e.getMessage());
+               alert.showAndWait();
+               return;               
+            }
         }
         updateStackView();
     }

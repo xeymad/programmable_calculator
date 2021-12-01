@@ -23,10 +23,10 @@ public class StackOperationDictionary {
      * The dictionary is initialized with the following entries: <br>
      * - &lt;"+", SumStackOperation&gt; <br>
      * - &lt;"-", SubtractionStackOperation&gt; <br>
-     * - &lt;"-", MultiplicationStackOperation&gt; <br>
-     * - &lt;"-", DivisionStackOperation&gt; <br>
-     * - &lt;"-", SqrtStackOperation&gt; <br>
-     * - &lt;"-", InvertSignStackOperation&gt; <br>
+     * - &lt;"*", MultiplicationStackOperation&gt; <br>
+     * - &lt;"/", DivisionStackOperation&gt; <br>
+     * - &lt;"sqrt", SqrtStackOperation&gt; <br>
+     * - &lt;"+-", InvertSignStackOperation&gt; <br>
      * @param calculatorStack represent the stack to which the operations refer.
      */
     public StackOperationDictionary(CalculatorStack calculatorStack){
@@ -38,6 +38,11 @@ public class StackOperationDictionary {
         StackOperation divisionStackOperation = new DivisionStackOperation(calculatorStack);
         StackOperation sqrtStackOperation = new SqrtStackOperation(calculatorStack);
         StackOperation invertSignStackOperation = new InvertSignStackOperation(calculatorStack);
+        StackOperation clearStackOperation = new ClearStackOperation(calculatorStack);
+        StackOperation dropStackOperation = new DropStackOperation(calculatorStack);
+        StackOperation dupStackOperation = new DupStackOperation(calculatorStack);
+        StackOperation swapStackOperation = new SwapStackOperation(calculatorStack);
+        StackOperation overStackOperation = new OverStackOperation(calculatorStack);
         
         dict.put("+", sumStackOperation);
         dict.put("-", subtractionStackOperation);
@@ -45,6 +50,11 @@ public class StackOperationDictionary {
         dict.put("/", divisionStackOperation);
         dict.put("sqrt", sqrtStackOperation);
         dict.put("+-", invertSignStackOperation);
+        dict.put("clear", clearStackOperation);
+        dict.put("drop", dropStackOperation);
+        dict.put("dup", dupStackOperation);
+        dict.put("swap", swapStackOperation);
+        dict.put("over", overStackOperation);
     }
     
     /**
