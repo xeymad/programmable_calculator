@@ -69,8 +69,10 @@ public class SwapStackOperationTest {
         calculatorStack.push(c2);
         calculatorStack.push(c3);
         swap.execute();
-        Complex result=calculatorStack.top();
-        assertEquals(c2, result);
+        Complex result1=calculatorStack.pop();
+        Complex result2=calculatorStack.pop();
+        assertEquals(c2, result1);
+        assertEquals(c3, result2);
     }
     
 }
