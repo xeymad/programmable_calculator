@@ -18,8 +18,6 @@
 package org.apache.commons.math3.complex;
 
 import java.io.Serializable;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -1298,12 +1296,10 @@ public class Complex implements FieldElement<Complex>, Serializable  {
     public String toString() {
         //return "(" + real + "," + imaginary + ")";
         //*
-        DecimalFormat df = new DecimalFormat("#.########");
-        df.setRoundingMode(RoundingMode.DOWN);
         if(Double.compare(imaginary,0)<0){
-            return df.format(real)+"-"+df.format(imaginary*-1)+"j";
+            return real+"-"+imaginary*-1+"j";
         }
-        return df.format(real)+"+"+df.format(imaginary)+"j";
+        return real+"+"+imaginary+"j";
         //*/
     }
 
