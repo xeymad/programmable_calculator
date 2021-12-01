@@ -20,8 +20,10 @@ package org.apache.commons.math3.complex;
 import java.io.Serializable;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.commons.math3.FieldElement;
 import org.apache.commons.math3.exception.NotPositiveException;
@@ -1298,7 +1300,8 @@ public class Complex implements FieldElement<Complex>, Serializable  {
     public String toString() {
         //return "(" + real + "," + imaginary + ")";
         //*
-        DecimalFormat df = new DecimalFormat("#.########");
+        DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.US);
+        DecimalFormat df = new DecimalFormat("#.########", dfs);
         df.setRoundingMode(RoundingMode.DOWN);
         if(Double.compare(imaginary,0)<0){
             return df.format(real)+"-"+df.format(imaginary*-1)+"j";
