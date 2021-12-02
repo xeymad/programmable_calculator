@@ -19,13 +19,20 @@ import calculatorstack.*;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.util.Iterator;
 import java.util.Locale;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import org.apache.commons.math3.exception.MathParseException;
 import stackoperationdictionary.*;
+import variablesvector.VariablesVector;
 /**
  *
  * @author Giuseppe
@@ -38,8 +45,12 @@ public class FXMLDocumentController implements Initializable {
     private Button insertBtn;
     @FXML
     private ListView<Complex> stackView;
+    @FXML
+    private ListView<String> variablesView;
     
     private CalculatorStack calculatorStack;
+    
+    private VariablesVector variablesVector;
     
     private static final int ELEMENTS_VIEW = 20;
     
@@ -52,6 +63,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         calculatorStack = new CalculatorStack();
+        variablesVector = new VariablesVector();
         stackOperationDictionary = new StackOperationDictionary(calculatorStack);
         
         // hook performUserAction on textField
@@ -60,6 +72,7 @@ public class FXMLDocumentController implements Initializable {
             if(key == KeyCode.ENTER)
                 performUserAction();
         });
+        updateVariableValueView();
     }    
     
     /**
@@ -75,7 +88,16 @@ public class FXMLDocumentController implements Initializable {
             i++;
         }
     }
-
+    
+     public void updateVariableValueView(){
+        Iterator<Complex> iter = variablesVector.iterator();
+        char alphabet = 'a';
+        while(iter.hasNext()){
+            variablesView.getItems().add("\t" + alphabet + "\t\t\t\t\t\t" +iter.next().toString());
+            alphabet ++;
+        }
+     }
+     
     /**
      * This function runs automatically after the insertBtn got pressed.
      * @param event 
