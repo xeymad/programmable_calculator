@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: STEELBLUE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programmablecalculator.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="650.0" style="-fx-background-color: STEELBLUE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programmablecalculator.FXMLDocumentController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -35,7 +35,7 @@
                   <ColorAdjust />
                </effect>
             </MenuBar>
-            <VBox prefHeight="460.0" prefWidth="665.0">
+            <VBox prefHeight="530.0" prefWidth="665.0">
                <children>
                   <Label text="Input:">
                      <font>
@@ -76,7 +76,7 @@
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="stackView" fixedCellSize="-3.0" prefHeight="425.0" prefWidth="605.0">
+                  <ListView fx:id="stackView" fixedCellSize="-15.0" prefHeight="530.0" prefWidth="605.0" styleClass="-fx-font-size: 9.5em ;">
                      <VBox.margin>
                         <Insets right="25.0" />
                      </VBox.margin>
