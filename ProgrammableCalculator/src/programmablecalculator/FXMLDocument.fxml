@@ -19,11 +19,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="650.0" style="-fx-background-color: STEELBLUE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programmablecalculator.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="877.0" style="-fx-background-color: STEELBLUE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programmablecalculator.FXMLDocumentController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="580.0" prefWidth="877.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MenuBar style="-fx-background-color: SILVER;">
+            <MenuBar prefHeight="25.0" prefWidth="877.0" style="-fx-background-color: SILVER;">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
@@ -35,57 +35,88 @@
                   <ColorAdjust />
                </effect>
             </MenuBar>
-            <VBox prefHeight="530.0" prefWidth="665.0">
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="599.0">
                <children>
                   <Label text="Input:">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <HBox prefHeight="39.0" prefWidth="599.0">
-                     <children>
-                        <TextField fx:id="txtInput" prefHeight="26.0" prefWidth="513.0" style="-fx-background-color: SILVER;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </TextField>
-                        <Button fx:id="insertBtn" mnemonicParsing="false" onAction="#insertBtnPressed" style="-fx-background-color: BLACK;" text="Insert" textFill="#fcf7f7">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="System Bold Italic" size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets top="5.0" />
-                     </padding>
-                  </HBox>
-                  <Label text="Stack:">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
+                  <TextField fx:id="txtInput" prefHeight="39.0" prefWidth="587.0" style="-fx-background-color: SILVER;">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="insertBtn" mnemonicParsing="false" onAction="#insertBtnPressed" style="-fx-background-color: BLACK;" text="Insert" textFill="#fcf7f7">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
-                  </Label>
-                  <ListView fx:id="stackView" fixedCellSize="-15.0" prefHeight="530.0" prefWidth="605.0" styleClass="-fx-font-size: 9.5em ;">
-                     <VBox.margin>
-                        <Insets right="25.0" />
-                     </VBox.margin>
-                  </ListView>
+                  </Button>
                </children>
                <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets top="5.0" />
                </padding>
-            </VBox>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="457.0" prefWidth="299.0">
+               <children>
+                  <VBox prefHeight="452.0" prefWidth="459.0">
+                     <children>
+                        <Label text="Stack:">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="stackView" fixedCellSize="-15.0" prefHeight="420.0" prefWidth="324.0" styleClass="-fx-font-size: 9.5em ;">
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin>
+                        </ListView>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="435.0" prefWidth="405.0">
+                     <children>
+                        <Label text="Variables:">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <TableView prefHeight="415.0" prefWidth="272.0">
+                          <columns>
+                            <TableColumn prefWidth="122.0" text="Variable" />
+                            <TableColumn prefWidth="262.0" text="Value" />
+                          </columns>
+                        </TableView>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
          </children>
       </VBox>
    </children>

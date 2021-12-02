@@ -41,6 +41,8 @@ public class FXMLDocumentController implements Initializable {
     
     private CalculatorStack calculatorStack;
     
+    private static final int ELEMENTS_VIEW = 20;
+    
     private StackOperationDictionary stackOperationDictionary;
     /**
      * Initialize the components of the GUI
@@ -62,13 +64,13 @@ public class FXMLDocumentController implements Initializable {
     
     /**
      * This function updates the stackView in the GUI.
-     * It shows the last 12 elements of the stack.
+     * It shows the last ELEMENTS_VIEW elements of the stack.
      */
     public void updateStackView(){
         stackView.getItems().clear();
         int i=0;
         for(Complex c : calculatorStack){
-            if(i>=12) return;
+            if(i>=ELEMENTS_VIEW) return;
             stackView.getItems().add(c);
             i++;
         }
