@@ -423,6 +423,6 @@ public class ComplexFormat {
                 return null;                
             }
 
-        return new Complex(re.doubleValue(), im.doubleValue() * sign);
+        return new Complex(re!=null?re.doubleValue():0.0, im.doubleValue() * sign);
     }
 }

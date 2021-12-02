@@ -6,6 +6,7 @@
 package org.apache.commons.math3.complex;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 import org.apache.commons.math3.complex.ComplexFormat;
 import org.apache.commons.math3.exception.MathParseException;
 import org.junit.Before;
@@ -23,10 +24,7 @@ public class ComplexFormatTest {
      */
     @Before
     public void setUp() {
-        DecimalFormatSymbols decimalSymbols = DecimalFormatSymbols.getInstance();
-        decimalSymbols.setDecimalSeparator('.');
-        DecimalFormat df = new DecimalFormat("0.00", decimalSymbols);
-        instance = new ComplexFormat('j',df);
+        instance = ComplexFormat.getInstance('j', Locale.US);
     }
     
     @Test
@@ -35,19 +33,27 @@ public class ComplexFormatTest {
         Complex parsed = instance.parse("3.23+4.55j");
         assertEquals(c,parsed);
     }
-    
+
+    @Test    
     public void testParseWithoutException2(){
         Complex c = new Complex(1,0);
         Complex parsed = instance.parse("1");
         assertEquals(c,parsed);
     }
-    
+
+    @Test    
     public void testParseWithoutException3(){
         Complex c = new Complex(10,-12);
         Complex parsed = instance.parse("10-12j");
         assertEquals(c,parsed);
     }
-    
+
+    @Test
+    public void testParseWithoutException4(){
+        Complex c = new Complex(0,-1);
+        Complex parsed = instance.parse("-1j");
+        assertEquals(c,parsed);
+    }
     @Test(expected = MathParseException.class)
     public void testParseWithException1(){
         instance.parse("1k");
