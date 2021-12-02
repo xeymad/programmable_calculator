@@ -30,18 +30,21 @@ public class ComplexFormatTest {
     }
     
     @Test
-    public void testParseWithoutException(){
+    public void testParseWithoutException1(){
         Complex c = new Complex(3.23,4.55);
         Complex parsed = instance.parse("3.23+4.55j");
         assertEquals(c,parsed);
-        c = new Complex(1,0);
-        parsed = instance.parse("1");
+    }
+    
+    public void testParseWithoutException2(){
+        Complex c = new Complex(1,0);
+        Complex parsed = instance.parse("1");
         assertEquals(c,parsed);
-        c = new Complex(0,1);
-        parsed = instance.parse("j");
-        assertEquals(c,parsed);
-        c = new Complex(0,-1);
-        parsed = instance.parse("-j");
+    }
+    
+    public void testParseWithoutException3(){
+        Complex c = new Complex(10,-12);
+        Complex parsed = instance.parse("10-12j");
         assertEquals(c,parsed);
     }
     
@@ -68,5 +71,16 @@ public class ComplexFormatTest {
     @Test(expected = MathParseException.class)
     public void testParseWithException5(){
         instance.parse("jwdwefef");
+    }
+    
+    @Test(expected = MathParseException.class)
+    public void testParseWithException6(){
+        instance.parse("+j");
+    }
+    
+        
+    @Test(expected = MathParseException.class)
+    public void testParseWithException7(){
+        instance.parse("-j");
     }
 }

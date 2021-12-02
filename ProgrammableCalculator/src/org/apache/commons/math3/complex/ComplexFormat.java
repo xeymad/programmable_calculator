@@ -417,7 +417,11 @@ public class ComplexFormat {
         
         if(im==null)
             if(re!=null) return new Complex(re.doubleValue(),sign);
-            else return new Complex(0.0,sign);
+            else{
+                pos.setIndex(initialIndex);
+                pos.setErrorIndex(startIndex);
+                return null;                
+            }
 
         return new Complex(re.doubleValue(), im.doubleValue() * sign);
     }
