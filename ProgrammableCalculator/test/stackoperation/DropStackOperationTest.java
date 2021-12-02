@@ -19,12 +19,18 @@ public class DropStackOperationTest {
     private CalculatorStack calculatorStack;
     private DropStackOperation dropStackOperation;
     
+    /**
+     * Initialize the stack and the operation
+     */
     @Before
     public void init(){
         calculatorStack = new CalculatorStack();
         dropStackOperation = new DropStackOperation(calculatorStack);
     }
     
+    /**
+     * Test case for empty stack
+     */
     @Test
     public void testExecuteEmpty(){
         int expectedSize = 0;
@@ -33,6 +39,9 @@ public class DropStackOperationTest {
         assertEquals(size, expectedSize);
     }
     
+    /**
+     * Test case for NOT empty stack
+     */
     @Test
     public void testExecuteNotEmpty(){
         Complex complex1 = new Complex(42);
