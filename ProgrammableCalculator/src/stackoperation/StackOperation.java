@@ -12,7 +12,7 @@ import calculatorstack.CalculatorStack;
  */
 public abstract class StackOperation {
     
-    CalculatorStack calculatorStack;
+    protected CalculatorStack calculatorStack;
 
     /**
     * Class constructor
