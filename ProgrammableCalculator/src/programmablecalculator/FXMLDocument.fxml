@@ -105,17 +105,12 @@
                                     <Font name="System Bold Italic" size="18.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="120.0" />
+                                    <Insets left="110.0" />
                                  </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
-                        <HBox prefHeight="420.0" prefWidth="385.0">
-                           <children>
-                              <ListView fx:id="variablesNames" prefHeight="405.0" prefWidth="149.0" />
-                              <ListView fx:id="variablesValues" prefHeight="405.0" prefWidth="304.0" />
-                           </children>
-                        </HBox>
+                        <ListView fx:id="variablesView" prefHeight="419.0" prefWidth="472.0" />
                      </children>
                      <HBox.margin>
                         <Insets top="5.0" />
