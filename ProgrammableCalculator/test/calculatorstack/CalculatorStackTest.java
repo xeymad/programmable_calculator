@@ -114,7 +114,7 @@ public class CalculatorStackTest {
         assertEquals(expResult2, iterator.next());
         assertTrue(iterator.hasNext());
         assertEquals(expResult3, iterator.next());
-        assertFalse(iterator.hasNext());
+        assertTrue(iterator.hasNext());
         
         
     }

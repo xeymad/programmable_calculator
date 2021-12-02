@@ -13,15 +13,14 @@ import org.apache.commons.math3.complex.Complex;
  * This class implements a stack of complex number called Calculator Stack.
  * 
  * @author Arianna Carratù 
- * @version 1.0
  */
 public class CalculatorStack implements Iterable<Complex> {
    
     private LinkedList<Complex> calculatorStack;  
     
     /**
-    * Class constructor
-    */
+     * Class constructor.
+     */
     public CalculatorStack() {
         calculatorStack= new LinkedList<Complex>();
     }
