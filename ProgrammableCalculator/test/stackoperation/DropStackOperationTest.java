@@ -16,8 +16,8 @@ import static org.junit.Assert.*;
  */
 public class DropStackOperationTest {
     
-    public CalculatorStack calculatorStack;
-    public DropStackOperation dropStackOperation;
+    private CalculatorStack calculatorStack;
+    private DropStackOperation dropStackOperation;
     
     @Before
     public void init(){
