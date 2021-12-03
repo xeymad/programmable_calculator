@@ -10,7 +10,7 @@ import java.util.Iterator;
 import org.apache.commons.math3.complex.Complex;
 
 /**
- * This class implements a vector of 26 complex numbers.Each number is associated with a letter of the alphabet.
+ * This class implements a vector of 26 complex variables.Each variable is associated with a letter of the alphabet.
  * The indexes of the array in ascending order correspond to the 26 letters of the alphabet in alphabetical order.
  * The element in position 0 corresponds to the content of the variable 'a', the element in position 1 to the content
  * of the variable 'b' and so on.
