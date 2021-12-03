@@ -36,7 +36,7 @@ public class SubtractionStackVariableOperation extends StackVariableOperation {
     public void execute() {
         int size = calculatorStack.size();
         Complex variableNumber = variablesVector.getVarValue(variable);
-        Complex stackNumber = size == 0 ? Complex.ZERO : calculatorStack.pop();
+        Complex stackNumber = size == 0 ? Complex.ZERO : calculatorStack.top();
         Complex resultNumber = variableNumber.subtract(stackNumber);
         variablesVector.setVarValue(variable, resultNumber);
     }
