@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package variablesvector;
+package complexvariablesvector;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,16 +17,16 @@ import org.apache.commons.math3.complex.Complex;
  * 
  * @author Arianna Carratù
  */
-public class VariablesVector {
-    private ArrayList<Complex> variablesVector;
+public class ComplexVariablesVector implements Iterable<ComplexVariable>{
+    private final ArrayList<ComplexVariable> variablesVector;
 
     /**
     * Class constructor.It initializes the content of the 26 variables to 0.
     */
-    public VariablesVector() {
-        variablesVector= new ArrayList<Complex>();
+    public ComplexVariablesVector() {
+        variablesVector= new ArrayList<>();
         for(int i=0;i<26;i++){
-            variablesVector.add(i, Complex.ZERO);
+            variablesVector.add(i, new ComplexVariable((char)('a'+i),Complex.ZERO));
         }
         
     }
@@ -37,7 +37,7 @@ public class VariablesVector {
     * @param val The complex number to set as variable's value
     */ 
     public void setVarValue(char var, Complex val) {
-       variablesVector.add(var-'a', val);
+       variablesVector.get(var-'a').setComplex(val);
     }
     
     /**
@@ -46,15 +46,18 @@ public class VariablesVector {
     * @return Complex This returns the complex number contained in the variable
     */ 
     public Complex getVarValue(char var) {
-        return variablesVector.get(var-'a');
+        return variablesVector.get(var-'a').getComplex();
     }
-    
+
     /**
     * This method returns an iterator over the elements of the vector, starting from the first.
     * @return Iterator an iterator over the elements of the vector
     */
-    public Iterator<Complex> iterator() {
+    @Override
+    public Iterator<ComplexVariable> iterator() {
         return variablesVector.iterator();
     }
+
     
+
 }

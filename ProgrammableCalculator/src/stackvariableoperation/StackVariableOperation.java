@@ -7,7 +7,7 @@ package stackvariableoperation;
 
 import calculatorstack.CalculatorStack;
 import stackoperation.StackOperation;
-import variablesvector.VariablesVector;
+import complexvariablesvector.ComplexVariablesVector;
 
 /**
  *
@@ -15,7 +15,7 @@ import variablesvector.VariablesVector;
  */
 public abstract class StackVariableOperation extends StackOperation {
     
-    VariablesVector variablesVector;
+    ComplexVariablesVector variablesVector;
     char variable;
     
     /**
@@ -25,7 +25,7 @@ public abstract class StackVariableOperation extends StackOperation {
      * @param variable the variable used to execute the operation
      */
     public StackVariableOperation(CalculatorStack calculatorStack, 
-            VariablesVector variablesVector, char variable){
+            ComplexVariablesVector variablesVector, char variable){
         super(calculatorStack);
         this.variablesVector = variablesVector;
         this.variable = variable;

@@ -12,19 +12,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.apache.commons.math3.complex.*;
 import calculatorstack.*;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
+import complexvariablesvector.*;
 import java.util.Iterator;
 import java.util.Locale;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
@@ -32,7 +27,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import org.apache.commons.math3.exception.MathParseException;
-import variablesvector.VariablesVector;
+import stackoperation.*;
+import stackvariableoperation.StoreStackVariableOperation;
 /**
  *
  * @author Giuseppe
@@ -46,15 +42,19 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ListView<Complex> stackView;
     @FXML
-    private ListView<String> variablesView;
+    private TableView<ComplexVariable> variablesView;
     
     private CalculatorStack calculatorStack;
     
-    private VariablesVector variablesVector;
+    private ComplexVariablesVector complexVariablesVector;
     
     private static final int ELEMENTS_VIEW = 20;
     
     private OperationExecutor operationExecutor;
+    @FXML
+    private TableColumn<ComplexVariable, Character> varClm;
+    @FXML
+    private TableColumn<ComplexVariable, Complex> valueClm;
     /**
      * Initialize the components of the GUI
      * @param url: The location used to resolve relative paths for the root object, or null if the location is not known.
@@ -63,17 +63,29 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         calculatorStack = new CalculatorStack();
-        variablesVector = new VariablesVector();
-        operationExecutor = new OperationExecutor(calculatorStack, variablesVector);
-        
+        complexVariablesVector = new ComplexVariablesVector();
+        operationExecutor = new OperationExecutor(calculatorStack, complexVariablesVector);
+        varClm.setCellValueFactory(new PropertyValueFactory<>("character"));
+        valueClm.setCellValueFactory(new PropertyValueFactory<>("complex"));
+        updateVariablesView();
         // hook performUserAction on textField
         txtInput.setOnKeyPressed(event -> {
             KeyCode key = event.getCode();
             if(key == KeyCode.ENTER)
                 performUserAction();
         });
-        updateVariableValueView();
     }    
+    
+    /**
+     * This function updates the variablesView in the GUI.
+     * It shows all the 26 variables of the variablesVector.
+     */
+    public void updateVariablesView(){
+       variablesView.getItems().clear();
+       for(ComplexVariable cv : complexVariablesVector){
+            variablesView.getItems().add(cv);
+       }
+    }
     
     /**
      * This function updates the stackView in the GUI.
@@ -88,15 +100,6 @@ public class FXMLDocumentController implements Initializable {
             i++;
         }
     }
-    
-     public void updateVariableValueView(){
-        Iterator<Complex> iter = variablesVector.iterator();
-        char alphabet = 'a';
-        while(iter.hasNext()){
-            variablesView.getItems().add("\t" + alphabet + "\t\t\t\t\t\t" +iter.next().toString());
-            alphabet ++;
-        }
-     }
      
     /**
      * This function runs automatically after the insertBtn got pressed.
@@ -139,7 +142,10 @@ public class FXMLDocumentController implements Initializable {
                return;
             }
             try{
-                operationExecutor.execute(inserted);
+                StackOperation stackOperation=operationExecutor.getOperation(inserted);
+                stackOperation.execute();
+                if (stackOperation instanceof StoreStackVariableOperation)
+                    updateVariablesView();
             }
             catch(Exception e){
                Alert alert = new Alert(AlertType.ERROR, e.getMessage());

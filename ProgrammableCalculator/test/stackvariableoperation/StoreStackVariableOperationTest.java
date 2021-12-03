@@ -9,7 +9,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import calculatorstack.CalculatorStack;
 import org.apache.commons.math3.complex.Complex;
-import variablesvector.VariablesVector;
+import complexvariablesvector.ComplexVariablesVector;
 
 /**
  *
@@ -18,7 +18,7 @@ import variablesvector.VariablesVector;
 public class StoreStackVariableOperationTest {
     
     private CalculatorStack calculatorStack;
-    private VariablesVector variablesVector;
+    private ComplexVariablesVector variablesVector;
     private char variable;
     private StoreStackVariableOperation storeSVO;
     
@@ -26,7 +26,7 @@ public class StoreStackVariableOperationTest {
     @Before
     public void init(){
         calculatorStack = new CalculatorStack();
-        variablesVector = new VariablesVector();
+        variablesVector = new ComplexVariablesVector();
         variable = 'a';
         storeSVO = new StoreStackVariableOperation(calculatorStack, variablesVector, variable);
     }

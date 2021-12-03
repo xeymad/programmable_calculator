@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package variablesvector;
+package complexvariablesvector;
 
+import complexvariablesvector.ComplexVariablesVector;
 import java.util.Iterator;
 import org.apache.commons.math3.complex.Complex;
 import org.junit.Before;
@@ -15,16 +16,16 @@ import static org.junit.Assert.*;
  *
  * @author Arianna Carratù
  */
-public class VariablesVectorTest {
-    private VariablesVector instance;
+public class ComplexVariablesVectorTest {
+    private ComplexVariablesVector instance;
     
     @Before
     public void setUp() {
-        instance = new VariablesVector();
+        instance = new ComplexVariablesVector();
     }
     
     /**
-     * Test of getVarValue method, of class VariablesVector.
+     * Test of getVarValue method, of class ComplexVariablesVector.
      */
     @Test
     public void testGetVarValue() {
@@ -36,7 +37,7 @@ public class VariablesVectorTest {
     }
     
     /**
-     * Test of setVarValue method, of class VariablesVector.
+     * Test of setVarValue method, of class ComplexVariablesVector.
      */
     @Test
     public void testSetVarValue() {
@@ -49,7 +50,7 @@ public class VariablesVectorTest {
     }
 
     /**
-     * Test of iterator method, of class VariablesVector.
+     * Test of iterator method, of class ComplexVariablesVector.
      */
     @Test
     public void testIterator() {
@@ -60,12 +61,12 @@ public class VariablesVectorTest {
         instance.setVarValue('a',expResult1);
         instance.setVarValue('b',expResult2);
         instance.setVarValue('c',expResult3);
-        Iterator<Complex> iterator = instance.iterator();
-        assertEquals(expResult1, iterator.next());
+        Iterator<ComplexVariable> iterator = instance.iterator();
+        assertEquals(expResult1, iterator.next().getComplex());
         assertTrue(iterator.hasNext());
-        assertEquals(expResult2, iterator.next());
+        assertEquals(expResult2, iterator.next().getComplex());
         assertTrue(iterator.hasNext());
-        assertEquals(expResult3, iterator.next());
+        assertEquals(expResult3, iterator.next().getComplex());
         assertTrue(iterator.hasNext());
     }
     

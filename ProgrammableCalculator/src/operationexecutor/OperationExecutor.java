@@ -11,7 +11,7 @@ import calculatorstack.*;
 import stackoperation.*;
 import stackvariableoperation.*;
 import stackvariableoperation.SumStackVariableOperation;
-import variablesvector.VariablesVector;
+import complexvariablesvector.ComplexVariablesVector;
 
 /**
  * This class represent a Dictionary that contains associations between an
@@ -33,7 +33,7 @@ public class OperationExecutor {
      * @param calculatorStack represent the stack to which the operations refer.
      * @param variablesVector represent the variables collection to which the operations refer.
      */
-    public OperationExecutor(CalculatorStack calculatorStack, VariablesVector variablesVector){
+    public OperationExecutor(CalculatorStack calculatorStack, ComplexVariablesVector variablesVector){
         dict = new HashMap<>();
         
         StackOperation sumStackOperation = new SumStackOperation(calculatorStack);

@@ -9,7 +9,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import calculatorstack.*;
 import stackoperation.*;
-import variablesvector.VariablesVector;
+import complexvariablesvector.ComplexVariablesVector;
 
 /**
  *
@@ -19,7 +19,7 @@ public class OperationExecutorTest {
 
     private OperationExecutor operationExecutor;
     private CalculatorStack calculatorStack;
-    private VariablesVector variablesVector;
+    private ComplexVariablesVector variablesVector;
 
     /**
      * Initialize a OperationExecutor with a new CalculatorStack
@@ -27,7 +27,7 @@ public class OperationExecutorTest {
     @Before
     public void init() {
         calculatorStack = new CalculatorStack();
-        variablesVector = new VariablesVector();
+        variablesVector = new ComplexVariablesVector();
         operationExecutor = new OperationExecutor(calculatorStack,variablesVector);    
     }
 
