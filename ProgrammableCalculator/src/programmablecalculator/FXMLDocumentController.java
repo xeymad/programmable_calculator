@@ -5,6 +5,7 @@
  */
 package programmablecalculator;
 
+import operationexecutor.OperationExecutor;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -31,7 +32,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import org.apache.commons.math3.exception.MathParseException;
-import stackoperationdictionary.*;
 import variablesvector.VariablesVector;
 /**
  *
@@ -54,7 +54,7 @@ public class FXMLDocumentController implements Initializable {
     
     private static final int ELEMENTS_VIEW = 20;
     
-    private StackOperationDictionary stackOperationDictionary;
+    private OperationExecutor operationExecutor;
     /**
      * Initialize the components of the GUI
      * @param url: The location used to resolve relative paths for the root object, or null if the location is not known.
@@ -64,7 +64,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         calculatorStack = new CalculatorStack();
         variablesVector = new VariablesVector();
-        stackOperationDictionary = new StackOperationDictionary(calculatorStack);
+        operationExecutor = new OperationExecutor(calculatorStack, variablesVector);
         
         // hook performUserAction on textField
         txtInput.setOnKeyPressed(event -> {
@@ -120,7 +120,7 @@ public class FXMLDocumentController implements Initializable {
     
     /**
      * This function first try to parse the received string from txtInput as a ComplexNumber.
-     * If it can't parse, it tryes to execute an operation from stackOperationDictionary.
+     * If it can't parse, it tryes to execute an operation from operationExecutor.
      * If the inserted text isn't an operation, it will show an Error Message.
      */
     private void performUserAction(){
@@ -133,13 +133,13 @@ public class FXMLDocumentController implements Initializable {
             calculatorStack.push(c);
         }
         catch(MathParseException ex){
-            if(!stackOperationDictionary.containsKey(inserted)){
+            if(!operationExecutor.containsKey(inserted)){
                Alert alert = new Alert(AlertType.ERROR, "Complex value not parsable or Operation not Found");
                alert.showAndWait();
                return;
             }
             try{
-                stackOperationDictionary.execute(inserted);
+                operationExecutor.execute(inserted);
             }
             catch(Exception e){
                Alert alert = new Alert(AlertType.ERROR, e.getMessage());

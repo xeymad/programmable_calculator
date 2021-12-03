@@ -3,19 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stackoperationdictionary;
+package operationexecutor;
 
 import java.util.Map;
 import java.util.HashMap;
 import calculatorstack.*;
 import stackoperation.*;
+import stackvariableoperation.*;
+import stackvariableoperation.SumStackVariableOperation;
+import variablesvector.VariablesVector;
 
 /**
  * This class represent a Dictionary that contains associations between an
  * operation and it's name.
  * @author aferr
  */
-public class StackOperationDictionary {
+public class OperationExecutor {
     
     private Map<String, StackOperation> dict;
     
@@ -28,8 +31,9 @@ public class StackOperationDictionary {
      * - &lt;"sqrt", SqrtStackOperation&gt; <br>
      * - &lt;"+-", InvertSignStackOperation&gt; <br>
      * @param calculatorStack represent the stack to which the operations refer.
+     * @param variablesVector represent the variables collection to which the operations refer.
      */
-    public StackOperationDictionary(CalculatorStack calculatorStack){
+    public OperationExecutor(CalculatorStack calculatorStack, VariablesVector variablesVector){
         dict = new HashMap<>();
         
         StackOperation sumStackOperation = new SumStackOperation(calculatorStack);
@@ -55,6 +59,13 @@ public class StackOperationDictionary {
         dict.put("dup", dupStackOperation);
         dict.put("swap", swapStackOperation);
         dict.put("over", overStackOperation);
+        
+        for (char alphabet = 'a'; alphabet <= 'z'; alphabet ++){
+            dict.put("+"+alphabet, new SumStackVariableOperation(calculatorStack, variablesVector, alphabet));
+            dict.put("-"+alphabet, new SubtractionStackVariableOperation(calculatorStack, variablesVector, alphabet));
+            dict.put(">"+alphabet, new StoreStackVariableOperation(calculatorStack, variablesVector, alphabet));
+            alphabet ++;
+        }
     }
     
     /**
