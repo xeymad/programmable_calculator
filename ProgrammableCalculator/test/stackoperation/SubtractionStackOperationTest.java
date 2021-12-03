@@ -40,7 +40,7 @@ public class SubtractionStackOperationTest {
     }
     
     /**
-     * Test of execute method, of class SubtractionStackOperation.
+     * Test of execute method with a one element stack
      */
     @Test
     public void testExecuteOneElementStack() { 
