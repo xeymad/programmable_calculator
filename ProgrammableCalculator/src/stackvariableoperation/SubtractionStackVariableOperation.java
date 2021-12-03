@@ -38,6 +38,6 @@ public class SubtractionStackVariableOperation extends StackVariableOperation {
         Complex variableNumber = variablesVector.getVarValue(variable);
         Complex stackNumber = size == 0 ? Complex.ZERO : calculatorStack.pop();
         Complex resultNumber = variableNumber.subtract(stackNumber);
-        calculatorStack.push(resultNumber);
+        variablesVector.setVarValue(variable, resultNumber);
     }
 }
