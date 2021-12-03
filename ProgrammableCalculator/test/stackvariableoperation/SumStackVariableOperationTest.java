@@ -41,8 +41,8 @@ public class SumStackVariableOperationTest {
         variablesVector.setVarValue(variable, variableNumber);
         sumSVO.execute();
         
-        Complex topNumber = calculatorStack.top();
-        assertEquals(topNumber, variableNumber); 
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, variableNumber);
     }
     
     /**
@@ -58,8 +58,8 @@ public class SumStackVariableOperationTest {
         sumSVO.execute();
         
         Complex expectedNumber = new Complex(3.0, 1.0);
-        Complex topNumber = calculatorStack.top();
-        assertEquals(expectedNumber, topNumber);
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, expectedNumber);
     }
     /**
      * Test of execute method between elements of from the first and second quadrant
@@ -74,8 +74,8 @@ public class SumStackVariableOperationTest {
         sumSVO.execute();
         
         Complex expectedNumber = new Complex(0.0, 1.0);
-        Complex topNumber = calculatorStack.top();
-        assertEquals(expectedNumber, topNumber);
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, expectedNumber);
     }
 
     /**
@@ -91,8 +91,8 @@ public class SumStackVariableOperationTest {
         sumSVO.execute();
         
         Complex expectedNumber = new Complex(0.0, -1.0);
-        Complex topNumber = calculatorStack.top();
-        assertEquals(expectedNumber, topNumber);
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, expectedNumber);
     }
 
     /**
@@ -108,8 +108,8 @@ public class SumStackVariableOperationTest {
         sumSVO.execute();
         
         Complex expectedNumber = new Complex(2.0, -1.0);
-        Complex topNumber = calculatorStack.top();
-        assertEquals(expectedNumber, topNumber);    
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, expectedNumber);   
     }
 
     /**
@@ -125,8 +125,8 @@ public class SumStackVariableOperationTest {
         sumSVO.execute();
         
         Complex expectedNumber = new Complex(-3.0, 4.0);
-        Complex topNumber = calculatorStack.top();
-        assertEquals(expectedNumber, topNumber);
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, expectedNumber);
     }
     
     /**
@@ -142,8 +142,8 @@ public class SumStackVariableOperationTest {
         sumSVO.execute();
         
         Complex expectedNumber = new Complex(-3.0, 2.0);
-        Complex topNumber = calculatorStack.top();
-        assertEquals(expectedNumber, topNumber);
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, expectedNumber);
     }
     
     /**
@@ -159,8 +159,8 @@ public class SumStackVariableOperationTest {
         sumSVO.execute();
         
         Complex expectedNumber = new Complex(1.0, 2.0);
-        Complex topNumber = calculatorStack.top();
-        assertEquals(expectedNumber, topNumber);
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, expectedNumber);
     }
     
     /**
@@ -176,8 +176,8 @@ public class SumStackVariableOperationTest {
         sumSVO.execute();
         
         Complex expectedNumber = new Complex(-3.0, -3.0);
-        Complex topNumber = calculatorStack.top();
-        assertEquals(expectedNumber, topNumber);
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, expectedNumber);
     }
     
     /**
@@ -193,8 +193,8 @@ public class SumStackVariableOperationTest {
         sumSVO.execute();
         
         Complex expectedNumber = new Complex(1.0, -3.0);
-        Complex topNumber = calculatorStack.top();
-        assertEquals(expectedNumber, topNumber);
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, expectedNumber);
     }
     
     /**
@@ -210,8 +210,8 @@ public class SumStackVariableOperationTest {
         sumSVO.execute();
         
         Complex expectedNumber = new Complex(5.0, -4.0);
-        Complex topNumber = calculatorStack.top();
-        assertEquals(expectedNumber, topNumber);
+        Complex newVariableNumber = variablesVector.getVarValue(variable);
+        assertEquals(newVariableNumber, expectedNumber);
     }
     
     

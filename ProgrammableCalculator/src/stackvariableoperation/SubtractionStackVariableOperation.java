@@ -28,9 +28,9 @@ public class SubtractionStackVariableOperation extends StackVariableOperation {
     }
 
     /**
-     * Subtracts from the given variable the top element of the stack and pushes
-     * the result onto the stack. <br>
-     * If the stack is empty, it just pushes the variable onto the stack.
+     * Subtracts the top element of the stack from the given variable and puts
+     * the result into the latter. <br>
+     * If the stack is empty, the variable's value just remains unchanged.
      */
     @Override
     public void execute() {
@@ -38,6 +38,6 @@ public class SubtractionStackVariableOperation extends StackVariableOperation {
         Complex variableNumber = variablesVector.getVarValue(variable);
         Complex stackNumber = size == 0 ? Complex.ZERO : calculatorStack.pop();
         Complex resultNumber = variableNumber.subtract(stackNumber);
-        calculatorStack.push(resultNumber);
+        variablesVector.setVarValue(variable, resultNumber);
     }
 }
