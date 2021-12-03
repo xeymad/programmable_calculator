@@ -58,7 +58,7 @@ public class SubtractionStackOperationTest {
      */
     @Test  
     public void testExecuteFirstQuadrant(){ 
-        System.out.println("testing the  execution beetween elements of from the first quadrant");
+        System.out.println("testing the execution beetween elements of from the first quadrant");
         testStack.push(new Complex(1.0));
         testStack.push(new Complex(2.0, 1.0));
         sub.execute();
@@ -71,7 +71,7 @@ public class SubtractionStackOperationTest {
      */
     @Test
     public void testExecuteFirstSecondQuadrant(){ 
-        System.out.println("testing the  execution beetween elements of from the first and second quadrants");    
+        System.out.println("testing the execution beetween elements of from the first and second quadrants");    
         testStack.push(new Complex(1.0));
         testStack.push(new Complex(-1.0, 1.0));
         sub.execute();
@@ -85,7 +85,7 @@ public class SubtractionStackOperationTest {
     */
     @Test
     public void testExecuteFirstThirdQuadrant(){
-        System.out.println("testing the  execution beetween elements of from the first and third quadrants");
+        System.out.println("testing the execution beetween elements of from the first and third quadrants");
         testStack.push(new Complex(1.0));
         testStack.push(new Complex(-1.0, -1.0));
         sub.execute();
@@ -99,7 +99,7 @@ public class SubtractionStackOperationTest {
      */
     @Test
     public void testExecuteFirstFourthQuadrant(){
-        System.out.println("testing the  execution beetween elements of from the first and fourth quadrants");
+        System.out.println("testing the execution beetween elements of from the first and fourth quadrants");
         testStack.push(new Complex(1.0));
         testStack.push(new Complex(1.0, -1.0)); 
         sub.execute();
@@ -113,7 +113,7 @@ public class SubtractionStackOperationTest {
      */
     @Test
     public void testExecuteSecondQuadrant(){
-        System.out.println("testing the  execution beetween elements of from the second quadrant");
+        System.out.println("testing the execution beetween elements of from the second quadrant");
         testStack.push(new Complex(-1.0, 3.0)); 
         testStack.push(new Complex(-2.0, 1.0)); 
         sub.execute();
@@ -127,7 +127,7 @@ public class SubtractionStackOperationTest {
      */
     @Test 
     public void testExecuteSecondThirdQuadrant(){ 
-        System.out.println("testing the  execution beetween elements of from the second and third quadrants");                                        
+        System.out.println("testing the execution beetween elements of from the second and third quadrants");                                        
         testStack.push(new Complex(-1.0, 3.0)); 
         testStack.push(new Complex(-2.0, -1.0));  
         sub.execute();
@@ -141,7 +141,7 @@ public class SubtractionStackOperationTest {
      */
     @Test
     public void testExecuteSecondFourthQuadrant(){
-        System.out.println("testing the  execution beetween elements of from the second and fourth quadrants");
+        System.out.println("testing the execution beetween elements of from the second and fourth quadrants");
         testStack.push(new Complex(-1.0, 3.0)); 
         testStack.push(new Complex(2.0, -1.0));
         sub.execute();
@@ -155,7 +155,7 @@ public class SubtractionStackOperationTest {
      */
     @Test
     public void testExecuteThirdQuadrant(){   
-        System.out.println("testing the  execution beetween elements of from the third quadrant");
+        System.out.println("testing the execution beetween elements of from the third quadrant");
         testStack.push(new Complex(-1.0, -2.0)); 
         testStack.push(new Complex(-2.0, -1.0));
         sub.execute();
@@ -169,7 +169,7 @@ public class SubtractionStackOperationTest {
      */
     @Test
     public void testExecuteThirdFourthQuadrant(){   
-        System.out.println("testing the  execution beetween elements of from the third and fourth quadrants");
+        System.out.println("testing the execution beetween elements of from the third and fourth quadrants");
         testStack.push(new Complex(-1.0, -2.0)); 
         testStack.push(new Complex(2.0, -1.0));
         sub.execute();
@@ -183,7 +183,7 @@ public class SubtractionStackOperationTest {
      */
     @Test
     public void testExecuteFourthQuadrant(){
-        System.out.println("testing the  execution beetween elements of from the fourth quadrant");
+        System.out.println("testing the execution beetween elements of from the fourth quadrant");
         testStack.push(new Complex(3.0, -3.0)); 
         testStack.push(new Complex(2.0, -1.0));  
         sub.execute();
@@ -211,7 +211,7 @@ public class SubtractionStackOperationTest {
      */
     @Test
     public void testExecuteResultZero(){  
-        System.out.println("testing the  execution when the result is 0");                                                   
+        System.out.println("testing the execution when the result is 0");                                                   
         testStack.push(new Complex(1.0));
         testStack.push(new Complex(1.0));
         sub.execute();
