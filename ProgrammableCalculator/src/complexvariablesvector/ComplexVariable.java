@@ -13,7 +13,7 @@ import org.apache.commons.math3.complex.Complex;
  */
 public class ComplexVariable {
     
-    private char character;
+    private final char character;
     private Complex complex;
 
     public ComplexVariable(char character, Complex complex) {

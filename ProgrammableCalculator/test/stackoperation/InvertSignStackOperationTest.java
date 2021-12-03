@@ -73,11 +73,12 @@ public class InvertSignStackOperationTest {
     /**
      * Test case 6: test on an empty Stack
      */
-    @Test(expected = NoSuchElementException.class)
-    public void exceptionTest(){
+    @Test
+    public void emptyTest(){
         CalculatorStack emptyStack = new CalculatorStack();
         InvertSignStackOperation none = new InvertSignStackOperation(emptyStack);
         none.execute();
+        assertTrue(emptyStack.isEmpty());
     }
 
 }
