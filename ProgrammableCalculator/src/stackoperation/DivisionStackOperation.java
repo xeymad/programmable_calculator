@@ -39,7 +39,7 @@ public class DivisionStackOperation extends StackOperation{
         Complex c1 = calculatorStack.pop();
         Complex c2 = calculatorStack.pop();
         if (c1.equals(Complex.ZERO))
-            throw new ArithmeticException("Impossibile dividere per 0"); 
+            throw new ArithmeticException("Could not divide by 0"); 
         else
             calculatorStack.push(c2.divide(c1));
     }
