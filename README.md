@@ -20,7 +20,7 @@ https://docs.google.com/document/d/1I11jzThsHKi6U_xJwP47FLfQOAjgc373/edit?usp=sh
 ## Second Sprint
 ### Sprint Planning
 https://docs.google.com/document/d/1F9M7l3y9ntcEOp2F0KJ25MqmCYBdW_9tCMChaLcX8rE/edit?usp=sharing
-### Sprint Design of the Software Architecture
+### Design of the Software Architecture
 https://docs.google.com/document/d/1UdYTfeFvcFg7ExKO6R8WOwovfFFD2iIwQKkdeAvQfWM/edit?usp=sharing
 ### Sprint Review Report
 https://docs.google.com/document/d/1HqcBPYICFn9bnI4oYf-3jdQilHJVSXkYwnhvU7eJfjM/edit?usp=sharing
