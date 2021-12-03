@@ -18,15 +18,17 @@ import org.apache.commons.math3.complex.Complex;
  * @author Arianna Carratù
  */
 public class ComplexVariablesVector implements Iterable<ComplexVariable>{
+    private static final int NUM_VARIABLES=26;
     private final ArrayList<ComplexVariable> variablesVector;
-
+  
     /**
     * Class constructor.It initializes the content of the 26 variables to 0.
     */
     public ComplexVariablesVector() {
         variablesVector= new ArrayList<>();
-        for(int i=0;i<26;i++){
+        for(int i=0;i<NUM_VARIABLES;i++){
             variablesVector.add(i, new ComplexVariable((char)('a'+i),Complex.ZERO));
+            
         }
         
     }
