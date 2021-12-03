@@ -63,8 +63,8 @@ public class OperationExecutor {
         for (char alphabet = 'a'; alphabet <= 'z'; alphabet ++){
             dict.put("+"+alphabet, new SumStackVariableOperation(calculatorStack, variablesVector, alphabet));
             dict.put("-"+alphabet, new SubtractionStackVariableOperation(calculatorStack, variablesVector, alphabet));
-            dict.put(">"+alphabet, new StoreStackVariableOperation(calculatorStack, variablesVector, alphabet));
-            alphabet ++;
+            dict.put(">"+alphabet, new StoreStackVariableOperation(calculatorStack, variablesVector, alphabet)); 
+            dict.put("<"+alphabet, new PushStackVariableOperation(calculatorStack, variablesVector, alphabet)); 
         }
     }
     
