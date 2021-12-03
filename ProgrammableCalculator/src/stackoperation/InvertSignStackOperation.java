@@ -6,7 +6,6 @@
 package stackoperation;
 
 import calculatorstack.CalculatorStack;
-import java.util.NoSuchElementException;
 import org.apache.commons.math3.complex.Complex;
 
 /**
@@ -24,14 +23,13 @@ public class InvertSignStackOperation extends StackOperation {
     
     /**
      * Pops the last element of the stack and insert's its negate.
-     * WARNING: it can fail and return an NoSuchElementException if the calculatorStack is empty.
+     * If the stack is empty nothing happens
      */
     @Override
     public void execute() {
-        try{
+        if (calculatorStack.size() > 0){
             Complex c = calculatorStack.pop();
             calculatorStack.push(c.negate());
-        }catch(NoSuchElementException e){
         }
     }
     
