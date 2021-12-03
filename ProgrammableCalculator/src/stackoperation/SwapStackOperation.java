@@ -23,7 +23,7 @@ public class SwapStackOperation extends StackOperation{
     }
 
     /**
-     * Spaws the stack's top two element.
+     * Swaps the stack's top two element.
      * If the stack is empty or it contains only one element, nothing happens.
      */
     @Override

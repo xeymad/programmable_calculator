@@ -30,6 +30,11 @@ public class OperationExecutor {
      * - &lt;"/", DivisionStackOperation&gt; <br>
      * - &lt;"sqrt", SqrtStackOperation&gt; <br>
      * - &lt;"+-", InvertSignStackOperation&gt; <br>
+     * - &lt;"clear", ClearStackOperation&gt; <br>
+     * - &lt;"drop", DropStackOperation&gt; <br>
+     * - &lt;"dup", DupStackOperation&gt; <br>
+     * - &lt;"swap", SwapStackOperation&gt; <br>
+     * -- &lt;"over", OverStackOperation&gt; <br>
      * @param calculatorStack represent the stack to which the operations refer.
      * @param variablesVector represent the variables collection to which the operations refer.
      */

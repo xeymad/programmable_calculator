@@ -6,7 +6,6 @@
 package stackvariableoperation;
 
 import calculatorstack.CalculatorStack;
-import java.util.NoSuchElementException;
 import org.apache.commons.math3.complex.Complex;
 import complexvariablesvector.ComplexVariablesVector;
 
@@ -33,12 +32,11 @@ public class StoreStackVariableOperation extends StackVariableOperation{
      */
     @Override
     public void execute(){
-        try{
+        int size=calculatorStack.size();
+        if(size>0){
             Complex topStack = calculatorStack.top();
             variablesVector.setVarValue(variable, topStack);
-        } catch(NoSuchElementException ex){
-            ex.printStackTrace();
-        }
+            }
     }
     
 }
