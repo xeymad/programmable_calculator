@@ -28,6 +28,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import org.apache.commons.math3.exception.MathParseException;
 import stackoperation.*;
+import stackvariableoperation.StackVariableOperation;
 import stackvariableoperation.StoreStackVariableOperation;
 /**
  *
@@ -144,7 +145,7 @@ public class FXMLDocumentController implements Initializable {
             try{
                 StackOperation stackOperation=operationExecutor.getOperation(inserted);
                 stackOperation.execute();
-                if (stackOperation instanceof StoreStackVariableOperation)
+                if (stackOperation instanceof StackVariableOperation)
                     updateVariablesView();
             }
             catch(Exception e){
