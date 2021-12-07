@@ -34,7 +34,7 @@ public class StoreStackVariableOperation extends StackVariableOperation{
     public void execute(){
         int size=calculatorStack.size();
         if(size>0){
-            Complex topStack = calculatorStack.top();
+            Complex topStack = calculatorStack.pop();
             variablesVector.setVarValue(variable, topStack);
             }
     }

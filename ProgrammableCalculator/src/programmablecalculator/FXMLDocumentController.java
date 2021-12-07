@@ -17,7 +17,6 @@ import javafx.scene.control.TextField;
 import org.apache.commons.math3.complex.*;
 import calculatorstack.*;
 import complexvariablesvector.*;
-import java.util.Iterator;
 import java.util.Locale;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
@@ -29,7 +28,6 @@ import javafx.scene.input.KeyCode;
 import org.apache.commons.math3.exception.MathParseException;
 import stackoperation.*;
 import stackvariableoperation.StackVariableOperation;
-import stackvariableoperation.StoreStackVariableOperation;
 /**
  *
  * @author Giuseppe
