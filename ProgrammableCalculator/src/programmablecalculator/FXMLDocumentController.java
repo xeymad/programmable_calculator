@@ -150,7 +150,7 @@ public class FXMLDocumentController implements Initializable {
                 StackOperation inDict = stackOperationDictionary.getOperation(opName);
                 if(inDict!=null && inDict instanceof UserDefinedOperation){
                     UserDefinedOperation.remove((UserDefinedOperation)inDict);
-                    stackOperationDictionary.removeOperation(opName);
+                    //stackOperationDictionary.removeOperation(opName);
                     return;
                 }
             }

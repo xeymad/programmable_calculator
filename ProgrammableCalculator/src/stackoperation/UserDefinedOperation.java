@@ -18,19 +18,25 @@ public class UserDefinedOperation extends StackOperation {
     private ArrayList<StackOperation> operationsSequence;
     private List<UserDefinedOperation> parents;
     private Map<String,UserDefinedOperation> childs;
+    private boolean validate;
     
     /**
      * Factory Method to remove the UserDefinedOperation
      * @param toRemove the user defined to remove
      */
     public static void remove(UserDefinedOperation toRemove){
-        for(UserDefinedOperation parent : toRemove.parents)
-            parent.removeChild(toRemove);
+        //for(UserDefinedOperation parent : toRemove.parents)
+            //parent.removeChild(toRemove);
         if(!toRemove.childs.isEmpty())
             toRemove.operationsSequence.clear();
         else{
             toRemove = null;
         }
+        toRemove.invalidate();
+    }
+    private void invalidate(){
+        validate=false;
+        
     }
     /** 
      * Class constructor
@@ -44,6 +50,7 @@ public class UserDefinedOperation extends StackOperation {
         operationsSequence = new ArrayList<>();
         parents = new ArrayList<>(10);
         childs = new HashMap<>();
+        validate=true;
         for(StackOperation op : opSequence)
             this.addOperation(op);
     }
@@ -94,6 +101,7 @@ public class UserDefinedOperation extends StackOperation {
         parents.clear();
         for(StackOperation op : operations)
             this.addOperation(op);
+        validate=true;
     }
     
     /**
@@ -103,7 +111,8 @@ public class UserDefinedOperation extends StackOperation {
     @Override
     public void execute() {
         for(UserDefinedOperation usOperation : parents){
-            if(usOperation.operationsSequence.isEmpty())
+            //if(usOperation.operationsSequence.isEmpty())
+            if(usOperation.validate==false)
                 throw new RuntimeException("The dependency "+usOperation.operationName+" has been deleted");
         }
         for(StackOperation stackOperation: operationsSequence)
