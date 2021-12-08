@@ -156,7 +156,7 @@ public class StackOperationDictionary {
     }
     
     public void addUserDefinedOperation(String name, String operations) 
-            throws InvalidOperationNameException, InvalidOperationsException{
+        throws InvalidOperationNameException, InvalidOperationsException{
         // validate the operation's name
         ComplexFormat cf = ComplexFormat.getInstance('j', Locale.US);
         if(containsKey(name)){
