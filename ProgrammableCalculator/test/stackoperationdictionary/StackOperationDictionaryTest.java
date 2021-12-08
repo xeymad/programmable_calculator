@@ -10,6 +10,8 @@ import static org.junit.Assert.*;
 import calculatorstack.*;
 import stackoperation.*;
 import complexvariablesvector.ComplexVariablesVector;
+import java.util.ArrayList;
+import org.apache.commons.math3.complex.Complex;
 
 /**
  *
@@ -196,4 +198,76 @@ public class StackOperationDictionaryTest {
         assertFalse(operationPerformed);
     }
     
+    @Test
+    public void testAddUserDefinedOperationWithoutComplex() 
+            throws InvalidOperationNameException, InvalidOperationsException{
+        String operationName = "userdefined";
+        String operations = "+ + -";
+        stackOperationDictionary.addUserDefinedOperation(operationName, operations);
+        
+        // check if the operations in userdefined are correct
+        UserDefinedOperation userdefined = (UserDefinedOperation) stackOperationDictionary.getOperation(operationName);
+        assertEquals(userdefined.getOperationName(), operationName);
+        ArrayList<StackOperation> userdefinedOperations = userdefined.getOperationsSequence();
+        assertTrue(userdefinedOperations.get(0) instanceof SumStackOperation);
+        assertTrue(userdefinedOperations.get(1) instanceof SumStackOperation);
+        assertTrue(userdefinedOperations.get(2) instanceof SubtractionStackOperation);
+    }
+    
+    @Test
+    public void testAddUserDefinedOperationWithComplex() 
+            throws InvalidOperationNameException, InvalidOperationsException{
+        String operationName = "userdefined";
+        String operations = "+ + 2+3j";
+        stackOperationDictionary.addUserDefinedOperation(operationName, operations);
+        
+        // check if the operations in userdefined are correct
+        UserDefinedOperation userdefined = (UserDefinedOperation) stackOperationDictionary.getOperation(operationName);
+        assertEquals(userdefined.getOperationName(), operationName);
+        ArrayList<StackOperation> userdefinedOperations = userdefined.getOperationsSequence();
+        assertTrue(userdefinedOperations.get(0) instanceof SumStackOperation);
+        assertTrue(userdefinedOperations.get(1) instanceof SumStackOperation);
+        PushStackOperation pushStackOperation = (PushStackOperation) userdefinedOperations.get(2);
+        assertTrue(pushStackOperation instanceof PushStackOperation);
+        Complex c = new Complex(2, 3);
+        assertEquals(pushStackOperation.getToPush(), c);
+    }
+    
+    @Test
+    public void testAddUserDefinedOperationWithUserDefined() 
+            throws InvalidOperationNameException, InvalidOperationsException{
+        stackOperationDictionary.addUserDefinedOperation("userdefined", "+ + -");
+        String operationName = "userdefined2";
+        String operations = "+ + userdefined";
+        stackOperationDictionary.addUserDefinedOperation(operationName, operations);
+        
+        UserDefinedOperation userdefined2 = (UserDefinedOperation) stackOperationDictionary.getOperation(operationName);
+        assertEquals(userdefined2.getOperationName(), operationName);
+        
+        // check if operations in userdefined2 are correct
+        // regarding the operation "userdefined", it just checks its name
+        ArrayList<StackOperation> userdefined2Operations = userdefined2.getOperationsSequence();
+        assertTrue(userdefined2Operations.get(0) instanceof SumStackOperation);
+        assertTrue(userdefined2Operations.get(1) instanceof SumStackOperation);
+        UserDefinedOperation userdefined = (UserDefinedOperation) userdefined2Operations.get(2);
+        assertEquals(userdefined.getOperationName(), "userdefined");
+    }
+    
+    @Test(expected=InvalidOperationNameException.class)
+    public void testAddUserDefinedOperationNameAlreadyTaken() 
+            throws InvalidOperationNameException, InvalidOperationsException{
+        stackOperationDictionary.addUserDefinedOperation("+", "+ +");
+    }
+    
+    @Test(expected=InvalidOperationNameException.class)
+    public void testAddUserDefinedOperationNameIsComplex() 
+            throws InvalidOperationNameException, InvalidOperationsException{
+        stackOperationDictionary.addUserDefinedOperation("2+3j", "+ +");
+    }
+    
+    @Test(expected=InvalidOperationsException.class)
+    public void testAddUserDefinedOperationInvalidOperations() 
+            throws InvalidOperationNameException, InvalidOperationsException{
+        stackOperationDictionary.addUserDefinedOperation("userdefined", "+ + userdefined2");
+    }
 }

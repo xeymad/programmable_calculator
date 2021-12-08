@@ -12,6 +12,11 @@ import stackoperation.*;
 import stackvariableoperation.*;
 import stackvariableoperation.SumStackVariableOperation;
 import complexvariablesvector.ComplexVariablesVector;
+import java.util.ArrayList;
+import java.util.Locale;
+import org.apache.commons.math3.complex.Complex;
+import org.apache.commons.math3.complex.ComplexFormat;
+import org.apache.commons.math3.exception.MathParseException;
 
 /**
  * This class represent a Dictionary that contains associations between an
@@ -21,6 +26,7 @@ import complexvariablesvector.ComplexVariablesVector;
 public class StackOperationDictionary {
     
     private Map<String, StackOperation> dict;
+    private CalculatorStack calculatorStack;
     
     /**
      * The dictionary is initialized with the following entries: <br>
@@ -40,6 +46,7 @@ public class StackOperationDictionary {
      */
     public StackOperationDictionary(CalculatorStack calculatorStack, ComplexVariablesVector variablesVector){
         dict = new HashMap<>();
+        this.calculatorStack = calculatorStack;
         
         StackOperation sumStackOperation = new SumStackOperation(calculatorStack);
         StackOperation subtractionStackOperation = new SubtractionStackOperation(calculatorStack);
@@ -146,5 +153,47 @@ public class StackOperationDictionary {
             operation.execute();
             return true;
         }
+    }
+    
+    public void addUserDefinedOperation(String name, String operations) 
+            throws InvalidOperationNameException, InvalidOperationsException{
+        // validate the operation's name
+        ComplexFormat cf = ComplexFormat.getInstance('j', Locale.US);
+        if(containsKey(name)){
+            throw new InvalidOperationNameException("This name has already been taken.");
+        }
+        try{
+            cf.parse(name);
+            throw new InvalidOperationNameException("This name is forbidden.");
+        }
+        catch(MathParseException ex){}
+
+        // create an array containing the operations' name
+        String[] operationNameArray = operations.split(" ");
+        int i = 0;
+        for(i = 0; i < operationNameArray.length; i++){
+            operationNameArray[i] = operationNameArray[i].trim();
+        }
+        
+        // create a list containing the operations to be perfomed
+        ArrayList<StackOperation> operationList = new ArrayList<>();
+        for(String operationName : operationNameArray){
+            if(containsKey(operationName)){
+                StackOperation operation = getOperation(operationName);
+                operationList.add(operation);
+            }
+            else{
+                try{
+                    Complex c = cf.parse(operationName);
+                    StackOperation operation = new PushStackOperation(calculatorStack, c);
+                    operationList.add(operation);
+                }
+                catch(MathParseException ex){
+                    throw new InvalidOperationsException();
+                }
+            }
+        }
+        StackOperation userDefinedOp = new UserDefinedOperation(name, operationList, calculatorStack);
+        putOperation(name, userDefinedOp);
     }
 }
