@@ -70,14 +70,6 @@ public class UserDefinedOperation extends StackOperation {
     }
 
     /**
-     * This method takes a string containing the operation's name.It sets the operation's name with the specific string passed.
-     * @param operationName The string containing the operation's name
-     */ 
-    public void setOperationName(String operationName) {
-        this.operationName = operationName;
-    }
-
-    /**
      * This method takes a list containing the operations'sequence.It sets the operations'sequence with the specific list passed.
      * @param operationsSequence The list containing the operations' sequence.
      */ 

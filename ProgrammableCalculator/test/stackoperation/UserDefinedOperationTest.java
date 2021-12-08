@@ -55,19 +55,6 @@ public class UserDefinedOperationTest {
     }
 
     /**
-     * Test of setOperationName method, of class UserDefinedOperation.
-     */
-    @Test
-    public void testSetOperationName() {
-        System.out.println("setOperationName");
-        String opName = "myoperation";
-        instance.setOperationName(opName);
-        String result = instance.getOperationName();
-        assertEquals(opName, result);
- 
-    }
-
-    /**
      * Test of execute method, of class UserDefinedOperation.
      */
     @Test
