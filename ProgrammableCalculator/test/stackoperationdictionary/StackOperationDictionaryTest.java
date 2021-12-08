@@ -17,7 +17,7 @@ import complexvariablesvector.ComplexVariablesVector;
  */
 public class StackOperationDictionaryTest {
 
-    private StackOperationDictionary StackOperationDictionary;
+    private StackOperationDictionary stackOperationDictionary;
     private CalculatorStack calculatorStack;
     private ComplexVariablesVector variablesVector;
 
@@ -28,7 +28,7 @@ public class StackOperationDictionaryTest {
     public void init() {
         calculatorStack = new CalculatorStack();
         variablesVector = new ComplexVariablesVector();
-        StackOperationDictionary = new StackOperationDictionary(calculatorStack,variablesVector);    
+        stackOperationDictionary = new StackOperationDictionary(calculatorStack,variablesVector);    
     }
 
     /**
@@ -45,27 +45,27 @@ public class StackOperationDictionaryTest {
      */
     @Test
     public void testConstructor() {
-        StackOperation sumStackOperation = StackOperationDictionary.getOperation("+");
+        StackOperation sumStackOperation = stackOperationDictionary.getOperation("+");
         assertNotNull(sumStackOperation);
         assertTrue(sumStackOperation instanceof SumStackOperation);
         
-        StackOperation subtractionStackOperation = StackOperationDictionary.getOperation("-");
+        StackOperation subtractionStackOperation = stackOperationDictionary.getOperation("-");
         assertNotNull(subtractionStackOperation);
         assertTrue(subtractionStackOperation instanceof SubtractionStackOperation);
         
-        StackOperation multiplicationStackOperation = StackOperationDictionary.getOperation("*");
+        StackOperation multiplicationStackOperation = stackOperationDictionary.getOperation("*");
         assertNotNull(multiplicationStackOperation);
         assertTrue(multiplicationStackOperation instanceof MultiplicationStackOperation);
         
-        StackOperation divisionStackOperation = StackOperationDictionary.getOperation("/");
+        StackOperation divisionStackOperation = stackOperationDictionary.getOperation("/");
         assertNotNull(divisionStackOperation);
         assertTrue(divisionStackOperation instanceof DivisionStackOperation);
         
-        StackOperation sqrtStackOperation = StackOperationDictionary.getOperation("sqrt");
+        StackOperation sqrtStackOperation = stackOperationDictionary.getOperation("sqrt");
         assertNotNull(sqrtStackOperation);
         assertTrue(sqrtStackOperation instanceof SqrtStackOperation);
         
-        StackOperation invertSignStackOperation = StackOperationDictionary.getOperation("+-");
+        StackOperation invertSignStackOperation = stackOperationDictionary.getOperation("+-");
         assertNotNull(invertSignStackOperation);
         assertTrue(invertSignStackOperation instanceof InvertSignStackOperation);
     }
@@ -76,9 +76,9 @@ public class StackOperationDictionaryTest {
     @Test
     public void testPutOperation() {
         StackOperation sumStackOperation = new SumStackOperation(calculatorStack);
-        StackOperationDictionary.putOperation("sum", sumStackOperation);
+        stackOperationDictionary.putOperation("sum", sumStackOperation);
         
-        StackOperation shouldBeSumStackOperation = StackOperationDictionary.getOperation("sum");
+        StackOperation shouldBeSumStackOperation = stackOperationDictionary.getOperation("sum");
         assertNotNull(shouldBeSumStackOperation);
         assertTrue(shouldBeSumStackOperation instanceof SumStackOperation);
     }
@@ -88,8 +88,8 @@ public class StackOperationDictionaryTest {
      */
     @Test
     public void testRemoveOperation() {
-        StackOperationDictionary.removeOperation("+");
-        StackOperation shouldBeNullOperation = StackOperationDictionary.getOperation("+");
+        stackOperationDictionary.removeOperation("+");
+        StackOperation shouldBeNullOperation = stackOperationDictionary.getOperation("+");
         assertNull(shouldBeNullOperation);
     }
     
@@ -99,7 +99,7 @@ public class StackOperationDictionaryTest {
      */
     @Test
     public void testRemoveOperationNotPresent(){
-        StackOperation removedOperation = StackOperationDictionary.removeOperation("404");
+        StackOperation removedOperation = stackOperationDictionary.removeOperation("404");
         assertNull(removedOperation);
     }
 
@@ -109,13 +109,13 @@ public class StackOperationDictionaryTest {
      */
     @Test
     public void testRenameOperation() {
-        boolean nameChanged = StackOperationDictionary.renameOperation("+", "sum");
+        boolean nameChanged = stackOperationDictionary.renameOperation("+", "sum");
         assertTrue(nameChanged);
         
-        StackOperation shouldBeNullOperation = StackOperationDictionary.getOperation("+");
+        StackOperation shouldBeNullOperation = stackOperationDictionary.getOperation("+");
         assertNull(shouldBeNullOperation);
         
-        StackOperation shouldBeSumOperation = StackOperationDictionary.getOperation("sum");
+        StackOperation shouldBeSumOperation = stackOperationDictionary.getOperation("sum");
         assertNotNull(shouldBeSumOperation);
         assertTrue(shouldBeSumOperation instanceof SumStackOperation);
     }
@@ -127,13 +127,13 @@ public class StackOperationDictionaryTest {
      */
     @Test
     public void testRenameOperationNotPresent(){
-        boolean nameChanged = StackOperationDictionary.renameOperation("404", "200");
+        boolean nameChanged = stackOperationDictionary.renameOperation("404", "200");
         assertFalse(nameChanged);
         
-        StackOperation shouldBeNullOperation = StackOperationDictionary.getOperation("404");
+        StackOperation shouldBeNullOperation = stackOperationDictionary.getOperation("404");
         assertNull(shouldBeNullOperation);
         
-        StackOperation shouldBeNullOperation2 = StackOperationDictionary.getOperation("200");
+        StackOperation shouldBeNullOperation2 = stackOperationDictionary.getOperation("200");
         assertNull(shouldBeNullOperation2);
         
     }
@@ -145,14 +145,14 @@ public class StackOperationDictionaryTest {
      */
     @Test
     public void testRenameOperationAlreadyPresent(){
-        boolean nameChanged = StackOperationDictionary.renameOperation("+", "-");
+        boolean nameChanged = stackOperationDictionary.renameOperation("+", "-");
         assertFalse(nameChanged);
         
-        StackOperation shouldBeSumOperation = StackOperationDictionary.getOperation("+");
+        StackOperation shouldBeSumOperation = stackOperationDictionary.getOperation("+");
         assertNotNull(shouldBeSumOperation);
         assertTrue(shouldBeSumOperation instanceof SumStackOperation);
         
-        StackOperation shouldBeSubtractionOperation = StackOperationDictionary.getOperation("-");
+        StackOperation shouldBeSubtractionOperation = stackOperationDictionary.getOperation("-");
         assertNotNull(shouldBeSubtractionOperation);
         assertTrue(shouldBeSubtractionOperation instanceof SubtractionStackOperation);
     }
@@ -163,7 +163,7 @@ public class StackOperationDictionaryTest {
      */
     @Test
     public void testContainsKey() {
-        boolean keyIsPresent = StackOperationDictionary.containsKey("+");
+        boolean keyIsPresent = stackOperationDictionary.containsKey("+");
         assertTrue(keyIsPresent);
     }
 
@@ -173,7 +173,7 @@ public class StackOperationDictionaryTest {
      */
     @Test
     public void testContainsKeyNotPresent(){
-        boolean keyIsPresent = StackOperationDictionary.containsKey("404");
+        boolean keyIsPresent = stackOperationDictionary.containsKey("404");
         assertFalse(keyIsPresent);
     }
     /**
@@ -182,7 +182,7 @@ public class StackOperationDictionaryTest {
      */
     @Test
     public void testExecute() {
-        boolean operationPerformed = StackOperationDictionary.execute("+");
+        boolean operationPerformed = stackOperationDictionary.execute("+");
         assertTrue(operationPerformed);
     }
     
@@ -192,7 +192,7 @@ public class StackOperationDictionaryTest {
      */
     @Test
     public void testExecuteNotPresent(){
-        boolean operationPerformed = StackOperationDictionary.execute("404");
+        boolean operationPerformed = stackOperationDictionary.execute("404");
         assertFalse(operationPerformed);
     }
     
