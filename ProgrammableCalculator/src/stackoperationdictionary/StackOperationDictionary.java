@@ -157,7 +157,7 @@ public class StackOperationDictionary {
     }
     
     public void addUserDefinedOperation(String name, String operations) 
-        throws InvalidOperationNameException, InvalidOperationsException{
+        throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         // validate the operation's name
         ComplexFormat cf = ComplexFormat.getInstance('j', Locale.US);
         try{
@@ -194,7 +194,7 @@ public class StackOperationDictionary {
         if(containsKey(name)){
             UserDefinedOperation operation;
             operation = (UserDefinedOperation)getOperation(name);
-            operation.setOperationsSequence((ArrayList)operationList);
+            operation.modifyOperations((ArrayList)operationList);
         }
         else{
         StackOperation userDefinedOp = new UserDefinedOperation(name, operationList, calculatorStack);
