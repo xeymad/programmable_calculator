@@ -194,19 +194,17 @@ public class StackOperationDictionary {
                 }
             }
         }
-        if(containsKey(name)){
+        if(containsKey(name))
             modifyUserOperation(name, operationList);
-        }
+        else{
         StackOperation userDefinedOp = new UserDefinedOperation(name, operationList, calculatorStack);
         putOperation(name, userDefinedOp);
+        }
     }
     private void modifyUserOperation(String name, List<StackOperation> newOperations) throws InvalidOperationNameException{
         UserDefinedOperation operation;
-        if(containsKey(name)){
-            operation = (UserDefinedOperation)getOperation(name);
-            operation.setOperationsSequence((ArrayList)newOperations);
-        }
-        else
-            throw new InvalidOperationNameException("A Error Occurred.");
+        operation = (UserDefinedOperation)getOperation(name);
+        operation.setOperationsSequence((ArrayList)newOperations);
+        
     }
 }
