@@ -18,7 +18,7 @@ https://docs.google.com/document/d/1wKvggjZM6KWfpHZ0idEe47QSoNPZ7vS5/edit?usp=sh
 https://docs.google.com/document/d/1I11jzThsHKi6U_xJwP47FLfQOAjgc373/edit?usp=sharing&ouid=111579386861903010578&rtpof=true&sd=true
 
 ## Second Sprint
-### Sprint Planning
+### Sprint Backlog
 https://docs.google.com/document/d/1F9M7l3y9ntcEOp2F0KJ25MqmCYBdW_9tCMChaLcX8rE/edit?usp=sharing
 ### Design of the Software Architecture
 https://docs.google.com/document/d/1UdYTfeFvcFg7ExKO6R8WOwovfFFD2iIwQKkdeAvQfWM/edit?usp=sharing
@@ -26,3 +26,7 @@ https://docs.google.com/document/d/1UdYTfeFvcFg7ExKO6R8WOwovfFFD2iIwQKkdeAvQfWM/
 https://docs.google.com/document/d/1HqcBPYICFn9bnI4oYf-3jdQilHJVSXkYwnhvU7eJfjM/edit?usp=sharing
 ### Sprint Retrospective Report
 https://docs.google.com/document/d/1J59D1eep4D9DGXUKSCns2U1_5BAny1Ba/edit?usp=sharing&ouid=102736266162603921059&rtpof=true&sd=true
+
+## Third Sprint
+### Sprint Backlog
+https://docs.google.com/document/d/1G1YisThEwkvhBLd-g8xoFcrkj8v5u5KmXoP-2brlaq4/edit?usp=sharing
