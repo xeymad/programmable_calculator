@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package operationexecutor;
+package stackoperationdictionary;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ import complexvariablesvector.ComplexVariablesVector;
  * operation and it's name.
  * @author aferr
  */
-public class OperationExecutor {
+public class StackOperationDictionary {
     
     private Map<String, StackOperation> dict;
     
@@ -38,7 +38,7 @@ public class OperationExecutor {
      * @param calculatorStack represent the stack to which the operations refer.
      * @param variablesVector represent the variables collection to which the operations refer.
      */
-    public OperationExecutor(CalculatorStack calculatorStack, ComplexVariablesVector variablesVector){
+    public StackOperationDictionary(CalculatorStack calculatorStack, ComplexVariablesVector variablesVector){
         dict = new HashMap<>();
         
         StackOperation sumStackOperation = new SumStackOperation(calculatorStack);
