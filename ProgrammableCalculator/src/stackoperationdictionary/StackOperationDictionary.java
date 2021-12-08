@@ -13,6 +13,7 @@ import stackvariableoperation.*;
 import stackvariableoperation.SumStackVariableOperation;
 import complexvariablesvector.ComplexVariablesVector;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import org.apache.commons.math3.complex.Complex;
 import org.apache.commons.math3.complex.ComplexFormat;
@@ -159,9 +160,9 @@ public class StackOperationDictionary {
             throws InvalidOperationNameException, InvalidOperationsException{
         // validate the operation's name
         ComplexFormat cf = ComplexFormat.getInstance('j', Locale.US);
-        if(containsKey(name)){
+        /*if(containsKey(name)){
             throw new InvalidOperationNameException("This name has already been taken.");
-        }
+        }*/
         try{
             cf.parse(name);
             throw new InvalidOperationNameException("This name is forbidden.");
@@ -193,7 +194,19 @@ public class StackOperationDictionary {
                 }
             }
         }
+        if(containsKey(name)){
+            modifyUserOperation(name, operationList);
+        }
         StackOperation userDefinedOp = new UserDefinedOperation(name, operationList, calculatorStack);
         putOperation(name, userDefinedOp);
+    }
+    private void modifyUserOperation(String name, List<StackOperation> newOperations) throws InvalidOperationNameException{
+        UserDefinedOperation operation;
+        if(containsKey(name)){
+            operation = (UserDefinedOperation)getOperation(name);
+            operation.setOperationsSequence((ArrayList)newOperations);
+        }
+        else
+            throw new InvalidOperationNameException("A Error Occurred.");
     }
 }
