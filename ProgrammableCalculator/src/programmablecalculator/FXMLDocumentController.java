@@ -123,8 +123,7 @@ public class FXMLDocumentController implements Initializable {
     private void closeBtnPressed(ActionEvent event) {
         Platform.exit();
     }
-    
-    
+        
     /**
      * This function first try to parse the received string from txtInput as a ComplexNumber.
      * If it can't parse, it tryes to execute an operation from StackOperationDictionary.
@@ -134,44 +133,52 @@ public class FXMLDocumentController implements Initializable {
         String inserted = txtInput.getText();
         txtInput.clear();
         if(inserted.equals("")) return;
+        Exception catched;
         try{
             Complex c = cf.parse(inserted);
             calculatorStack.push(c);
+            updateStackView();
+            return;
         }
         catch(MathParseException ex){
-            if(!stackOperationDictionary.containsKey(inserted)){
-               try{
-                   String[] usd = UserDefinedOperationFormat.parse(inserted);
-                   String[] operations = usd[1].split(" ");
-                   ArrayList<StackOperation> lst = new ArrayList<>();
-                   for (String operation : operations){
-                       StackOperation so = stackOperationDictionary.getOperation(operation);
-                       if (so==null)
-                            throw new Exception("Wrong User Defined");
-                       lst.add(so);
-                   }
-                   stackOperationDictionary.putOperation(usd[0], new UserDefinedOperation(usd[0],lst,calculatorStack));
-                   return;
-               }catch(Exception r){
-                Alert alert = new Alert(AlertType.ERROR, r.getMessage());
-                alert.showAndWait();
-                return;
-               }
+            catched = ex;
+        }
+        StackOperation stackOperation=stackOperationDictionary.getOperation(inserted);
+        if(stackOperation == null){
+            if(inserted.contains("del ")){
+                String opName = inserted.split("del ")[1];
+                StackOperation inDict = stackOperationDictionary.getOperation(opName);
+                if(inDict!=null && inDict instanceof UserDefinedOperation){
+                    UserDefinedOperation.remove((UserDefinedOperation)inDict);
+                    stackOperationDictionary.removeOperation(opName);
+                    return;
+                }
             }
             try{
-                StackOperation stackOperation=stackOperationDictionary.getOperation(inserted);
-                stackOperation.execute();
-                if (stackOperation instanceof StackVariableOperation)
-                    updateVariablesView();
-            }
-            catch(Exception e){
-               Alert alert = new Alert(AlertType.ERROR, e.getMessage());
-               alert.showAndWait();
-               return;               
+                String[] usd = UserDefinedOperationFormat.parse(inserted);
+                stackOperationDictionary.addUserDefinedOperation(usd[0], usd[1]);
+                return;
+            } catch(Exception ex){
+                catched = ex;
             }
         }
-        updateStackView();
+        else{
+            try{
+                stackOperation.execute();
+                if (stackOperation instanceof StackVariableOperation ||
+                        stackOperation instanceof UserDefinedOperation)
+                    updateVariablesView();
+                updateStackView();
+                return;
+            }
+            catch(Exception ex){
+                catched = ex;           
+            }
+        }
+        if (catched != null){
+            Alert alert = new Alert(AlertType.ERROR, catched.getMessage());
+            alert.showAndWait();
+        }
     }
-    
     
 }
