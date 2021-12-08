@@ -5,7 +5,7 @@
  */
 package programmablecalculator;
 
-import operationexecutor.OperationExecutor;
+import stackoperationdictionary.StackOperationDictionary;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -49,7 +49,7 @@ public class FXMLDocumentController implements Initializable {
     
     private static final int ELEMENTS_VIEW = 20;
     
-    private OperationExecutor operationExecutor;
+    private StackOperationDictionary StackOperationDictionary;
     @FXML
     private TableColumn<ComplexVariable, Character> varClm;
     @FXML
@@ -63,7 +63,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         calculatorStack = new CalculatorStack();
         complexVariablesVector = new ComplexVariablesVector();
-        operationExecutor = new OperationExecutor(calculatorStack, complexVariablesVector);
+        StackOperationDictionary = new StackOperationDictionary(calculatorStack, complexVariablesVector);
         varClm.setCellValueFactory(new PropertyValueFactory<>("character"));
         valueClm.setCellValueFactory(new PropertyValueFactory<>("complex"));
         updateVariablesView();
@@ -122,7 +122,7 @@ public class FXMLDocumentController implements Initializable {
     
     /**
      * This function first try to parse the received string from txtInput as a ComplexNumber.
-     * If it can't parse, it tryes to execute an operation from operationExecutor.
+     * If it can't parse, it tryes to execute an operation from StackOperationDictionary.
      * If the inserted text isn't an operation, it will show an Error Message.
      */
     private void performUserAction(){
@@ -135,13 +135,13 @@ public class FXMLDocumentController implements Initializable {
             calculatorStack.push(c);
         }
         catch(MathParseException ex){
-            if(!operationExecutor.containsKey(inserted)){
+            if(!StackOperationDictionary.containsKey(inserted)){
                Alert alert = new Alert(AlertType.ERROR, "Complex value not parsable or Operation not Found");
                alert.showAndWait();
                return;
             }
             try{
-                StackOperation stackOperation=operationExecutor.getOperation(inserted);
+                StackOperation stackOperation=StackOperationDictionary.getOperation(inserted);
                 stackOperation.execute();
                 if (stackOperation instanceof StackVariableOperation)
                     updateVariablesView();
