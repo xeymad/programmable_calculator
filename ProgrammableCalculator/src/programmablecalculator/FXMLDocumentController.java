@@ -5,6 +5,7 @@
  */
 package programmablecalculator;
 
+import userdefinedoperationformat.UserDefinedOperationFormat;
 import stackoperationdictionary.StackOperationDictionary;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +18,7 @@ import javafx.scene.control.TextField;
 import org.apache.commons.math3.complex.*;
 import calculatorstack.*;
 import complexvariablesvector.*;
+import java.util.*;
 import java.util.Locale;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
@@ -49,11 +51,13 @@ public class FXMLDocumentController implements Initializable {
     
     private static final int ELEMENTS_VIEW = 20;
     
-    private StackOperationDictionary StackOperationDictionary;
+    private StackOperationDictionary stackOperationDictionary;
     @FXML
     private TableColumn<ComplexVariable, Character> varClm;
     @FXML
     private TableColumn<ComplexVariable, Complex> valueClm;
+    
+    ComplexFormat cf;
     /**
      * Initialize the components of the GUI
      * @param url: The location used to resolve relative paths for the root object, or null if the location is not known.
@@ -61,9 +65,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        cf = ComplexFormat.getInstance('j', Locale.US);
         calculatorStack = new CalculatorStack();
         complexVariablesVector = new ComplexVariablesVector();
-        StackOperationDictionary = new StackOperationDictionary(calculatorStack, complexVariablesVector);
+        stackOperationDictionary = new StackOperationDictionary(calculatorStack, complexVariablesVector);
         varClm.setCellValueFactory(new PropertyValueFactory<>("character"));
         valueClm.setCellValueFactory(new PropertyValueFactory<>("complex"));
         updateVariablesView();
@@ -129,19 +134,32 @@ public class FXMLDocumentController implements Initializable {
         String inserted = txtInput.getText();
         txtInput.clear();
         if(inserted.equals("")) return;
-        ComplexFormat cf = ComplexFormat.getInstance('j', Locale.US);
         try{
             Complex c = cf.parse(inserted);
             calculatorStack.push(c);
         }
         catch(MathParseException ex){
-            if(!StackOperationDictionary.containsKey(inserted)){
-               Alert alert = new Alert(AlertType.ERROR, "Complex value not parsable or Operation not Found");
-               alert.showAndWait();
-               return;
+            if(!stackOperationDictionary.containsKey(inserted)){
+               try{
+                   String[] usd = UserDefinedOperationFormat.parse(inserted);
+                   String[] operations = usd[1].split(" ");
+                   List<StackOperation> lst = new ArrayList<>();
+                   for (String operation : operations){
+                       StackOperation so = stackOperationDictionary.getOperation(operation);
+                       if (so==null)
+                            throw new Exception();
+                       lst.add(so);
+                   }
+                   //UserDefinedOperation us = new UserDefinedOperation(usd[0],lst);
+                   return;
+               }catch(Exception r){
+                Alert alert = new Alert(AlertType.ERROR, "Complex value not parsable or Operation not Found");
+                alert.showAndWait();
+                return;
+               }
             }
             try{
-                StackOperation stackOperation=StackOperationDictionary.getOperation(inserted);
+                StackOperation stackOperation=stackOperationDictionary.getOperation(inserted);
                 stackOperation.execute();
                 if (stackOperation instanceof StackVariableOperation)
                     updateVariablesView();
@@ -154,4 +172,6 @@ public class FXMLDocumentController implements Initializable {
         }
         updateStackView();
     }
+    
+    
 }

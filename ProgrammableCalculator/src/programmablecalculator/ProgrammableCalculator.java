@@ -27,6 +27,8 @@ public class ProgrammableCalculator extends Application {
         
         Scene scene = new Scene(root);
         
+        //stage.initStyle(StageStyle.DECORATED.UNDECORATED);
+        
         stage.setScene(scene);
         stage.setTitle("Programmable Calculator");
         stage.show();
