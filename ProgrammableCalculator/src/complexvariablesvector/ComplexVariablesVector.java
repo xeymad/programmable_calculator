@@ -22,8 +22,8 @@ public class ComplexVariablesVector implements Iterable<ComplexVariable>{
     private final ArrayList<ComplexVariable> variablesVector;
   
     /**
-    * Class constructor.It initializes the content of the 26 variables to 0.
-    */
+     * Class constructor.It initializes the content of the 26 variables to 0.
+     */
     public ComplexVariablesVector() {
         variablesVector= new ArrayList<>();
         for(int i=0;i<NUM_VARIABLES;i++){
@@ -34,27 +34,27 @@ public class ComplexVariablesVector implements Iterable<ComplexVariable>{
     }
 
     /**
-    * This method takes a variable's name and a complex number.It sets the variable's content with the specific complex number passed.
-    * @param var The character of the alphabet that identifies the variable
-    * @param val The complex number to set as variable's value
-    */ 
+     * This method takes a variable's name and a complex number.It sets the variable's content with the specific complex number passed.
+     * @param var The character of the alphabet that identifies the variable
+     * @param val The complex number to set as variable's value
+     */ 
     public void setVarValue(char var, Complex val) {
        variablesVector.get(var-'a').setComplex(val);
     }
     
     /**
-    * This method returns the value of the variable identified by the passed character.
-    * @param var The character of the alphabet that identifies the variable
-    * @return Complex This returns the complex number contained in the variable
-    */ 
+     * This method returns the value of the variable identified by the passed character.
+     * @param var The character of the alphabet that identifies the variable
+     * @return Complex This returns the complex number contained in the variable
+     */ 
     public Complex getVarValue(char var) {
         return variablesVector.get(var-'a').getComplex();
     }
 
     /**
-    * This method returns an iterator over the elements of the vector, starting from the first.
-    * @return Iterator an iterator over the elements of the vector
-    */
+     * This method returns an iterator over the elements of the vector, starting from the first.
+     * @return Iterator an iterator over the elements of the vector
+     */
     @Override
     public Iterator<ComplexVariable> iterator() {
         return variablesVector.iterator();
