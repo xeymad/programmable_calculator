@@ -160,9 +160,6 @@ public class StackOperationDictionary {
         throws InvalidOperationNameException, InvalidOperationsException{
         // validate the operation's name
         ComplexFormat cf = ComplexFormat.getInstance('j', Locale.US);
-        /*if(containsKey(name)){
-            throw new InvalidOperationNameException("This name has already been taken.");
-        }*/
         try{
             cf.parse(name);
             throw new InvalidOperationNameException("This name is forbidden.");
@@ -194,17 +191,14 @@ public class StackOperationDictionary {
                 }
             }
         }
-        if(containsKey(name))
-            modifyUserOperation(name, operationList);
+        if(containsKey(name)){
+            UserDefinedOperation operation;
+            operation = (UserDefinedOperation)getOperation(name);
+            operation.setOperationsSequence((ArrayList)operationList);
+        }
         else{
         StackOperation userDefinedOp = new UserDefinedOperation(name, operationList, calculatorStack);
         putOperation(name, userDefinedOp);
         }
-    }
-    private void modifyUserOperation(String name, List<StackOperation> newOperations) throws InvalidOperationNameException{
-        UserDefinedOperation operation;
-        operation = (UserDefinedOperation)getOperation(name);
-        operation.setOperationsSequence((ArrayList)newOperations);
-        
     }
 }
