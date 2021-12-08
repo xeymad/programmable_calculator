@@ -49,7 +49,7 @@ public class FXMLDocumentController implements Initializable {
     
     private static final int ELEMENTS_VIEW = 20;
     
-    private StackOperationDictionary StackOperationDictionary;
+    private StackOperationDictionary stackOperationDictionary;
     @FXML
     private TableColumn<ComplexVariable, Character> varClm;
     @FXML
@@ -63,7 +63,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         calculatorStack = new CalculatorStack();
         complexVariablesVector = new ComplexVariablesVector();
-        StackOperationDictionary = new StackOperationDictionary(calculatorStack, complexVariablesVector);
+        stackOperationDictionary = new StackOperationDictionary(calculatorStack, complexVariablesVector);
         varClm.setCellValueFactory(new PropertyValueFactory<>("character"));
         valueClm.setCellValueFactory(new PropertyValueFactory<>("complex"));
         updateVariablesView();
@@ -135,13 +135,13 @@ public class FXMLDocumentController implements Initializable {
             calculatorStack.push(c);
         }
         catch(MathParseException ex){
-            if(!StackOperationDictionary.containsKey(inserted)){
+            if(!stackOperationDictionary.containsKey(inserted)){
                Alert alert = new Alert(AlertType.ERROR, "Complex value not parsable or Operation not Found");
                alert.showAndWait();
                return;
             }
             try{
-                StackOperation stackOperation=StackOperationDictionary.getOperation(inserted);
+                StackOperation stackOperation=stackOperationDictionary.getOperation(inserted);
                 stackOperation.execute();
                 if (stackOperation instanceof StackVariableOperation)
                     updateVariablesView();
