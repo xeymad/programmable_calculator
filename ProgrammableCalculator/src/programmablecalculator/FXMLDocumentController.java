@@ -143,17 +143,17 @@ public class FXMLDocumentController implements Initializable {
                try{
                    String[] usd = UserDefinedOperationFormat.parse(inserted);
                    String[] operations = usd[1].split(" ");
-                   List<StackOperation> lst = new ArrayList<>();
+                   ArrayList<StackOperation> lst = new ArrayList<>();
                    for (String operation : operations){
                        StackOperation so = stackOperationDictionary.getOperation(operation);
                        if (so==null)
-                            throw new Exception();
+                            throw new Exception("Wrong User Defined");
                        lst.add(so);
                    }
-                   //UserDefinedOperation us = new UserDefinedOperation(usd[0],lst);
+                   stackOperationDictionary.putOperation(usd[0], new UserDefinedOperation(usd[0],lst,calculatorStack));
                    return;
                }catch(Exception r){
-                Alert alert = new Alert(AlertType.ERROR, "Complex value not parsable or Operation not Found");
+                Alert alert = new Alert(AlertType.ERROR, r.getMessage());
                 alert.showAndWait();
                 return;
                }

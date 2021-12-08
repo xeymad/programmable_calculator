@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Arianna Carratù
+ * @author Arianna Carratù, Giuseppe
  */
 public class UserDefinedOperationTest {
     private UserDefinedOperation instance;
@@ -28,7 +28,7 @@ public class UserDefinedOperationTest {
     //dup * swap dup * + sqrt
     @Before
     public void setUp() {
-    operationName = new String("hypotenuse");
+    operationName = "hypotenuse";
     calculatorStack=new CalculatorStack();
     operationsSequence= new ArrayList<>();
     calculatorStack.push(new Complex(3,0));
@@ -65,31 +65,6 @@ public class UserDefinedOperationTest {
         String result = instance.getOperationName();
         assertEquals(opName, result);
  
-    }
-
-    /**
-     * Test of getOperationsSequence method, of class UserDefinedOperation.
-     */
-    @Test
-    public void testGetOperationsSequence() {
-        System.out.println("getOperationsSequence");
-        ArrayList<StackOperation> result = instance.getOperationsSequence();
-        assertEquals(operationsSequence, result);
-      
-    }
-
-    /**
-     * Test of setOperationsSequence method, of class UserDefinedOperation.
-     */
-    @Test
-    public void testSetOperationsSequence() {
-        System.out.println("setOperationsSequence");
-        ArrayList<StackOperation> opSequence = new ArrayList<>();
-        opSequence.add(new SumStackOperation(calculatorStack));
-        opSequence.add(new SumStackOperation(calculatorStack));
-        instance.setOperationsSequence(opSequence);
-        ArrayList<StackOperation> result = instance.getOperationsSequence();
-        assertEquals(opSequence, result);
     }
 
     /**

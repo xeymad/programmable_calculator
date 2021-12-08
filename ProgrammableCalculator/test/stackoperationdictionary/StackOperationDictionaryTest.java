@@ -208,10 +208,6 @@ public class StackOperationDictionaryTest {
         // check if the operations in userdefined are correct
         UserDefinedOperation userdefined = (UserDefinedOperation) stackOperationDictionary.getOperation(operationName);
         assertEquals(userdefined.getOperationName(), operationName);
-        ArrayList<StackOperation> userdefinedOperations = userdefined.getOperationsSequence();
-        assertTrue(userdefinedOperations.get(0) instanceof SumStackOperation);
-        assertTrue(userdefinedOperations.get(1) instanceof SumStackOperation);
-        assertTrue(userdefinedOperations.get(2) instanceof SubtractionStackOperation);
     }
     
     @Test
@@ -224,13 +220,6 @@ public class StackOperationDictionaryTest {
         // check if the operations in userdefined are correct
         UserDefinedOperation userdefined = (UserDefinedOperation) stackOperationDictionary.getOperation(operationName);
         assertEquals(userdefined.getOperationName(), operationName);
-        ArrayList<StackOperation> userdefinedOperations = userdefined.getOperationsSequence();
-        assertTrue(userdefinedOperations.get(0) instanceof SumStackOperation);
-        assertTrue(userdefinedOperations.get(1) instanceof SumStackOperation);
-        PushStackOperation pushStackOperation = (PushStackOperation) userdefinedOperations.get(2);
-        assertTrue(pushStackOperation instanceof PushStackOperation);
-        Complex c = new Complex(2, 3);
-        assertEquals(pushStackOperation.getToPush(), c);
     }
     
     @Test
@@ -243,14 +232,6 @@ public class StackOperationDictionaryTest {
         
         UserDefinedOperation userdefined2 = (UserDefinedOperation) stackOperationDictionary.getOperation(operationName);
         assertEquals(userdefined2.getOperationName(), operationName);
-        
-        // check if operations in userdefined2 are correct
-        // regarding the operation "userdefined", it just checks its name
-        ArrayList<StackOperation> userdefined2Operations = userdefined2.getOperationsSequence();
-        assertTrue(userdefined2Operations.get(0) instanceof SumStackOperation);
-        assertTrue(userdefined2Operations.get(1) instanceof SumStackOperation);
-        UserDefinedOperation userdefined = (UserDefinedOperation) userdefined2Operations.get(2);
-        assertEquals(userdefined.getOperationName(), "userdefined");
     }
     
     @Test(expected=InvalidOperationNameException.class)
