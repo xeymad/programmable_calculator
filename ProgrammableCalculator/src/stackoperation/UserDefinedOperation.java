@@ -90,20 +90,25 @@ public class UserDefinedOperation extends StackOperation {
     
     /**
      * This method implements the execution of the operations's sequence that defines the user operation.
-     * If a UserDefined does not exists it launchs an Exception.
      */ 
     @Override
     public void execute() {
-        if(this.operationsSequence.isEmpty())
-                throw new RuntimeException("The operation "+ this.getOperationName() +" has been deleted");
-        for(UserDefinedOperation usOperation : parents){
-            if(usOperation.operationsSequence.isEmpty())
-                throw new RuntimeException("The dependency "+usOperation.operationName+" has been deleted");
-        }
+        checkValidate();
         for(StackOperation stackOperation: operationsSequence)
             stackOperation.execute();
     }
     
+    /**
+     * Check if all dependencies are executable.
+     */
+    public void checkValidate() {
+        if (operationsSequence == null){
+            throw new RuntimeException("The dependency " + operationName + " has been deleted");
+        }
+        for(UserDefinedOperation usOperation : parents){
+            usOperation.checkValidate();
+        }
+    }
     /**
      * Add a new child of the userDefined operation
      * @param child 
