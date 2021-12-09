@@ -23,7 +23,7 @@ public class UserDefinedOperation extends StackOperation {
     private ArrayList<StackOperation> operationsSequence;
     private List<UserDefinedOperation> parents;
     private Map<String,UserDefinedOperation> children;
-    
+    //private boolean validate;
     
 
     /** 
