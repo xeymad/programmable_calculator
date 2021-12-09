@@ -43,7 +43,8 @@ public class UserDefinedOperationTest {
     operationsSequence.add(new SumStackOperation(calculatorStack));
     operationsSequence.add(new SqrtStackOperation(calculatorStack));
     operationsText = "dup * swap dup * + sqrt";
-    instance= new UserDefinedOperation(operationName, operationsText ,operationsSequence, calculatorStack);
+    instance= new UserDefinedOperation(operationName ,operationsSequence, calculatorStack);
+    instance.setOperationsTextual(operationsText);
     }
     
     /**
@@ -75,9 +76,9 @@ public class UserDefinedOperationTest {
         System.out.println("modify");
         ArrayList<StackOperation> sequenceUs = new ArrayList<>();
         sequenceUs.add(instance);
-        UserDefinedOperation b = new UserDefinedOperation("B",operationsText,sequenceUs,calculatorStack);
+        UserDefinedOperation b = new UserDefinedOperation("B",sequenceUs,calculatorStack);
         operationsSequence.add(b);
-        instance.modifyOperations(operationsText,operationsSequence);
+        instance.modifyOperations(operationsSequence);
         
     }
 }
