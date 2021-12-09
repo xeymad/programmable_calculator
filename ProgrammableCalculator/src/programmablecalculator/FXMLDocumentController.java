@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
 import org.apache.commons.math3.complex.*;
 import calculatorstack.*;
 import complexvariablesvector.*;
-import java.util.*;
+import java.io.File;
 import java.util.Locale;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
@@ -27,6 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import javafx.stage.FileChooser;
 import org.apache.commons.math3.exception.MathParseException;
 import stackoperation.*;
 import stackvariableoperation.StackVariableOperation;
@@ -58,6 +59,13 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<ComplexVariable, Complex> valueClm;
     
     ComplexFormat cf;
+    @FXML
+    private TableView<?> userDefinedView;
+    @FXML
+    private TableColumn<?, ?> varClm1;
+    @FXML
+    private TableColumn<?, ?> valueClm1;
+    
     /**
      * Initialize the components of the GUI
      * @param url: The location used to resolve relative paths for the root object, or null if the location is not known.
@@ -149,9 +157,8 @@ public class FXMLDocumentController implements Initializable {
                 String opName = inserted.split("del ")[1];
                 StackOperation inDict = stackOperationDictionary.getOperation(opName);
                 if(inDict!=null && inDict instanceof UserDefinedOperation){
-                    UserDefinedOperation.remove((UserDefinedOperation)inDict);
-                    //stackOperationDictionary.removeOperation(opName);
-                    return;
+                    stackOperationDictionary.removeUserDefined((UserDefinedOperation)inDict);
+                return;
                 }
             }
             try{
@@ -181,4 +188,20 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
-}
+    @FXML
+    private void saveFile(ActionEvent event) {
+        FileChooser fc=new FileChooser();
+        fc.setTitle("Save as...");
+        File file=fc.showSaveDialog(null);
+        if(file!=null){
+            stackOperationDictionary.saveUserDefined(file);
+            }
+        else{
+            Alert alert = new Alert(AlertType.ERROR, "File not valid");
+            alert.showAndWait();
+        }
+        }
+    
+    }
+    
+

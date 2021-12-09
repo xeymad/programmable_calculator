@@ -12,6 +12,11 @@ import stackoperation.*;
 import stackvariableoperation.*;
 import stackvariableoperation.SumStackVariableOperation;
 import complexvariablesvector.ComplexVariablesVector;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -22,7 +27,7 @@ import org.apache.commons.math3.exception.MathParseException;
 /**
  * This class represent a Dictionary that contains associations between an
  * operation and it's name.
- * @author aferr
+ * @author aferr, Arianna Carratù
  */
 public class StackOperationDictionary {
     
@@ -201,4 +206,26 @@ public class StackOperationDictionary {
         putOperation(name, userDefinedOp);
         }
     }
+    
+    public void saveUserDefined(File file){
+         try(PrintWriter o= new PrintWriter(new BufferedWriter(new FileWriter(file)))){
+           for (StackOperation op: dict.values()){
+               if(op instanceof UserDefinedOperation ){
+                   UserDefinedOperation ud= (UserDefinedOperation)op;
+                   //o.print(ud.getOperationName()+" "+ ud.getList() +'\n');
+                   o.print(ud.getOperationName()+" " +'\n');
+               }
+               }
+           
+       }
+       catch(IOException e){
+               System.out.println(e.getMessage());
+       }
+    }
+    
+    public void removeUserDefined(UserDefinedOperation inDict){
+        inDict.removeOperations();
+          
+    }
+    
 }

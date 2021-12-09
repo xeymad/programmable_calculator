@@ -20,24 +20,7 @@ public class UserDefinedOperation extends StackOperation {
     private Map<String,UserDefinedOperation> children;
     private boolean validate;
     
-    /**
-     * Factory Method to remove the UserDefinedOperation
-     * @param toRemove the user defined to remove
-     */
-    public static void remove(UserDefinedOperation toRemove){
-        //for(UserDefinedOperation parent : toRemove.parents)
-            //parent.removeChild(toRemove);
-        if(!toRemove.children.isEmpty())
-            toRemove.operationsSequence.clear();
-        else{
-            toRemove = null;
-        }
-        toRemove.invalidate();
-    }
-    private void invalidate(){
-        validate=false;
-        
-    }
+
     /** 
      * Class constructor
      * @param opName name of the user defined operation.
@@ -102,8 +85,9 @@ public class UserDefinedOperation extends StackOperation {
      */ 
     @Override
     public void execute() {
+        if(validate==false)
+                throw new RuntimeException("The operation "+ this.getOperationName() +" has been deleted");
         for(UserDefinedOperation usOperation : parents){
-            //if(usOperation.operationsSequence.isEmpty())
             if(usOperation.validate==false)
                 throw new RuntimeException("The dependency "+usOperation.operationName+" has been deleted");
         }
@@ -129,5 +113,17 @@ public class UserDefinedOperation extends StackOperation {
         children.remove(child.operationName,child);
         for(UserDefinedOperation parent : parents)
             parent.removeChild(child);
+    }
+    
+    /**
+     * Removes the following UserDefinedOperation from its parents' children lists and all its operations.
+     * It also set the validate flag to false. 
+     */
+    public void removeOperations(){
+        for(UserDefinedOperation parent : parents)
+            parent.removeChild(this);
+        this.operationsSequence.clear();
+        validate=false;
+      
     }
 }
