@@ -233,12 +233,6 @@ public class StackOperationDictionaryTest {
     }
     
     @Test(expected=InvalidOperationNameException.class)
-    public void testAddUserDefinedOperationNameAlreadyTaken() 
-            throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
-        stackOperationDictionary.addUserDefinedOperation("+", "+ +");
-    }
-    
-    @Test(expected=InvalidOperationNameException.class)
     public void testAddUserDefinedOperationNameIsComplex() 
             throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         stackOperationDictionary.addUserDefinedOperation("2+3j", "+ +");
