@@ -132,5 +132,6 @@ public class UserDefinedOperation extends StackOperation {
         for(UserDefinedOperation parent : parents)
             parent.removeChild(this);
         this.operationsSequence.clear();
+        operationsTextual = "";
     }
 }
