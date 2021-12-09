@@ -23,6 +23,7 @@ import userdefinedoperationformat.UserDefinedParseException;
 public class UserDefinedOperationTest {
     private UserDefinedOperation instance;
     private String operationName;
+    private String operationsText; 
     private CalculatorStack calculatorStack;
     private ArrayList<StackOperation> operationsSequence;
  
@@ -41,7 +42,8 @@ public class UserDefinedOperationTest {
     operationsSequence.add(new MultiplicationStackOperation(calculatorStack));
     operationsSequence.add(new SumStackOperation(calculatorStack));
     operationsSequence.add(new SqrtStackOperation(calculatorStack));
-    instance= new UserDefinedOperation(operationName,operationsSequence, calculatorStack);
+    operationsText = "dup * swap dup * + sqrt";
+    instance= new UserDefinedOperation(operationName, operationsText ,operationsSequence, calculatorStack);
     }
     
     /**
@@ -73,9 +75,9 @@ public class UserDefinedOperationTest {
         System.out.println("modify");
         ArrayList<StackOperation> sequenceUs = new ArrayList<>();
         sequenceUs.add(instance);
-        UserDefinedOperation b = new UserDefinedOperation("B",sequenceUs,calculatorStack);
+        UserDefinedOperation b = new UserDefinedOperation("B",operationsText,sequenceUs,calculatorStack);
         operationsSequence.add(b);
-        instance.modifyOperations(operationsSequence);
+        instance.modifyOperations(operationsText,operationsSequence);
         
     }
 }
