@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import userdefinedoperationformat.UserDefinedParseException;
 
 /**
  *
@@ -64,4 +65,17 @@ public class UserDefinedOperationTest {
         assertEquals(calculatorStack.top(), new Complex(5,0));
     }
     
+    /**
+     * Test of modifyOperations method of class UserDefinedOperation
+     */
+    @Test(expected = UserDefinedCycleException.class)
+    public void testModifyOperations() throws UserDefinedCycleException{
+        System.out.println("modify");
+        ArrayList<StackOperation> sequenceUs = new ArrayList<>();
+        sequenceUs.add(instance);
+        UserDefinedOperation b = new UserDefinedOperation("B",sequenceUs,calculatorStack);
+        operationsSequence.add(b);
+        instance.modifyOperations(operationsSequence);
+        
+    }
 }
