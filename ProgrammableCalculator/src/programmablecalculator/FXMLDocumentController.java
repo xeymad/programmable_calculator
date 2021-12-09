@@ -27,6 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import operationexecutor.OperationExecutor;
 import org.apache.commons.math3.exception.MathParseException;
 import stackoperation.*;
 import stackvariableoperation.StackVariableOperation;
@@ -44,20 +45,17 @@ public class FXMLDocumentController implements Initializable {
     private ListView<Complex> stackView;
     @FXML
     private TableView<ComplexVariable> variablesView;
-    
-    private CalculatorStack calculatorStack;
-    
-    private ComplexVariablesVector complexVariablesVector;
-    
-    private static final int ELEMENTS_VIEW = 20;
-    
-    private StackOperationDictionary stackOperationDictionary;
     @FXML
     private TableColumn<ComplexVariable, Character> varClm;
     @FXML
     private TableColumn<ComplexVariable, Complex> valueClm;
-    
+    private static final int ELEMENTS_VIEW = 20;
+    private CalculatorStack calculatorStack;
+    private ComplexVariablesVector complexVariablesVector;
+    private StackOperationDictionary stackOperationDictionary;
+    private OperationExecutor operationExecutor;
     ComplexFormat cf;
+    
     /**
      * Initialize the components of the GUI
      * @param url: The location used to resolve relative paths for the root object, or null if the location is not known.
@@ -69,6 +67,7 @@ public class FXMLDocumentController implements Initializable {
         calculatorStack = new CalculatorStack();
         complexVariablesVector = new ComplexVariablesVector();
         stackOperationDictionary = new StackOperationDictionary(calculatorStack, complexVariablesVector);
+        operationExecutor = new OperationExecutor();
         varClm.setCellValueFactory(new PropertyValueFactory<>("character"));
         valueClm.setCellValueFactory(new PropertyValueFactory<>("complex"));
         updateVariablesView();
@@ -133,17 +132,20 @@ public class FXMLDocumentController implements Initializable {
         String inserted = txtInput.getText();
         txtInput.clear();
         if(inserted.equals("")) return;
+        
         Exception catched;
         try{
             Complex c = cf.parse(inserted);
-            calculatorStack.push(c);
+            StackOperation pso = new PushStackOperation(calculatorStack, c);
+            operationExecutor.setCommand(pso);
+            operationExecutor.execute();
             updateStackView();
             return;
         }
         catch(MathParseException ex){
             catched = ex;
         }
-        StackOperation stackOperation=stackOperationDictionary.getOperation(inserted);
+        StackOperation stackOperation = stackOperationDictionary.getOperation(inserted);
         if(stackOperation == null){
             if(inserted.contains("del ")){
                 String opName = inserted.split("del ")[1];
@@ -164,7 +166,8 @@ public class FXMLDocumentController implements Initializable {
         }
         else{
             try{
-                stackOperation.execute();
+                operationExecutor.setCommand(stackOperation);
+                operationExecutor.execute();
                 if (stackOperation instanceof StackVariableOperation ||
                         stackOperation instanceof UserDefinedOperation)
                     updateVariablesView();
