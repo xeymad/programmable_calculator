@@ -29,7 +29,7 @@ import org.apache.commons.math3.exception.MathParseException;
 /**
  * This class represent a Dictionary that contains associations between an
  * operation and it's name.
- * @author aferr, Arianna Carratù
+ * @author group 02
  */
 public class StackOperationDictionary {
     
@@ -217,24 +217,29 @@ public class StackOperationDictionary {
         }
     }
     
-    public void saveUserDefined(File file){
-         try(PrintWriter o= new PrintWriter(new BufferedWriter(new FileWriter(file)))){
-           for (StackOperation op: dict.values()){
+    /**
+     * This method saves all the user defined operations contained in the dictionary in the given file.
+     * @param file the file on which saving the user defined operations
+     * @exception IOException if the file exists but is a directory rather than a regular file, does not exist but cannot be created, or cannot be opened for any other reason
+     */
+    public void saveUserDefinedOperation(File file) throws IOException{
+        try(PrintWriter o= new PrintWriter(new BufferedWriter(new FileWriter(file)))){
+           for (StackOperation op: this.listOperations()){
                if(op instanceof UserDefinedOperation ){
                    UserDefinedOperation ud= (UserDefinedOperation)op;
-                   //o.print(ud.getOperationName()+" "+ ud.getList() +'\n');
-                   o.print(ud.getOperationName()+" " +'\n');
-               }
-               }
+                   o.print(ud.getOperationName()+": "+ ud.getOperationsTextual()+'\n');
+                }
+            }
+        }
            
-       }
-       catch(IOException e){
-               System.out.println(e.getMessage());
-       }
     }
-    
-    public void removeUserDefined(UserDefinedOperation inDict){
-        inDict.removeOperations();
+     
+    /**
+     * Removes the given user defined operation.
+     * @param  ud user defined operation to remove
+     */ 
+    public void removeUserDefinedOperation(UserDefinedOperation ud){
+        ud.removeOperations();
           
     }
     

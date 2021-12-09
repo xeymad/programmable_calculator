@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author
+ * @author group 02
  */
 public class ProgrammableCalculator extends Application {
     

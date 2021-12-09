@@ -32,7 +32,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
-                        <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save User Defined Op" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save User Defined Operations" />
                     <MenuItem mnemonicParsing="false" onAction="#closeBtnPressed" text="Close" />
                   </items>
                 </Menu>
