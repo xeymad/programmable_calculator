@@ -102,7 +102,7 @@ public class UserDefinedOperation extends StackOperation {
      * Check if all dependencies are executable.
      */
     public void checkValidate() {
-        if (operationsSequence == null){
+        if (operationsSequence.isEmpty()){
             throw new RuntimeException("The dependency " + operationName + " has been deleted");
         }
         for(UserDefinedOperation usOperation : parents){
