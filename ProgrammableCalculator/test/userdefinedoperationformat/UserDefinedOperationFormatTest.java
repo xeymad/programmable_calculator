@@ -15,6 +15,10 @@ import userdefinedoperationformat.UserDefinedOperationFormat;
  */
 public class UserDefinedOperationFormatTest {
     
+    /**
+     * Parse a simple string
+     * @throws UserDefinedParseException 
+     */
     @Test
     public void testExecuteWithoutException1() throws UserDefinedParseException {
         String[] s = UserDefinedOperationFormat.parse("A: + + -");
@@ -22,6 +26,10 @@ public class UserDefinedOperationFormatTest {
         assertEquals(s[1],"+ + -");
     }
     
+    /**
+     * Parse a string with useless spaces
+     * @throws UserDefinedParseException 
+     */
     @Test
     public void testExecuteWithoutException2() throws UserDefinedParseException {
         String[] s = UserDefinedOperationFormat.parse("A: + + -       ");
@@ -29,8 +37,12 @@ public class UserDefinedOperationFormatTest {
         assertEquals(s[1],"+ + -");       
     }
     
+    /**
+     * Parse a string without operations
+     * @throws UserDefinedParseException 
+     */
     @Test(expected = UserDefinedParseException.class)
-    public void testExecuteWithoutException3() throws UserDefinedParseException {
+    public void testExecuteWithException() throws UserDefinedParseException {
         String[] s = UserDefinedOperationFormat.parse("A:     ");       
     }
     

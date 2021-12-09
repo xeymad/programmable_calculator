@@ -17,7 +17,7 @@ public class UserDefinedOperation extends StackOperation {
     private String operationName;
     private ArrayList<StackOperation> operationsSequence;
     private List<UserDefinedOperation> parents;
-    private Map<String,UserDefinedOperation> childs;
+    private Map<String,UserDefinedOperation> children;
     private boolean validate;
     
     /**
@@ -27,7 +27,7 @@ public class UserDefinedOperation extends StackOperation {
     public static void remove(UserDefinedOperation toRemove){
         //for(UserDefinedOperation parent : toRemove.parents)
             //parent.removeChild(toRemove);
-        if(!toRemove.childs.isEmpty())
+        if(!toRemove.children.isEmpty())
             toRemove.operationsSequence.clear();
         else{
             toRemove = null;
@@ -49,7 +49,7 @@ public class UserDefinedOperation extends StackOperation {
         operationName = opName;
         operationsSequence = new ArrayList<>();
         parents = new ArrayList<>(10);
-        childs = new HashMap<>();
+        children = new HashMap<>();
         validate=true;
         for(StackOperation op : opSequence)
             this.addOperation(op);
@@ -77,14 +77,6 @@ public class UserDefinedOperation extends StackOperation {
     }
 
     /**
-     * This method takes a list containing the operations'sequence.It sets the operations'sequence with the specific list passed.
-     * @param operationsSequence The list containing the operations' sequence.
-     */ 
-    public void setOperationsSequence(ArrayList<StackOperation> operationsSequence) {
-        this.operationsSequence = operationsSequence;
-    }
-    
-    /**
      * Modifies the old sequence of operations with the new sequence of operations.
      * @param operations the new sequence of operations
      * @throws UserDefinedCycleException If the inserted Operations have cycles.
@@ -93,7 +85,7 @@ public class UserDefinedOperation extends StackOperation {
         for(StackOperation op : operations){
            if(op instanceof UserDefinedOperation){
                UserDefinedOperation us = (UserDefinedOperation) op;
-               if(childs.containsKey(us.operationName))
+               if(children.containsKey(us.operationName))
                    throw new UserDefinedCycleException("Could not modify operation (Cycle found)");
            }
         }
@@ -124,7 +116,7 @@ public class UserDefinedOperation extends StackOperation {
      * @param child 
      */
     private void addChild(UserDefinedOperation child){
-        childs.put(child.operationName,child);
+        children.put(child.operationName,child);
         for(UserDefinedOperation parent : parents)
             parent.addChild(child);
     }
@@ -134,7 +126,7 @@ public class UserDefinedOperation extends StackOperation {
      * @param child 
      */
     private void removeChild(UserDefinedOperation child){
-        childs.remove(child.operationName,child);
+        children.remove(child.operationName,child);
         for(UserDefinedOperation parent : parents)
             parent.removeChild(child);
     }
