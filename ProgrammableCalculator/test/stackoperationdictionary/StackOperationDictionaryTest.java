@@ -10,8 +10,6 @@ import static org.junit.Assert.*;
 import calculatorstack.*;
 import stackoperation.*;
 import complexvariablesvector.ComplexVariablesVector;
-import java.util.ArrayList;
-import org.apache.commons.math3.complex.Complex;
 
 /**
  *
@@ -200,7 +198,7 @@ public class StackOperationDictionaryTest {
     
     @Test
     public void testAddUserDefinedOperationWithoutComplex() 
-            throws InvalidOperationNameException, InvalidOperationsException{
+            throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         String operationName = "userdefined";
         String operations = "+ + -";
         stackOperationDictionary.addUserDefinedOperation(operationName, operations);
@@ -212,7 +210,7 @@ public class StackOperationDictionaryTest {
     
     @Test
     public void testAddUserDefinedOperationWithComplex() 
-            throws InvalidOperationNameException, InvalidOperationsException{
+            throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         String operationName = "userdefined";
         String operations = "+ + 2+3j";
         stackOperationDictionary.addUserDefinedOperation(operationName, operations);
@@ -224,7 +222,7 @@ public class StackOperationDictionaryTest {
     
     @Test
     public void testAddUserDefinedOperationWithUserDefined() 
-            throws InvalidOperationNameException, InvalidOperationsException{
+            throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         stackOperationDictionary.addUserDefinedOperation("userdefined", "+ + -");
         String operationName = "userdefined2";
         String operations = "+ + userdefined";
@@ -236,19 +234,19 @@ public class StackOperationDictionaryTest {
     
     @Test(expected=InvalidOperationNameException.class)
     public void testAddUserDefinedOperationNameAlreadyTaken() 
-            throws InvalidOperationNameException, InvalidOperationsException{
+            throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         stackOperationDictionary.addUserDefinedOperation("+", "+ +");
     }
     
     @Test(expected=InvalidOperationNameException.class)
     public void testAddUserDefinedOperationNameIsComplex() 
-            throws InvalidOperationNameException, InvalidOperationsException{
+            throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         stackOperationDictionary.addUserDefinedOperation("2+3j", "+ +");
     }
     
     @Test(expected=InvalidOperationsException.class)
     public void testAddUserDefinedOperationInvalidOperations() 
-            throws InvalidOperationNameException, InvalidOperationsException{
+            throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         stackOperationDictionary.addUserDefinedOperation("userdefined", "+ + userdefined2");
     }
 }
