@@ -18,6 +18,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import org.apache.commons.math3.complex.Complex;
@@ -161,6 +163,14 @@ public class StackOperationDictionary {
         }
     }
     
+    /**
+    * This method returns an ArrayList of the operations the dictionary contains
+    * @return listOperations the list of all the operations in the dictionary
+    */
+    public ArrayList<StackOperation> listOperations() {
+        return new ArrayList<>(dict.values());
+    }
+    
     public void addUserDefinedOperation(String name, String operations) 
         throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         // validate the operation's name
@@ -199,10 +209,10 @@ public class StackOperationDictionary {
         if(containsKey(name)){
             UserDefinedOperation operation;
             operation = (UserDefinedOperation)getOperation(name);
-            operation.modifyOperations((ArrayList)operationList);
+            operation.modifyOperations(operations,(ArrayList)operationList);
         }
         else{
-        StackOperation userDefinedOp = new UserDefinedOperation(name, operationList, calculatorStack);
+        StackOperation userDefinedOp = new UserDefinedOperation(name, operations ,operationList, calculatorStack);
         putOperation(name, userDefinedOp);
         }
     }

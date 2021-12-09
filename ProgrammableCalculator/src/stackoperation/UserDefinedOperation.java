@@ -15,6 +15,7 @@ import java.util.*;
  */
 public class UserDefinedOperation extends StackOperation {
     private String operationName;
+    private String operationsTextual;
     private ArrayList<StackOperation> operationsSequence;
     private List<UserDefinedOperation> parents;
     private Map<String,UserDefinedOperation> children;
@@ -27,9 +28,10 @@ public class UserDefinedOperation extends StackOperation {
      * @param opSequence sequence of operations which define the user operation(including the push of numbers).
      * @param calculatorStack instance of calculator's stack.
      */
-    public UserDefinedOperation(String opName,  ArrayList<StackOperation> opSequence, CalculatorStack calculatorStack) {
+    public UserDefinedOperation(String opName, String opText,  ArrayList<StackOperation> opSequence, CalculatorStack calculatorStack) {
         super(calculatorStack);
         operationName = opName;
+        operationsTextual = opText;
         operationsSequence = new ArrayList<>();
         parents = new ArrayList<>(10);
         children = new HashMap<>();
@@ -58,13 +60,17 @@ public class UserDefinedOperation extends StackOperation {
     public String getOperationName() {
         return operationName;
     }
+      
+    public String getOperationsTextual() {
+        return operationsTextual;
+    }
 
     /**
      * Modifies the old sequence of operations with the new sequence of operations.
      * @param operations the new sequence of operations
      * @throws UserDefinedCycleException If the inserted Operations have cycles.
      */
-    public void modifyOperations(ArrayList<StackOperation> operations) throws UserDefinedCycleException{
+    public void modifyOperations(String operationsText, ArrayList<StackOperation> operations) throws UserDefinedCycleException{
         for(StackOperation op : operations){
            if(op instanceof UserDefinedOperation){
                UserDefinedOperation us = (UserDefinedOperation) op;
@@ -74,6 +80,7 @@ public class UserDefinedOperation extends StackOperation {
         }
         operationsSequence.clear();
         parents.clear();
+        operationsTextual = operationsText;
         for(StackOperation op : operations)
             this.addOperation(op);
         validate=true;
