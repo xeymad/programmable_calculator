@@ -27,6 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import operationexecutor.OperationExecutor;
 import org.apache.commons.math3.exception.MathParseException;
 import stackoperation.*;
 import stackvariableoperation.StackVariableOperation;
@@ -48,6 +49,8 @@ public class FXMLDocumentController implements Initializable {
     private CalculatorStack calculatorStack;
     
     private ComplexVariablesVector complexVariablesVector;
+    
+    private OperationExecutor operationExecutor;
     
     private static final int ELEMENTS_VIEW = 20;
     
@@ -74,6 +77,7 @@ public class FXMLDocumentController implements Initializable {
         calculatorStack = new CalculatorStack();
         complexVariablesVector = new ComplexVariablesVector();
         stackOperationDictionary = new StackOperationDictionary(calculatorStack, complexVariablesVector);
+        operationExecutor = new OperationExecutor();
         varClm.setCellValueFactory(new PropertyValueFactory<>("character"));
         valueClm.setCellValueFactory(new PropertyValueFactory<>("complex"));
         
@@ -150,10 +154,13 @@ public class FXMLDocumentController implements Initializable {
         String inserted = txtInput.getText();
         txtInput.clear();
         if(inserted.equals("")) return;
+        
         Exception catched;
         try{
             Complex c = cf.parse(inserted);
-            calculatorStack.push(c);
+            StackOperation stackOperation = new PushStackOperation(calculatorStack, c);
+            operationExecutor.setCommand(stackOperation);
+            operationExecutor.execute();
             updateStackView();
             return;
         }
@@ -181,7 +188,8 @@ public class FXMLDocumentController implements Initializable {
         }
         else{
             try{
-                stackOperation.execute();
+                operationExecutor.setCommand(stackOperation);
+                operationExecutor.execute();
                 if (stackOperation instanceof StackVariableOperation ||
                         stackOperation instanceof UserDefinedOperation)
                     updateVariablesView();
