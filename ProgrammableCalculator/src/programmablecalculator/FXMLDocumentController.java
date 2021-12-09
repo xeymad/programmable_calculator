@@ -56,7 +56,12 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<ComplexVariable, Character> varClm;
     @FXML
     private TableColumn<ComplexVariable, Complex> valueClm;
-    
+    @FXML
+    private TableView<UserDefinedOperation> userDefinedView;
+    @FXML
+    private TableColumn<UserDefinedOperation, String> varClm1;
+    @FXML
+    private TableColumn<UserDefinedOperation, String> valueClm1;   
     ComplexFormat cf;
     /**
      * Initialize the components of the GUI
@@ -71,6 +76,10 @@ public class FXMLDocumentController implements Initializable {
         stackOperationDictionary = new StackOperationDictionary(calculatorStack, complexVariablesVector);
         varClm.setCellValueFactory(new PropertyValueFactory<>("character"));
         valueClm.setCellValueFactory(new PropertyValueFactory<>("complex"));
+        
+        varClm1.setCellValueFactory(new PropertyValueFactory<>("operationName"));
+        valueClm1.setCellValueFactory(new PropertyValueFactory<>("operationsTextual"));
+        updateUserDefinedView();
         updateVariablesView();
         // hook performUserAction on textField
         txtInput.setOnKeyPressed(event -> {
@@ -90,7 +99,15 @@ public class FXMLDocumentController implements Initializable {
             variablesView.getItems().add(cv);
        }
     }
-    
+        
+   public void updateUserDefinedView(){
+     userDefinedView.getItems().clear();
+       for(StackOperation operation : stackOperationDictionary.listOperations()){
+           if(operation instanceof UserDefinedOperation)
+               userDefinedView.getItems().add((UserDefinedOperation)operation);
+       }
+    }
+   
     /**
      * This function updates the stackView in the GUI.
      * It shows the last ELEMENTS_VIEW elements of the stack.
@@ -123,7 +140,7 @@ public class FXMLDocumentController implements Initializable {
     private void closeBtnPressed(ActionEvent event) {
         Platform.exit();
     }
-        
+    
     /**
      * This function first try to parse the received string from txtInput as a ComplexNumber.
      * If it can't parse, it tryes to execute an operation from StackOperationDictionary.

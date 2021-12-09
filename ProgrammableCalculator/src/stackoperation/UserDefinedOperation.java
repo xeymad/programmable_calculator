@@ -77,6 +77,10 @@ public class UserDefinedOperation extends StackOperation {
     public String getOperationName() {
         return operationName;
     }
+      
+    public String getOperationsTextual() {
+        return operationsTextual;
+    }
 
     /**
      * Modifies the old sequence of operations with the new sequence of operations.

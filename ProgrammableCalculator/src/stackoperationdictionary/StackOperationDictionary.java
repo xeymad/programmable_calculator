@@ -13,6 +13,8 @@ import stackvariableoperation.*;
 import stackvariableoperation.SumStackVariableOperation;
 import complexvariablesvector.ComplexVariablesVector;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import org.apache.commons.math3.complex.Complex;
@@ -154,6 +156,14 @@ public class StackOperationDictionary {
             operation.execute();
             return true;
         }
+    }
+    
+    /**
+    * This method returns an ArrayList of the operations the dictionary contains
+    * @return listOperations the list of all the operations in the dictionary
+    */
+    public ArrayList<StackOperation> listOperations() {
+        return new ArrayList<>(dict.values());
     }
     
     public void addUserDefinedOperation(String name, String operations) 
