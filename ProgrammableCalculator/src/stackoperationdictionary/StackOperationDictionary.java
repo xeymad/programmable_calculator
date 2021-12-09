@@ -209,10 +209,12 @@ public class StackOperationDictionary {
         if(containsKey(name)){
             UserDefinedOperation operation;
             operation = (UserDefinedOperation)getOperation(name);
-            operation.modifyOperations(operations,(ArrayList)operationList);
+            operation.modifyOperations((ArrayList)operationList);
+            operation.setOperationsTextual(operations);
         }
         else{
-        StackOperation userDefinedOp = new UserDefinedOperation(name, operations ,operationList, calculatorStack);
+        UserDefinedOperation userDefinedOp = new UserDefinedOperation(name ,operationList, calculatorStack);
+        userDefinedOp.setOperationsTextual(operations);
         putOperation(name, userDefinedOp);
         }
     }

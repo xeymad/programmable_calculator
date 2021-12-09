@@ -44,8 +44,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField txtInput;
     @FXML
-    private Button insertBtn;
-    @FXML
     private ListView<Complex> stackView;
     @FXML
     private TableView<ComplexVariable> variablesView;

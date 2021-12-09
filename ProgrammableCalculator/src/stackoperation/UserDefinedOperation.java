@@ -32,10 +32,9 @@ public class UserDefinedOperation extends StackOperation {
      * @param opSequence sequence of operations which define the user operation(including the push of numbers).
      * @param calculatorStack instance of calculator's stack.
      */
-    public UserDefinedOperation(String opName, String opText,  ArrayList<StackOperation> opSequence, CalculatorStack calculatorStack) {
+    public UserDefinedOperation(String opName, ArrayList<StackOperation> opSequence, CalculatorStack calculatorStack) {
         super(calculatorStack);
         operationName = opName;
-        operationsTextual = opText;
         operationsSequence = new ArrayList<>();
         parents = new ArrayList<>(10);
         children = new HashMap<>();
@@ -73,7 +72,7 @@ public class UserDefinedOperation extends StackOperation {
      * @param operations the new sequence of operations
      * @throws UserDefinedCycleException If the inserted Operations have cycles.
      */
-    public void modifyOperations(String operationsText, ArrayList<StackOperation> operations) throws UserDefinedCycleException{
+    public void modifyOperations(ArrayList<StackOperation> operations) throws UserDefinedCycleException{
         for(StackOperation op : operations){
            if(op instanceof UserDefinedOperation){
                UserDefinedOperation us = (UserDefinedOperation) op;
@@ -83,7 +82,6 @@ public class UserDefinedOperation extends StackOperation {
         }
         operationsSequence.clear();
         parents.clear();
-        operationsTextual = operationsText;
         for(StackOperation op : operations)
             this.addOperation(op);
     }
@@ -139,4 +137,9 @@ public class UserDefinedOperation extends StackOperation {
         this.operationsSequence.clear();
         operationsTextual = "";
     }
+
+    public void setOperationsTextual(String operationsTextual) {
+        this.operationsTextual = operationsTextual;
+    }
+    
 }
