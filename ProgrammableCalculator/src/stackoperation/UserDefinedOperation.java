@@ -11,6 +11,10 @@ import java.util.*;
 
 /**
  * This class implements the creation and the execution of user defined operations.
+ * An user defined operation is a sequence of StackOperations. It can also execute others UserDefinedOperations.
+ * If a UserDefinedOperations depends from another UserDefinedOperations, it is child of the last one.
+ * If a UserDefinedOperations is a child (depends from others), we also know its parents.
+ * A UserDefinedOperation can be valid or not. We consider a UserDefinedOperation as invalid when it has no operations.
  * @author Arianna Carratù, Giuseppe
  */
 public class UserDefinedOperation extends StackOperation {
@@ -19,7 +23,7 @@ public class UserDefinedOperation extends StackOperation {
     private ArrayList<StackOperation> operationsSequence;
     private List<UserDefinedOperation> parents;
     private Map<String,UserDefinedOperation> children;
-    private boolean validate;
+    //private boolean validate;
     
 
     /** 
@@ -35,7 +39,6 @@ public class UserDefinedOperation extends StackOperation {
         operationsSequence = new ArrayList<>();
         parents = new ArrayList<>(10);
         children = new HashMap<>();
-        validate=true;
         for(StackOperation op : opSequence)
             this.addOperation(op);
     }
@@ -83,30 +86,22 @@ public class UserDefinedOperation extends StackOperation {
         operationsTextual = operationsText;
         for(StackOperation op : operations)
             this.addOperation(op);
-        validate=true;
     }
     
     /**
-     * This method implements the execution of the operations' sequence that defines the user operation.
+     * This method implements the execution of the operations's sequence that defines the user operation.
+     * If a UserDefined does not exists it launchs an Exception.
      */ 
     @Override
     public void execute() {
-        checkValidate();
+        if(this.operationsSequence.isEmpty())
+                throw new RuntimeException("The operation "+ this.getOperationName() +" has been deleted");
+        for(UserDefinedOperation usOperation : parents){
+            if(usOperation.operationsSequence.isEmpty())
+                throw new RuntimeException("The dependency "+usOperation.operationName+" has been deleted");
+        }
         for(StackOperation stackOperation: operationsSequence)
             stackOperation.execute();
-    }
-    
-    /**
-     * Checks if an operation can be executed, checking all its dependencies.
-     * Throws an exception if an operation cannot be executed.
-     */
-    public void checkValidate() {
-        if (!validate){
-            throw new RuntimeException("The dependency " + operationName + " has been deleted");
-        }
-        for(UserDefinedOperation usOperation : parents){
-            usOperation.checkValidate();
-        }
     }
     
     /**
@@ -137,8 +132,5 @@ public class UserDefinedOperation extends StackOperation {
         for(UserDefinedOperation parent : parents)
             parent.removeChild(this);
         this.operationsSequence.clear();
-        operationsTextual = "";
-        validate=false;
-      
     }
 }
