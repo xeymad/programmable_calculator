@@ -143,9 +143,13 @@ public class UserDefinedOperation extends StackOperation {
         for(UserDefinedOperation parent : parents)
             parent.removeChild(this);
         this.operationsSequence.clear();
-        operationsTextual = "";
+        operationsTextual = "DELETED";
     }
-
+    
+     /**
+     * Sets the textual representation of the operation
+     * @param operationsTextual the textual representation of the operation
+     */
     public void setOperationsTextual(String operationsTextual) {
         this.operationsTextual = operationsTextual;
     }

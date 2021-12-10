@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.apache.commons.math3.complex.*;
@@ -21,8 +20,6 @@ import complexvariablesvector.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -107,7 +104,12 @@ public class FXMLDocumentController implements Initializable {
             variablesView.getItems().add(cv);
        }
     }
-        
+
+    /**
+     * This function updates the userDefinedView in the GUI.
+     * It shows all the UserDefinedOperation defined. 
+     * 
+     */
    public void updateUserDefinedView(){
      userDefinedView.getItems().clear();
        for(StackOperation operation : stackOperationDictionary.listOperations()){
