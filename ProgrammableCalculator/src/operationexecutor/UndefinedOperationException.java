@@ -6,7 +6,8 @@
 package operationexecutor;
 
 /**
- *
+ * This Exception is thrown when the the client tries to execute an operation in 
+ * OperationExecute, but the operation was not set
  * @author matteo
  */
 public class UndefinedOperationException extends RuntimeException {
