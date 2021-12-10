@@ -93,14 +93,68 @@ public class UserDefinedOperationTest {
 
     /**
      * Test of checkValidate method, of class UserDefinedOperation.
+     * Assert a runtime exception is being thrown when the operation has been removed.
      */
-    @Test
-    public void testCheckValidate() {
+    @Test(expected = RuntimeException.class)
+    public void testCheckValidateSelf() {
         System.out.println("checkValidate");
         
-        instance.checkValidate();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // creating user defined A = "+"
+        ArrayList<StackOperation> usOpSequenceA = new ArrayList<>();
+        usOpSequenceA.add(new SumStackOperation(calculatorStack));
+        UserDefinedOperation userDefinedA = new UserDefinedOperation("A", usOpSequenceA, calculatorStack);
+        
+        userDefinedA.removeOperations();
+        userDefinedA.checkValidate();
+    }
+    
+    /**
+     * Test of checkValidate method, of class UserDefinedOperation.
+     * Assert a runtime exception is being thrown when a parent operation has been removed.
+     */
+    @Test(expected = RuntimeException.class)
+    public void testCheckValidateParent() {
+        System.out.println("checkValidate");
+        
+        // creating user defined A = "+"
+        ArrayList<StackOperation> usOpSequenceA = new ArrayList<>();
+        usOpSequenceA.add(new SumStackOperation(calculatorStack));
+        UserDefinedOperation userDefinedA = new UserDefinedOperation("A", usOpSequenceA, calculatorStack);
+        
+        // creating user defined B = "A"
+        ArrayList<StackOperation> usOpSequenceB = new ArrayList<>();
+        usOpSequenceB.add(userDefinedA);
+        UserDefinedOperation userDefinedB = new UserDefinedOperation("B", usOpSequenceB, calculatorStack);
+        
+        userDefinedA.removeOperations();
+        userDefinedB.checkValidate();
+    }
+    
+    /**
+     * Test of checkValidate method, of class UserDefinedOperation.
+     * Assert a runtime exception is being thrown when a grandparent operation has been removed.
+     */
+    @Test(expected = RuntimeException.class)
+    public void testCheckValidateGrandParent() {
+        System.out.println("checkValidate");
+        
+        // creating user defined A = "+"
+        ArrayList<StackOperation> usOpSequenceA = new ArrayList<>();
+        usOpSequenceA.add(new SumStackOperation(calculatorStack));
+        UserDefinedOperation userDefinedA = new UserDefinedOperation("A", usOpSequenceA, calculatorStack);
+        
+        // creating user defined B = "A"
+        ArrayList<StackOperation> usOpSequenceB = new ArrayList<>();
+        usOpSequenceB.add(userDefinedA);
+        UserDefinedOperation userDefinedB = new UserDefinedOperation("B", usOpSequenceB, calculatorStack);
+        
+        // creating user defined C = "B"
+        ArrayList<StackOperation> usOpSequenceC = new ArrayList<>();
+        usOpSequenceC.add(userDefinedB);
+        UserDefinedOperation userDefinedC = new UserDefinedOperation("C", usOpSequenceC, calculatorStack);
+        
+        userDefinedA.removeOperations();
+        userDefinedC.checkValidate();
     }
 
     /**
