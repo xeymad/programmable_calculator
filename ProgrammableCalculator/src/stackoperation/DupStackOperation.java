@@ -34,5 +34,4 @@ public class DupStackOperation extends StackOperation {
             calculatorStack.push(c);
         }
     }
-    
 }

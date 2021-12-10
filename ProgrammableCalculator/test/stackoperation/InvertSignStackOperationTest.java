@@ -80,5 +80,4 @@ public class InvertSignStackOperationTest {
         none.execute();
         assertTrue(emptyStack.isEmpty());
     }
-
 }

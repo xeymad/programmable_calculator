@@ -62,15 +62,15 @@ public class SwapStackOperationTest {
     @Test
     public void testExecuteAtLeastTwoElementsStack() {
         System.out.println("execute with at least two elements stack");
-        Complex c1 =new Complex(-8.6, -23.1);
-        Complex c2 =new Complex(89, -7);
-        Complex c3 =new Complex(55, 4);
+        Complex c1 = new Complex(-8.6, -23.1);
+        Complex c2 = new Complex(89, -7);
+        Complex c3 = new Complex(55, 4);
         calculatorStack.push(c1);
         calculatorStack.push(c2);
         calculatorStack.push(c3);
         swap.execute();
-        Complex result1=calculatorStack.pop();
-        Complex result2=calculatorStack.pop();
+        Complex result1 = calculatorStack.pop();
+        Complex result2 = calculatorStack.pop();
         assertEquals(c2, result1);
         assertEquals(c3, result2);
     }

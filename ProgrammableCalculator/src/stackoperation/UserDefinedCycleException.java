@@ -6,7 +6,9 @@
 package stackoperation;
 
 /**
- *
+ * This exception is thrown when the creation of an user defined operation
+ * would cause a cycle, namely: it is defined by an operation which in turn executes
+ * the former
  * @author Giuseppe
  */
 public class UserDefinedCycleException extends Exception{

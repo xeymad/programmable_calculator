@@ -30,8 +30,8 @@ public class OverStackOperation extends StackOperation {
     public void execute() {
         int size = calculatorStack.size();
         if(size > 1){
-            Complex top =calculatorStack.pop();
-            Complex preTop =calculatorStack.top();
+            Complex top = calculatorStack.pop();
+            Complex preTop = calculatorStack.top();
             calculatorStack.push(top);
             calculatorStack.push(preTop);
         }

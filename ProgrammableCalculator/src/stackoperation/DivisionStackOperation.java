@@ -14,15 +14,15 @@ import org.apache.commons.math3.complex.Complex;
 public class DivisionStackOperation extends StackOperation{
         
     /**
-     *Class constructor 
-     * @param calculatorStack istance of the calculator stack
+     * Class constructor 
+     * @param calculatorStack instance of the calculator stack
      */
     public DivisionStackOperation(CalculatorStack calculatorStack) {
         super(calculatorStack);
     }
     
     /**
-     *Method which contains the logic of the division between the last two Complexs Object from the stack<br>
+     * Method which contains the logic of the division between the last two Complex Object from the stack<br>
      * If the stack is empty it puts inside a ZERO value<br>
      * If the stack contains just one elements, the stack is unchanged<br>
      * It throws a ArithmeticException when trying to divide by zero<br>
