@@ -6,7 +6,6 @@
 package stackvariableoperation;
 
 import calculatorstack.CalculatorStack;
-import java.util.NoSuchElementException;
 import org.apache.commons.math3.complex.Complex;
 import complexvariablesvector.ComplexVariablesVector;
 
@@ -19,7 +18,7 @@ public class SumStackVariableOperation extends StackVariableOperation {
     /**
      * Class Constructor
      * @param calculatorStack instance of calculator's stack
-     * @param variablesVector instance of variables' vector
+     * @param variablesVector instance of variable's vector
      * @param variable the variable used to execute the operation
      */
     public SumStackVariableOperation(CalculatorStack calculatorStack, 

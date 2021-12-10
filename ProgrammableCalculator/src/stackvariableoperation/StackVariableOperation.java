@@ -21,7 +21,7 @@ public abstract class StackVariableOperation extends StackOperation {
     /**
      * Class Constructor
      * @param calculatorStack instance of calculator's stack
-     * @param variablesVector instance of variables' vector
+     * @param variablesVector instance of variable's vector
      * @param variable the variable used to execute the operation
      */
     public StackVariableOperation(CalculatorStack calculatorStack, 
