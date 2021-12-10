@@ -237,7 +237,7 @@ public class StackOperationDictionary {
     }
      
     /**
-     * Removes the given user defined operation.
+     * Removes the given user-defined operation by deleting its sequence of operations.
      * @param  ud user defined operation to remove
      */ 
     public void removeUserDefinedOperation(UserDefinedOperation ud){
