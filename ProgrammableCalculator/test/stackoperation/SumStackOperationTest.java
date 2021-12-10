@@ -47,7 +47,7 @@ public class SumStackOperationTest {
         assertEquals(actual, expected);
     }    
     /**
-     * Test of execute method beetween elements of from the first quadrant
+     * Test of execute method between elements of from the first quadrant
      */
     @Test  
     public void testExecuteFirstQuadrant(){ 
@@ -61,7 +61,7 @@ public class SumStackOperationTest {
     }
     
         /**
-     * Test of execute method beetween elements of from the first and second quadrant
+     * Test of execute method between elements of from the first and second quadrant
      */
     @Test
     public void testExecuteFirstSecondQuadrant(){ 
@@ -75,7 +75,7 @@ public class SumStackOperationTest {
     }
     
     /**
-     * Test of execute method beetween elements of from the first and third quadrants
+     * Test of execute method between elements of from the first and third quadrants
      */
     @Test
     public void testExecuteFirstThirdQuadrant(){
@@ -88,7 +88,7 @@ public class SumStackOperationTest {
         assertEquals(actual, expected);
     }
     /**
-     * Test of execute method beetween elements of from the first and fourth quadrants
+     * Test of execute method between elements of from the first and fourth quadrants
      */
     @Test
     public void testExecuteFirstFourthQuadrant(){
@@ -101,7 +101,7 @@ public class SumStackOperationTest {
         assertEquals(actual, expected);  
     }
     /**
-     * Test of execute method beetween elements of from the second quadrant
+     * Test of execute method between elements of from the second quadrant
      */
     @Test
     public void testExecuteSecondQuadrant(){
@@ -114,7 +114,7 @@ public class SumStackOperationTest {
         assertEquals(actual, expected); 
     }
     /**
-     * Test of execute method beetween elements of from the second and third quadrants
+     * Test of execute method between elements of from the second and third quadrants
      */
     @Test 
     public void testExecuteSecondThirdQuadrant(){ 
@@ -127,7 +127,7 @@ public class SumStackOperationTest {
         assertEquals(actual, expected); 
     }    
     /**
-     * Test of execute method beetween elements of from the second and fourth quadrants
+     * Test of execute method between elements of from the second and fourth quadrants
      */
     @Test
     public void testExecuteSecondFourthQuadrant(){
@@ -141,7 +141,7 @@ public class SumStackOperationTest {
     }
     
     /**
-     * Test of execute method beetween elements of from the third quadrant
+     * Test of execute method between elements of from the third quadrant
      */
     @Test
     public void testExecuteThirdQuadrant(){   
@@ -154,7 +154,7 @@ public class SumStackOperationTest {
     }
     
     /**
-     * Test of execute method beetween elements of from the third and fourth quadrants
+     * Test of execute method between elements of from the third and fourth quadrants
      */
     @Test
     public void testExecuteThirdFourthQuadrant(){   
@@ -168,7 +168,7 @@ public class SumStackOperationTest {
     }
     
      /**
-     * Test of execute method beetween elements of from the fourth quadrant
+     * Test of execute method between elements of from the fourth quadrant
      */
     @Test
     public void testExecuteFourthQuadrant(){

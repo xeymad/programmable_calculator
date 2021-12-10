@@ -17,7 +17,7 @@ public class ClearStackOperation extends StackOperation{
         super(calculatorStack);
     }
 
-     /**
+    /**
      * Pops all the elements from the stack.
      */
     @Override

@@ -31,6 +31,7 @@ public class PushStackOperationTest {
         c = new Complex(42, 99);
         pushStackOperation = new PushStackOperation(calculatorStack, c);
     }
+    
     /**
      * Tests PushStackOperation by inserting a ComplexNumber into a empty Stack
      */

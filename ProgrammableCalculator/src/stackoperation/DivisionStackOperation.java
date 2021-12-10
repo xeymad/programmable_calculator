@@ -44,6 +44,6 @@ public class DivisionStackOperation extends StackOperation{
             calculatorStack.push(c2.divide(c1));
     }
 
-    
-
 }
+
+
