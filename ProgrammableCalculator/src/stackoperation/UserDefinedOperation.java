@@ -91,7 +91,7 @@ public class UserDefinedOperation extends StackOperation {
     }
     
     /**
-     * This method implements the execution of the operations's sequence that defines the user operation.
+     * This method implements the execution of the operations' sequence that defines the user operation.
      */ 
     @Override
     public void execute() {

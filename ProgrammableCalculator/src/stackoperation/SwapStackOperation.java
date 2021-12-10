@@ -29,8 +29,8 @@ public class SwapStackOperation extends StackOperation{
     @Override
     public void execute(){
         if(calculatorStack.size() > 1){
-            Complex c1 =calculatorStack.pop();
-            Complex c2 =calculatorStack.pop();
+            Complex c1 = calculatorStack.pop();
+            Complex c2 = calculatorStack.pop();
             calculatorStack.push(c1);
             calculatorStack.push(c2);
         }

@@ -7,8 +7,6 @@ package userdefinedoperationformat;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import userdefinedoperationformat.UserDefinedOperationFormat;
-
 /**
  *
  * @author giuse

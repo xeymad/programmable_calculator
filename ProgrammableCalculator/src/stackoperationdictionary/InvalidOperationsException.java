@@ -6,7 +6,7 @@
 package stackoperationdictionary;
 
 /**
- *
+ * Thrown when trying to insert a non-existent operation
  * @author aferr
  */
 class InvalidOperationsException extends Exception {

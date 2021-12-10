@@ -32,5 +32,4 @@ public class InvertSignStackOperation extends StackOperation {
             calculatorStack.push(c.negate());
         }
     }
-    
 }

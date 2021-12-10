@@ -25,9 +25,8 @@ public class DupStackOperationTest {
     @Before
     public void init(){
         calculatorStack = new CalculatorStack();
-        dup= new DupStackOperation(calculatorStack);
+        dup = new DupStackOperation(calculatorStack);
     }
-    
    
     /**
      * Test of execute method, with a empty stack.

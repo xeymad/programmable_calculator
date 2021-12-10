@@ -295,12 +295,8 @@ public class StackOperationDictionaryTest {
     @Test
     public void testListOperations() {
         System.out.println("listOperations");
-        StackOperationDictionary instance = null;
-        ArrayList<StackOperation> expResult = null;
-        ArrayList<StackOperation> result = instance.listOperations();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<StackOperation> result = stackOperationDictionary.listOperations();
+        assertEquals(SqrtStackOperation.class, result.get(0).getClass());
     }
 
     /**
@@ -313,7 +309,7 @@ public class StackOperationDictionaryTest {
     @Test
     public void testSaveUserDefinedOperation() throws IOException, InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException {
         System.out.println("saveUserDefinedOperation");
-        String filePath="C:\\Users\\Asus Pc\\Documents\\NetBeansProjects\\programmable_calculator\\ProgrammableCalculator\\test\\stackoperationdictionary\\file";
+        String filePath="file";
         File file = new File(filePath);
         stackOperationDictionary.addUserDefinedOperation("userDefinedOne", "+ + -");
         stackOperationDictionary.addUserDefinedOperation("userDefinedTwo", "swap dup");
@@ -338,7 +334,7 @@ public class StackOperationDictionaryTest {
         UserDefinedOperation ud=(UserDefinedOperation)stackOperationDictionary.getOperation("userDefined");
         stackOperationDictionary.removeUserDefinedOperation(ud);
         String result=ud.getOperationsTextual();
-        assertEquals("",result);
+        assertEquals("DELETED",result);
 
     }
 }

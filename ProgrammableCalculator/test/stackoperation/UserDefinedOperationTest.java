@@ -8,13 +8,9 @@ package stackoperation;
 import calculatorstack.CalculatorStack;
 import java.util.ArrayList;
 import org.apache.commons.math3.complex.Complex;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import userdefinedoperationformat.UserDefinedParseException;
 
 /**
  *
@@ -30,8 +26,8 @@ public class UserDefinedOperationTest {
     @Before
     public void setUp() {
     operationName = "hypotenuse";
-    calculatorStack=new CalculatorStack();
-    operationsSequence= new ArrayList<>();
+    calculatorStack = new CalculatorStack();
+    operationsSequence = new ArrayList<>();
     calculatorStack.push(new Complex(3,0));
     calculatorStack.push(new Complex(4,0));
     operationsSequence.add(new DupStackOperation(calculatorStack));

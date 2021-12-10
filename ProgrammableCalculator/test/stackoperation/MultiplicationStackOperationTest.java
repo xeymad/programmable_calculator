@@ -34,7 +34,7 @@ public class MultiplicationStackOperationTest {
     }  
     
     /**
-     *Test Case 2: multiplication with no numbers on the stack
+     * Test Case 2: multiplication with no numbers on the stack
      */
     @Test
     public void testNoNumbers() {
@@ -45,7 +45,7 @@ public class MultiplicationStackOperationTest {
     } 
     
     /**
-     *Test Case 3: multiplication between two complex numbers both belonging to the first quadrant
+     * Test Case 3: multiplication between two complex numbers both belonging to the first quadrant
      */
     @Test
     public void testFirstQuadrant() {
@@ -58,7 +58,7 @@ public class MultiplicationStackOperationTest {
     }  
     
     /**
-     *Test Case 4: multiplication between two complex numbers, one belonging to the second quadrant, the other to the first
+     * Test Case 4: multiplication between two complex numbers, one belonging to the second quadrant, the other to the first
      */
     @Test
     public void testSecondFirstQuadrant() {
@@ -71,7 +71,7 @@ public class MultiplicationStackOperationTest {
     }   
     
     /**
-     *Test Case 5: multiplication between two complex numbers, one belonging to the third quadrant, the other to the first
+     * Test Case 5: multiplication between two complex numbers, one belonging to the third quadrant, the other to the first
      */
     @Test
     public void testThirdFirstQuadrant() {
@@ -84,7 +84,7 @@ public class MultiplicationStackOperationTest {
     }  
     
     /**
-     *Test Case 6: multiplication between two complex numbers, one belonging to the fourth quadrant, the other to the first
+     * Test Case 6: multiplication between two complex numbers, one belonging to the fourth quadrant, the other to the first
      */
     @Test
     public void testFourthFirstQuadrant() {
@@ -97,7 +97,7 @@ public class MultiplicationStackOperationTest {
     } 
     
     /**
-     *Test Case 7: multiplication between two complex numbers both belonging to the second quadrant
+     * Test Case 7: multiplication between two complex numbers both belonging to the second quadrant
      */
     @Test
     public void testSecondQuadrant() {
@@ -110,7 +110,7 @@ public class MultiplicationStackOperationTest {
     } 
     
     /**
-     *Test Case 8: multiplication between two complex numbers, one belonging to the third quadrant, the other to the second
+     * Test Case 8: multiplication between two complex numbers, one belonging to the third quadrant, the other to the second
      */
     @Test
     public void testThirdSecondQuadrant() {
@@ -123,7 +123,7 @@ public class MultiplicationStackOperationTest {
     } 
     
     /**
-     *Test Case 9: multiplication between two complex numbers, one belonging to the fourth quadrant, the other to the second
+     * Test Case 9: multiplication between two complex numbers, one belonging to the fourth quadrant, the other to the second
      */
     @Test
     public void testFourthSecondQuadrant() {
@@ -136,7 +136,7 @@ public class MultiplicationStackOperationTest {
     }  
     
     /**
-     *Test Case 10: multiplication between two complex numbers both belonging to the third quadrant
+     * Test Case 10: multiplication between two complex numbers both belonging to the third quadrant
      */
     @Test
     public void testThirdQuadrant() {
@@ -149,7 +149,7 @@ public class MultiplicationStackOperationTest {
     }  
     
     /**
-     *Test Case 11: multiplication between two complex numbers,one belonging to the fourth quadrant, the other to the third
+     * Test Case 11: multiplication between two complex numbers,one belonging to the fourth quadrant, the other to the third
      */
     @Test
     public void testFourthThirdQuadrant() {
@@ -162,7 +162,7 @@ public class MultiplicationStackOperationTest {
     } 
     
     /**
-     *Test Case 12: multiplication between two complex numbers both belonging to the fourth quadrant
+     * Test Case 12: multiplication between two complex numbers both belonging to the fourth quadrant
      */
     @Test
     public void testFourthQuadrant() {
@@ -175,7 +175,7 @@ public class MultiplicationStackOperationTest {
     }  
     
     /**
-     *Test Case 13: multiplication between two zeros
+     * Test Case 13: multiplication between two zeros
      */
     @Test
     public void testTwoZeros() {
@@ -188,7 +188,7 @@ public class MultiplicationStackOperationTest {
     } 
     
     /**
-     *Test Case 14: multiplication between zero and a complex number
+     * Test Case 14: multiplication between zero and a complex number
      */
     @Test
     public void testZero() {
@@ -201,7 +201,7 @@ public class MultiplicationStackOperationTest {
     }  
     
     /**
-     *Test Case 15: multiplication between two ones
+     * Test Case 15: multiplication between two ones
      */
     @Test
     public void testTwoOnes() { 

@@ -5,7 +5,6 @@
  */
 package complexvariablesvector;
 
-import complexvariablesvector.ComplexVariablesVector;
 import java.util.Iterator;
 import org.apache.commons.math3.complex.Complex;
 import org.junit.Before;
