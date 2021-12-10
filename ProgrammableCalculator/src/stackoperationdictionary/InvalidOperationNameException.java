@@ -6,7 +6,7 @@
 package stackoperationdictionary;
 
 /**
- *
+ * Thrown when trying to enter an invalid name for UserDefinedOperation
  * @author aferr
  */
 public class InvalidOperationNameException extends Exception {
