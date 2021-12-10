@@ -14,7 +14,7 @@ import org.apache.commons.math3.complex.Complex;
 public class MultiplicationStackOperation extends StackOperation{
 
     /**
-     *Class constructor 
+     * Class constructor 
      * @param calculatorStack istance of the calculator stack
      */
     public MultiplicationStackOperation(CalculatorStack calculatorStack) {
@@ -22,7 +22,7 @@ public class MultiplicationStackOperation extends StackOperation{
     }
 
     /**
-     *Method which contains the logic of the multiplication between two Complexs Object from the stack
+     * Method which contains the logic of the multiplication between two Complexs Object from the stack
      * <br>
      * If the stack is empty it puts inside a ZERO value
      * <br>

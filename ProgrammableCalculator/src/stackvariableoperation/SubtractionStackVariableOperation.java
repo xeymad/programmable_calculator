@@ -10,7 +10,7 @@ import org.apache.commons.math3.complex.Complex;
 import complexvariablesvector.ComplexVariablesVector;
 
 /**
- *
+ * This class implements the subtraction operation between a variable's value and the top element of the stack.
  * @author aferr
  */
 public class SubtractionStackVariableOperation extends StackVariableOperation {
@@ -28,7 +28,7 @@ public class SubtractionStackVariableOperation extends StackVariableOperation {
 
     /**
      * Subtracts the top element of the stack from the given variable and puts
-     * the result into the latter. <br>
+     * the result into the variable. <br>
      * If the stack is empty, the variable's value just remains unchanged.
      */
     @Override

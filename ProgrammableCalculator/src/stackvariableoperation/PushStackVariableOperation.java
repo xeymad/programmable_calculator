@@ -9,7 +9,7 @@ import calculatorstack.CalculatorStack;
 import complexvariablesvector.ComplexVariablesVector;
 
 /**
- *
+ * This class implements the push operation of the value of a variable on the stack.
  * @author aferr
  */
 public class PushStackVariableOperation extends StackVariableOperation{

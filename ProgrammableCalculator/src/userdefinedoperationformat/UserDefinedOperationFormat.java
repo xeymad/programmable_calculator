@@ -6,14 +6,14 @@
 package userdefinedoperationformat;
 
 /**
- *
+ * This class parses a string checking if is in user defined operation format.
  * @author Giuseppe
  */
 
 public class UserDefinedOperationFormat {
     
     /**
-     * Parses a string checking if is in UserDefinedOperationFormat.
+     * Parses a string checking if is in user defined operation format.
      * 
      * @param text the string to parse
      * @return String[] a vector of 2 elements, the first attributed to UserDefinedOperation's name

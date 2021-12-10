@@ -26,6 +26,7 @@ public class OperationExecutorTest {
     public void init() {
         calculatorStack = new CalculatorStack();
     }
+    
     /**
     * Tests the execution with the empty Operation
     */
@@ -36,7 +37,7 @@ public class OperationExecutorTest {
     }
     
     /**
-     * Test the non empty constructor of the OperationExecutor
+     * Tests the non empty constructor of the OperationExecutor
      */
     @Test
     public void testOperationExecutorNonEmptyConstructor() {

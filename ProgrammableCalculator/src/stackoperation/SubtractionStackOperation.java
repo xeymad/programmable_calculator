@@ -14,7 +14,7 @@ import org.apache.commons.math3.complex.Complex;
 public class SubtractionStackOperation extends StackOperation{
         
     /**
-     *Class constructor 
+     * Class constructor 
      * @param calculatorStack istance of the calculator stack
      */
     public SubtractionStackOperation(CalculatorStack calculatorStack) {
@@ -22,7 +22,7 @@ public class SubtractionStackOperation extends StackOperation{
     }
     
     /**
-     *Method which contains the logic of the subtraction between the last two Complexs Object from the stack
+     * Method which contains the logic of the subtraction between the last two Complexs Object from the stack
      * <br>
      * If the stack is empty it puts inside a ZERO value
      * <br>

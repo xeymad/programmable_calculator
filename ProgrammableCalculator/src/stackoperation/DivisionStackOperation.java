@@ -22,7 +22,7 @@ public class DivisionStackOperation extends StackOperation{
     }
     
     /**
-     *Method which contains the logic of the division between the last two Complexs Object from the stack<br>
+     * Method which contains the logic of the division between the last two Complexs Object from the stack<br>
      * If the stack is empty it puts inside a ZERO value<br>
      * If the stack contains just one elements, the stack is unchanged<br>
      * It throws a ArithmeticException when trying to divide by zero<br>

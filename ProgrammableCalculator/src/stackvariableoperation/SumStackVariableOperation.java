@@ -10,7 +10,7 @@ import org.apache.commons.math3.complex.Complex;
 import complexvariablesvector.ComplexVariablesVector;
 
 /**
- *
+ * This class implements the sum operation between a variable's value and the top element of the stack.
  * @author Arianna Carratù
  */
 public class SumStackVariableOperation extends StackVariableOperation {
@@ -28,7 +28,7 @@ public class SumStackVariableOperation extends StackVariableOperation {
 
     /**
      * Sums the value of the given variable with the top element of the stack and
-     * puts the result into the former. <br>
+     * puts the result into the variable. <br>
      * If the stack is empty, the variable's value just remains unchanged.
      */
     @Override

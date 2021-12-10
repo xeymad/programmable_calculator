@@ -15,16 +15,16 @@ public abstract class StackOperation {
     protected CalculatorStack calculatorStack;
 
     /**
-    * Class constructor
+     * Class constructor
      * @param calculatorStack istance of the calculator stack
-    */
+     */
     public StackOperation(CalculatorStack calculatorStack) {
         this.calculatorStack = calculatorStack;
     }
     
     /**
-    * Interface for the method which contains the operation logic
-    */
+     * Interface for the method which contains the operation logic
+     */
     abstract public void execute();
     
 }

@@ -31,7 +31,7 @@ public class OperationExecutor {
     }
     
     /**
-     * Execute the current operation
+     * Execute the current operation.
      */
     public void execute(){
         if (operation == null)

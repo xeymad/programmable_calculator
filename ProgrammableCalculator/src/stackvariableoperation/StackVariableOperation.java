@@ -10,7 +10,7 @@ import stackoperation.StackOperation;
 import complexvariablesvector.ComplexVariablesVector;
 
 /**
- *
+ * This abstract class provides the generic stack variable operation interface.
  * @author aferr
  */
 public abstract class StackVariableOperation extends StackOperation {

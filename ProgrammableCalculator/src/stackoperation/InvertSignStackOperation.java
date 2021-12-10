@@ -9,7 +9,7 @@ import calculatorstack.CalculatorStack;
 import org.apache.commons.math3.complex.Complex;
 
 /**
- *
+ * This class implements the sign inversion of a stack's element.
  * @author Giuseppe
  */
 public class InvertSignStackOperation extends StackOperation {

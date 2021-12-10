@@ -14,7 +14,7 @@ import org.apache.commons.math3.complex.Complex;
 public class SumStackOperation extends StackOperation{
 
     /**
-     *Class constructor 
+     * Class constructor 
      * @param calculatorStack istance of the calculator stack
      */
     public SumStackOperation(CalculatorStack calculatorStack) {
@@ -22,7 +22,7 @@ public class SumStackOperation extends StackOperation{
     }
 
     /**
-     *Method which contains the logic of the sum between two Complexs Object from the stack
+     * Method which contains the logic of the sum between two Complexs Object from the stack
      * <br>
      * If the stack is empty it puts inside a ZERO value
      * <br>
