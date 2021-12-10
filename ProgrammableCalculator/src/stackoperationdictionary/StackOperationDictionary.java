@@ -171,8 +171,22 @@ public class StackOperationDictionary {
         return new ArrayList<>(dict.values());
     }
     
+    /**
+     * Create or modify an user defined operation with the given name and 
+     * defined by the given sequence of operations.
+     * @param name The name of the user defined operation to be added or modified
+     * @param operations The names of the operations that define the user defined
+     * operation to be added or modified
+     * @throws InvalidOperationNameException Thrown if the given name has the 
+     * same syntax of a complex number
+     * @throws InvalidOperationsException Thrown if one of the given operations 
+     * has not been defined or it is not a number
+     * @throws UserDefinedCycleException Thrown if the inserted Operations have 
+     * cycles.
+     */
     public void addUserDefinedOperation(String name, String operations) 
-        throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
+        throws InvalidOperationNameException, InvalidOperationsException, 
+            UserDefinedCycleException{
         // validate the operation's name
         ComplexFormat cf = ComplexFormat.getInstance('j', Locale.US);
         try{
@@ -213,7 +227,7 @@ public class StackOperationDictionary {
             operation.setOperationsTextual(operations);
         }
         else{
-        UserDefinedOperation userDefinedOp = new UserDefinedOperation(name ,operationList, calculatorStack);
+        UserDefinedOperation userDefinedOp = new UserDefinedOperation(name, operationList, calculatorStack);
         userDefinedOp.setOperationsTextual(operations);
         putOperation(name, userDefinedOp);
         }

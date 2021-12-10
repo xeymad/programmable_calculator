@@ -203,6 +203,14 @@ public class StackOperationDictionaryTest {
         assertFalse(operationPerformed);
     }
     
+    /**
+     * Test if the addUserDefinedOperation method create a new user defined
+     * operation described by a sequence of operations which does not contain a 
+     * complex number
+     * @throws InvalidOperationNameException
+     * @throws InvalidOperationsException
+     * @throws UserDefinedCycleException 
+     */
     @Test
     public void testAddUserDefinedOperationWithoutComplex() 
             throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
@@ -215,6 +223,14 @@ public class StackOperationDictionaryTest {
         assertEquals(userdefined.getOperationName(), operationName);
     }
     
+    /**
+     * Test if the addUserDefinedOperation method create a new user defined
+     * operation described by a sequence of operations which contains a 
+     * complex number
+     * @throws InvalidOperationNameException
+     * @throws InvalidOperationsException
+     * @throws UserDefinedCycleException 
+     */
     @Test
     public void testAddUserDefinedOperationWithComplex() 
             throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
@@ -227,6 +243,14 @@ public class StackOperationDictionaryTest {
         assertEquals(userdefined.getOperationName(), operationName);
     }
     
+    /**
+     * Test if the addUserDefinedOperation method create a new user defined
+     * operation described by a sequence of operations which contains another
+     * user defined
+     * @throws InvalidOperationNameException
+     * @throws InvalidOperationsException
+     * @throws UserDefinedCycleException 
+     */
     @Test
     public void testAddUserDefinedOperationWithUserDefined() 
             throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
@@ -239,12 +263,26 @@ public class StackOperationDictionaryTest {
         assertEquals(userdefined2.getOperationName(), operationName);
     }
     
+    /**
+     * Test if the addUserDefinedOperation method throws an InvalidOperationNameException
+     * when the given name has the same syntax of a complex number
+     * @throws InvalidOperationNameException
+     * @throws InvalidOperationsException
+     * @throws UserDefinedCycleException 
+     */
     @Test(expected=InvalidOperationNameException.class)
     public void testAddUserDefinedOperationNameIsComplex() 
             throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         stackOperationDictionary.addUserDefinedOperation("2+3j", "+ +");
     }
     
+    /**
+     * Test if the addUserDefinedOperation method throws an InvalidOperationException
+     * when one of the given operations has not been defined.
+     * @throws InvalidOperationNameException
+     * @throws InvalidOperationsException
+     * @throws UserDefinedCycleException 
+     */
     @Test(expected=InvalidOperationsException.class)
     public void testAddUserDefinedOperationInvalidOperations() 
             throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
