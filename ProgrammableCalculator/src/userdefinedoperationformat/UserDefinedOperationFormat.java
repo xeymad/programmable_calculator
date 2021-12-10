@@ -7,11 +7,19 @@ package userdefinedoperationformat;
 
 /**
  *
- * @author giuse
+ * @author Giuseppe
  */
 
 public class UserDefinedOperationFormat {
     
+    /**
+     * Parses a string checking if is in UserDefinedOperationFormat.
+     * 
+     * @param text the string to parse
+     * @return String[] a vector of 2 elements, the first attributed to UserDefinedOperation's name
+     * and the second attributed to operations sequence.
+     * @throws UserDefinedParseException if the passed string isn't in UserDefinedOperationFormat.
+     */
     public static String[] parse(String text) throws UserDefinedParseException{
         String[] splitted = text.split(": ");
         if(splitted.length<2)
