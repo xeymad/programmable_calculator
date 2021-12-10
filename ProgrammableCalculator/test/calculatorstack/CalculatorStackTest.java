@@ -19,9 +19,6 @@ public class CalculatorStackTest {
     
     private CalculatorStack instance;
     
-    public CalculatorStackTest() {
-    }
-
     @Before
     public void setUp() {
         instance = new CalculatorStack();
@@ -35,6 +32,7 @@ public class CalculatorStackTest {
         System.out.println("isEmpty");
         assertTrue(instance.isEmpty());
     }
+    
     /**
      * Test of push method, of class CalculatorStack.
      */
@@ -114,9 +112,8 @@ public class CalculatorStackTest {
         assertEquals(expResult2, iterator.next());
         assertTrue(iterator.hasNext());
         assertEquals(expResult3, iterator.next());
-        assertTrue(iterator.hasNext());
+        assertFalse(iterator.hasNext());
         
-        
-    }
+   }
    
 }

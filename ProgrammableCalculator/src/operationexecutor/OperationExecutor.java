@@ -8,7 +8,7 @@ package operationexecutor;
 import stackoperation.StackOperation;
 
 /**
- *This class has the role of executing the commands given by the client of the application
+ * This class has the role of executing the commands given by the client of the application.
  * @author matteo
  */
 public class OperationExecutor {
