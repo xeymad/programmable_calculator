@@ -26,8 +26,7 @@ public class UserDefinedOperationTest {
     private String operationsText; 
     private CalculatorStack calculatorStack;
     private ArrayList<StackOperation> operationsSequence;
- 
-    //dup * swap dup * + sqrt
+
     @Before
     public void setUp() {
     operationName = "hypotenuse";
@@ -46,7 +45,7 @@ public class UserDefinedOperationTest {
     instance= new UserDefinedOperation(operationName ,operationsSequence, calculatorStack);
     instance.setOperationsTextual(operationsText);
     }
-    
+
     /**
      * Test of getOperationName method, of class UserDefinedOperation.
      */
@@ -69,7 +68,7 @@ public class UserDefinedOperationTest {
     }
     
     /**
-     * Test of modifyOperations method of class UserDefinedOperation
+     * Test of modifyOperations method of class UserDefinedOperation.
      */
     @Test(expected = UserDefinedCycleException.class)
     public void testModifyOperations() throws UserDefinedCycleException{
@@ -79,6 +78,51 @@ public class UserDefinedOperationTest {
         UserDefinedOperation b = new UserDefinedOperation("B",sequenceUs,calculatorStack);
         operationsSequence.add(b);
         instance.modifyOperations(operationsSequence);
+        
+    }
+
+    /**
+     * Test of getOperationsTextual method, of class UserDefinedOperation.
+     */
+    @Test
+    public void testGetOperationsTextual() {
+        System.out.println("getOperationsTextual");
+        String result=instance.getOperationsTextual();
+        assertEquals(operationsText, result);
+    }
+
+    /**
+     * Test of checkValidate method, of class UserDefinedOperation.
+     */
+    @Test
+    public void testCheckValidate() {
+        System.out.println("checkValidate");
+        
+        instance.checkValidate();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of removeOperations method, of class UserDefinedOperation.
+     */
+    @Test
+    public void testRemoveOperations() {
+        System.out.println("removeOperations");
+        instance.removeOperations();
+        assertEquals("", instance.getOperationsTextual());
+    }
+
+    /**
+     * Test of setOperationsTextual method, of class UserDefinedOperation.
+     */
+    @Test
+    public void testSetOperationsTextual() {
+        System.out.println("setOperationsTextual");
+        String operationsTextual = "+ -";
+        instance.setOperationsTextual(operationsTextual);
+        String result=instance.getOperationsTextual();
+        assertEquals(operationsTextual, result);
         
     }
 }

@@ -23,7 +23,7 @@ public class UserDefinedOperation extends StackOperation {
     private ArrayList<StackOperation> operationsSequence;
     private List<UserDefinedOperation> parents;
     private Map<String,UserDefinedOperation> children;
-    //private boolean validate;
+    
     
 
     /** 
@@ -62,7 +62,11 @@ public class UserDefinedOperation extends StackOperation {
     public String getOperationName() {
         return operationName;
     }
-      
+    
+    /**
+    * This method returns the operations in textual format of the user defined operation.
+    * @return String This returns the string containing the operation's name
+    */  
     public String getOperationsTextual() {
         return operationsTextual;
     }
@@ -91,13 +95,16 @@ public class UserDefinedOperation extends StackOperation {
      */ 
     @Override
     public void execute() {
+         if (operationsSequence.isEmpty()){
+            throw new RuntimeException("The operation " + operationName + " has been deleted");
+        }
         checkValidate();
         for(StackOperation stackOperation: operationsSequence)
             stackOperation.execute();
     }
     
     /**
-     * Check if all dependencies are executable.
+     * Checks if all the operation's dependencies are executable.
      */
     public void checkValidate() {
         if (operationsSequence.isEmpty()){
@@ -107,6 +114,7 @@ public class UserDefinedOperation extends StackOperation {
             usOperation.checkValidate();
         }
     }
+    
     /**
      * Add a new child of the userDefined operation
      * @param child 
@@ -128,7 +136,7 @@ public class UserDefinedOperation extends StackOperation {
     }
     
     /**
-     * Removes the following UserDefinedOperation from its parents' children lists and all its operations.
+     * Removes the following UserDefinedOperation from its parents' children lists and removes all its operations.
      * It also set the validate flag to false. 
      */
     public void removeOperations(){

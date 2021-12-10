@@ -10,6 +10,13 @@ import static org.junit.Assert.*;
 import calculatorstack.*;
 import stackoperation.*;
 import complexvariablesvector.ComplexVariablesVector;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -242,5 +249,58 @@ public class StackOperationDictionaryTest {
     public void testAddUserDefinedOperationInvalidOperations() 
             throws InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException{
         stackOperationDictionary.addUserDefinedOperation("userdefined", "+ + userdefined2");
+    }
+
+    /**
+     * Test of listOperations method, of class StackOperationDictionary.
+     */
+    @Test
+    public void testListOperations() {
+        System.out.println("listOperations");
+        StackOperationDictionary instance = null;
+        ArrayList<StackOperation> expResult = null;
+        ArrayList<StackOperation> result = instance.listOperations();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of saveUserDefinedOperation method, of class StackOperationDictionary.
+     * @throws java.io.IOException
+     * @throws stackoperationdictionary.InvalidOperationNameException
+     * @throws stackoperationdictionary.InvalidOperationsException
+     * @throws stackoperation.UserDefinedCycleException
+     */
+    @Test
+    public void testSaveUserDefinedOperation() throws IOException, InvalidOperationNameException, InvalidOperationsException, UserDefinedCycleException {
+        System.out.println("saveUserDefinedOperation");
+        String filePath="C:\\Users\\Asus Pc\\Documents\\NetBeansProjects\\programmable_calculator\\ProgrammableCalculator\\test\\stackoperationdictionary\\file";
+        File file = new File(filePath);
+        stackOperationDictionary.addUserDefinedOperation("userDefinedOne", "+ + -");
+        stackOperationDictionary.addUserDefinedOperation("userDefinedTwo", "swap dup");
+        stackOperationDictionary.saveUserDefinedOperation(file);
+        Path path = Paths.get(filePath);
+        List<String> lines = Files.readAllLines(path);
+        assertEquals("userDefinedOne: + + -", lines.get(0));
+        assertEquals("userDefinedTwo: swap dup", lines.get(1));
+        
+    }
+
+    /**
+     * Test of removeUserDefinedOperation method, of class StackOperationDictionary.
+     * @throws stackoperationdictionary.InvalidOperationNameException
+     * @throws stackoperation.UserDefinedCycleException
+     * @throws stackoperationdictionary.InvalidOperationsException
+     */
+    @Test
+    public void testRemoveUserDefinedOperation() throws InvalidOperationNameException, UserDefinedCycleException, InvalidOperationsException {
+        System.out.println("removeUserDefinedOperation");
+        stackOperationDictionary.addUserDefinedOperation("userDefined", "+ + -");
+        UserDefinedOperation ud=(UserDefinedOperation)stackOperationDictionary.getOperation("userDefined");
+        stackOperationDictionary.removeUserDefinedOperation(ud);
+        String result=ud.getOperationsTextual();
+        assertEquals("",result);
+
     }
 }
