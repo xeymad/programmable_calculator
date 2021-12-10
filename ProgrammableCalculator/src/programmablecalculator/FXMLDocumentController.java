@@ -32,8 +32,10 @@ import org.apache.commons.math3.exception.MathParseException;
 import stackoperation.*;
 import stackvariableoperation.StackVariableOperation;
 import javafx.stage.FileChooser;
+
 /**
- *
+ * Controller used to get input from user, invoke the right methods on the
+ * model classes and update the view
  * @author group 02
  */
 public class FXMLDocumentController implements Initializable {
@@ -64,7 +66,7 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<UserDefinedOperation, String> varClm1;
     @FXML
     private TableColumn<UserDefinedOperation, String> valueClm1;   
-    ComplexFormat cf;
+    private ComplexFormat cf;
  
     
     /**
