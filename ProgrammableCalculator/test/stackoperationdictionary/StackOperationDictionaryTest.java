@@ -183,25 +183,6 @@ public class StackOperationDictionaryTest {
         boolean keyIsPresent = stackOperationDictionary.containsKey("404");
         assertFalse(keyIsPresent);
     }
-    /**
-     * Test if the execute method performed on an operation present in the 
-     * dictionary returns True.
-     */
-    @Test
-    public void testExecute() {
-        boolean operationPerformed = stackOperationDictionary.execute("+");
-        assertTrue(operationPerformed);
-    }
-    
-    /**
-     * Test if the execute method performed on an operation NOT present
-     * in the dictionary returns False.
-     */
-    @Test
-    public void testExecuteNotPresent(){
-        boolean operationPerformed = stackOperationDictionary.execute("404");
-        assertFalse(operationPerformed);
-    }
     
     /**
      * Test if the addUserDefinedOperation method create a new user defined

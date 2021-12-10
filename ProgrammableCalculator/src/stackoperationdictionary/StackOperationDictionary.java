@@ -144,23 +144,6 @@ public class StackOperationDictionary {
     }
     
     /**
-     * Executes the operation associated with the specified name.
-     * @param name the name whose operation has to be executed.
-     * @return true if the operation was executed correctly, false if there was 
-     * no mapping for the specified name.
-     */
-    public boolean execute(String name){
-        StackOperation operation = dict.get(name);
-        if(operation == null){
-            return false;
-        }
-        else {
-            operation.execute();
-            return true;
-        }
-    }
-    
-    /**
     * This method returns an ArrayList of the operations the dictionary contains
     * @return listOperations the list of all the operations in the dictionary
     */
