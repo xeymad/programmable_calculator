@@ -6,7 +6,7 @@
 package userdefinedoperationformat;
 
 /**
- *
+ * Thrown when string parsing failed
  * @author giuse
  */
 public class UserDefinedParseException extends Exception {
