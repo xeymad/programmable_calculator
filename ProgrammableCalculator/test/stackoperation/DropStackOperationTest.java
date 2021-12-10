@@ -20,7 +20,7 @@ public class DropStackOperationTest {
     private DropStackOperation dropStackOperation;
     
     /**
-     * Initialize the stack and the operation
+     * Initializes the stack and the operation
      */
     @Before
     public void init(){

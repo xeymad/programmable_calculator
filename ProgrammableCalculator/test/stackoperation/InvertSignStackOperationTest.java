@@ -6,7 +6,6 @@
 package stackoperation;
 
 import calculatorstack.CalculatorStack;
-import java.util.NoSuchElementException;
 import org.apache.commons.math3.complex.Complex;
 import org.junit.*;
 import static org.junit.Assert.*;

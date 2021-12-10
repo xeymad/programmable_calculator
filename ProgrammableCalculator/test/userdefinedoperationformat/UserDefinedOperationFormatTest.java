@@ -14,7 +14,7 @@ import org.junit.Test;
 public class UserDefinedOperationFormatTest {
     
     /**
-     * Parse a simple string
+     * Parses a simple string
      * @throws UserDefinedParseException 
      */
     @Test
@@ -25,7 +25,7 @@ public class UserDefinedOperationFormatTest {
     }
     
     /**
-     * Parse a string with useless spaces
+     * Parses a string with useless spaces
      * @throws UserDefinedParseException 
      */
     @Test
@@ -36,7 +36,7 @@ public class UserDefinedOperationFormatTest {
     }
     
     /**
-     * Parse a string without operations
+     * Parses a string without operations
      * @throws UserDefinedParseException 
      */
     @Test(expected = UserDefinedParseException.class)

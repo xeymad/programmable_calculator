@@ -160,7 +160,7 @@ public class UserDefinedOperationTest {
     public void testRemoveOperations() {
         System.out.println("removeOperations");
         instance.removeOperations();
-        assertEquals("", instance.getOperationsTextual());
+        assertEquals("DELETED", instance.getOperationsTextual());
     }
 
     /**

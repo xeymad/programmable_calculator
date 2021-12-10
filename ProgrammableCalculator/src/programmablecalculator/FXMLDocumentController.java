@@ -68,7 +68,7 @@ public class FXMLDocumentController implements Initializable {
  
     
     /**
-     * Initialize the components of the GUI
+     * Initializes the components of the GUI.
      * @param url: The location used to resolve relative paths for the root object, or null if the location is not known.
      * @param rb: The resources used to localize the root object, or null if the root object was not localized.
      */
@@ -95,7 +95,7 @@ public class FXMLDocumentController implements Initializable {
     }    
     
     /**
-     * This function updates the variablesView in the GUI.
+     * This method updates the variablesView in the GUI.
      * It shows all the 26 variables of the variablesVector.
      */
     public void updateVariablesView(){
@@ -106,7 +106,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This function updates the userDefinedView in the GUI.
+     * This method updates the userDefinedView in the GUI.
      * It shows all the UserDefinedOperation defined. 
      * 
      */
@@ -119,7 +119,7 @@ public class FXMLDocumentController implements Initializable {
     }
    
     /**
-     * This function updates the stackView in the GUI.
+     * This method updates the stackView in the GUI.
      * It shows the last ELEMENTS_VIEW elements of the stack.
      */
     public void updateStackView(){
@@ -133,7 +133,7 @@ public class FXMLDocumentController implements Initializable {
     }
      
     /**
-     * This function runs automatically after the insertBtn got pressed.
+     * This method runs automatically after the insertBtn got pressed.
      * @param event 
      */
     @FXML
@@ -142,7 +142,7 @@ public class FXMLDocumentController implements Initializable {
     }
     
     /**
-     * This function runs automatically after closeBtn pression.
+     * This method runs automatically after closeBtn pression.
      * It simply closes the window.
      * @param event 
      */
@@ -152,8 +152,8 @@ public class FXMLDocumentController implements Initializable {
     }
     
     /**
-     * This function first try to parse the received string from txtInput as a ComplexNumber.
-     * If it can't parse, it tryes to execute an operation from StackOperationDictionary.
+     * This method first tries to parse the received string from txtInput as a ComplexNumber.
+     * If it can't parse, it tries to execute an operation from StackOperationDictionary.
      * If the inserted text isn't an operation, it will show an Error Message.
      */
     private void performUserAction(){
@@ -233,6 +233,6 @@ public class FXMLDocumentController implements Initializable {
        
     }
     
-    }
+}
     
 

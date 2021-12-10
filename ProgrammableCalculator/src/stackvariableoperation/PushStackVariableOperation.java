@@ -26,8 +26,7 @@ public class PushStackVariableOperation extends StackVariableOperation{
     }
     
     /**
-     * Set the previously given variable to stack's top element.
-     * If the stack is empty, the variable remains unchanged.
+     * Pushes the variable's value at the top of the stack.
      */
     @Override
     public void execute(){

@@ -86,7 +86,7 @@ public class StackOperationDictionary {
     }
     
     /**
-     * Return the operation to which the specified name is mapped.
+     * Returns the operation to which the specified name is mapped.
      * @param name the name whose associated operation is to be returned.
      * @return the operation to which the specified name is mapped, or null
      * if this dictionary contains no mapping for the name.
@@ -115,7 +115,7 @@ public class StackOperationDictionary {
     }
     
     /**
-     * Change the name associated with an operation.
+     * Changes the name associated with an operation.
      * @param name the name currently associated with an operation which 
      * should be changed.
      * @param newName the new name to be associated with the operation.
@@ -144,7 +144,7 @@ public class StackOperationDictionary {
     }
     
     /**
-     * Execute the operation associated with the specified name.
+     * Executes the operation associated with the specified name.
      * @param name the name whose operation has to be executed.
      * @return true if the operation was executed correctly, false if there was 
      * no mapping for the specified name.
@@ -169,7 +169,7 @@ public class StackOperationDictionary {
     }
     
     /**
-     * Create or modify an user defined operation with the given name and 
+     * Creates or modifies an user defined operation with the given name and 
      * defined by the given sequence of operations.
      * @param name The name of the user defined operation to be added or modified
      * @param operations The names of the operations that define the user defined
@@ -249,7 +249,7 @@ public class StackOperationDictionary {
      
     /**
      * Removes the given user-defined operation by deleting its sequence of operations.
-     * @param  ud user defined operation to remove
+     * @param  ud the user defined operation to remove
      */ 
     public void removeUserDefinedOperation(UserDefinedOperation ud){
         ud.removeOperations();

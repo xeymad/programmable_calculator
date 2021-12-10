@@ -10,7 +10,7 @@ import org.apache.commons.math3.complex.Complex;
 import complexvariablesvector.ComplexVariablesVector;
 
 /**
- *
+ * This class implements the store operation of the top stack's element in a variable.
  * @author aferr
  */
 public class StoreStackVariableOperation extends StackVariableOperation{
@@ -27,7 +27,7 @@ public class StoreStackVariableOperation extends StackVariableOperation{
     }
     
     /**
-     * Set the previously given variable to stack's top element.
+     * Sets the previously given variable to stack's top element.
      * If the stack is empty, the variable remains unchanged.
      */
     @Override

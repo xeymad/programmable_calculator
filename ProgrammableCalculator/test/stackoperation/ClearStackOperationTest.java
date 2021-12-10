@@ -21,7 +21,7 @@ public class ClearStackOperationTest {
     private ClearStackOperation clear;
     
     /**
-     * Initialize a CalculatorStack and the ClearStackOperationTest command.
+     * Initializes a CalculatorStack and the ClearStackOperationTest command.
      */
     @Before
     public void init(){
