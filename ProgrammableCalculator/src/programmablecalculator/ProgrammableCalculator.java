@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ * Main class of the programmable calculator application.
  * @author group 02
  */
 public class ProgrammableCalculator extends Application {
