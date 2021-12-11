@@ -36,3 +36,6 @@ https://docs.google.com/document/d/1vv2nAFoQbkCffO-t4ZFGzR8tYZxHFnSt/edit?usp=sh
 https://docs.google.com/document/d/1r0cZJBUwMpVvB6eXrGrVrkMFc36fdKAu/edit?usp=sharing&ouid=111579386861903010578&rtpof=true&sd=true
 ### Sprint Retrospective Report
 https://docs.google.com/document/d/11qT6rzOQ2aeAslczvbm_VbzR0es4RVQx/edit?usp=sharing&ouid=111579386861903010578&rtpof=true&sd=true
+### Architecture UML
+https://drive.google.com/file/d/1EVgQXlMyVPf-cTsFc1YBTo3HtsnFJqSu/view?usp=sharing
+
