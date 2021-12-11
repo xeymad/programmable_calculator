@@ -30,3 +30,9 @@ https://docs.google.com/document/d/1J59D1eep4D9DGXUKSCns2U1_5BAny1Ba/edit?usp=sh
 ## Third Sprint
 ### Sprint Backlog
 https://docs.google.com/document/d/1G1YisThEwkvhBLd-g8xoFcrkj8v5u5KmXoP-2brlaq4/edit?usp=sharing
+### Design of the Software Architecture
+https://docs.google.com/document/d/1vv2nAFoQbkCffO-t4ZFGzR8tYZxHFnSt/edit?usp=sharing&ouid=111579386861903010578&rtpof=true&sd=true
+### Sprint Review Report
+https://docs.google.com/document/d/1r0cZJBUwMpVvB6eXrGrVrkMFc36fdKAu/edit?usp=sharing&ouid=111579386861903010578&rtpof=true&sd=true
+### Sprint Retrospective Report
+https://docs.google.com/document/d/11qT6rzOQ2aeAslczvbm_VbzR0es4RVQx/edit?usp=sharing&ouid=111579386861903010578&rtpof=true&sd=true
